@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LexMachina - AI Legal Studio</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec80",
+                        "primary-hover": "#0fc86d",
+                        "secondary": "#234836",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#102219",
+                        "surface-dark": "#162a21",
+                        "text-muted": "#92c9ad",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "2xl": "2rem",
+                        "full": "9999px"
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-white antialiased selection:bg-primary selection:text-background-dark">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 w-full border-b border-secondary/40 bg-background-dark/80 backdrop-blur-md">
+<div class="layout-container flex h-full grow flex-col">
+<div class="px-4 md:px-10 lg:px-40 flex flex-1 justify-center">
+<div class="layout-content-container flex flex-col w-full max-w-[1200px] flex-1">
+<div class="flex items-center justify-between py-4">
+<div class="flex items-center gap-3 text-white cursor-pointer">
+<div class="flex items-center justify-center size-8 rounded-lg bg-primary/20 text-primary">
+<span class="material-symbols-outlined">balance</span>
+</div>
+<h2 class="text-white text-xl font-bold tracking-tight">Lex<span class="text-primary">Machina</span></h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-white hover:text-primary transition-colors text-sm font-medium" href="#">Expertise</a>
+<a class="text-white hover:text-primary transition-colors text-sm font-medium" href="#">AI Lab</a>
+<a class="text-white hover:text-primary transition-colors text-sm font-medium" href="#">Our Tech</a>
+<a class="text-white hover:text-primary transition-colors text-sm font-medium" href="#">About</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="hidden sm:flex h-10 px-5 cursor-pointer items-center justify-center rounded-xl bg-primary hover:bg-primary-hover transition-colors text-background-dark text-sm font-bold tracking-wide">
+<span class="mr-2 material-symbols-outlined text-[18px]">bolt</span>
+<span>Consultation</span>
+</button>
+<button class="md:hidden text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="relative flex flex-col items-center justify-center py-12 lg:py-24 overflow-hidden">
+<!-- Background Decoration -->
+<div class="absolute inset-0 z-0">
+<div class="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-primary/5 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[-10%] right-[-5%] w-[40%] h-[40%] bg-primary/10 rounded-full blur-[100px]"></div>
+</div>
+<div class="layout-container flex flex-col z-10 w-full px-4 md:px-10 lg:px-40">
+<div class="flex justify-center">
+<div class="flex flex-col max-w-[1000px] w-full gap-8">
+<!-- Hero Card -->
+<div class="relative overflow-hidden rounded-2xl md:rounded-3xl bg-surface-dark border border-secondary shadow-2xl shadow-black/50">
+<div class="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-overlay" data-alt="Abstract digital network connections with green glowing nodes representing neural networks" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA52ppM_gbhrH3S8zFhdzwrjP_8riYcCBtYIYd-Eu8RKYZw8VbfLAjTXBSA42uIroBvAEKtP4HzzSR1DXMeVCQ3VrKrsuEXw75jtWkEPnwbxH3AQn2otV9b5NlNWEZpTNb6PiPLPciOd2kp8ZcmJwFGCPIkvQ4Es8ktoMkRvs-S-OMUu23kJzvYor8UuwEMnKSrTpogD57zXlJEWmyTDr-kbbqC6ZzGquBhPloS6CPZBBYKPlbY8hZzwJ0BGaC8SgWCTovOT4uFUO4");'>
+</div>
+<div class="relative z-10 flex flex-col items-center text-center p-8 md:p-16 lg:p-24 gap-6">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm">
+<span class="size-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-primary text-xs font-bold uppercase tracking-wider">The Future of Law is Here</span>
+</div>
+<h1 class="text-white text-5xl md:text-7xl font-bold leading-tight tracking-tight">
+                                    Legal Intelligence.<br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-emerald-400">Digitally Evolved.</span>
+</h1>
+<p class="text-gray-300 text-lg md:text-xl max-w-2xl font-body leading-relaxed">
+                                    The first digital law firm powered by neural networks to protect your innovations. Sustainable, fast, and precise legal defense for the AI age.
+                                </p>
+<div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+<button class="h-12 px-8 rounded-xl bg-primary hover:bg-primary-hover text-background-dark font-bold text-base transition-all hover:scale-105 shadow-[0_0_20px_rgba(19,236,128,0.3)]">
+                                        Start Digital Audit
+                                    </button>
+<button class="h-12 px-8 rounded-xl bg-transparent border border-white/20 hover:bg-white/5 text-white font-bold text-base transition-all flex items-center gap-2 group">
+<span>Explore Tech</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Trusted By Banner -->
+<section class="border-y border-secondary/30 bg-background-dark/50 py-8">
+<div class="layout-container px-4 md:px-10 lg:px-40 flex justify-center">
+<div class="w-full max-w-[1200px] flex flex-col md:flex-row items-center justify-between gap-6">
+<p class="text-text-muted text-sm font-semibold tracking-widest uppercase whitespace-nowrap">Trusted by 50+ Innovators</p>
+<div class="flex flex-wrap justify-center md:justify-end items-center gap-8 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+<!-- Placeholders for logos with text description -->
+<span class="text-xl font-bold text-white font-display">NEXUS<span class="text-primary">AI</span></span>
+<span class="text-xl font-bold text-white font-display">Cyber<span class="font-light">Law</span></span>
+<span class="text-xl font-bold text-white font-display">O<span class="text-primary">mni</span>Data</span>
+<span class="text-xl font-bold text-white font-display">Vertex<span class="text-primary">Labs</span></span>
+</div>
+</div>
+</div>
+</section>
+<!-- The AI Advantage Section -->
+<section class="py-16 md:py-24">
+<div class="layout-container px-4 md:px-10 lg:px-40 flex justify-center">
+<div class="w-full max-w-[1200px] flex flex-col gap-12">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="max-w-2xl">
+<h2 class="text-primary text-sm font-bold uppercase tracking-widest mb-2">Why Choose Us</h2>
+<h3 class="text-3xl md:text-4xl text-white font-bold">Precision at the speed of code.</h3>
+</div>
+<p class="text-gray-400 max-w-sm text-sm md:text-base leading-relaxed">
+                            We leverage proprietary algorithms to analyze contracts, predict outcomes, and secure your IP faster than any traditional firm.
+                        </p>
+</div>
+<!-- Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="group relative p-8 rounded-2xl bg-surface-dark border border-secondary hover:border-primary/50 transition-all duration-300 hover:-translate-y-1">
+<div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">smart_toy</span>
+</div>
+<h4 class="text-xl text-white font-bold mb-3">Algorithmic Defense</h4>
+<p class="text-gray-400 text-sm leading-relaxed">Our neural networks analyze millions of case precedents to build unshakeable defense strategies customized for your IP.</p>
+</div>
+<!-- Card 2 -->
+<div class="group relative p-8 rounded-2xl bg-surface-dark border border-secondary hover:border-primary/50 transition-all duration-300 hover:-translate-y-1">
+<div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">gavel</span>
+</div>
+<h4 class="text-xl text-white font-bold mb-3">Smart Contracts</h4>
+<p class="text-gray-400 text-sm leading-relaxed">Self-executing contracts audited by dual-layer AI to ensure zero loopholes and 100% compliance with international digital law.</p>
+</div>
+<!-- Card 3 -->
+<div class="group relative p-8 rounded-2xl bg-surface-dark border border-secondary hover:border-primary/50 transition-all duration-300 hover:-translate-y-1">
+<div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">security</span>
+</div>
+<h4 class="text-xl text-white font-bold mb-3">Data Sovereignty</h4>
+<p class="text-gray-400 text-sm leading-relaxed">Protecting your corporate data with military-grade encryption protocols and real-time regulatory compliance monitoring.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid / Services Visuals -->
+<section class="py-12 md:py-24 bg-surface-dark/30 border-t border-secondary/30">
+<div class="layout-container px-4 md:px-10 lg:px-40 flex justify-center">
+<div class="w-full max-w-[1200px] flex flex-col gap-10">
+<div class="flex items-center gap-4">
+<span class="h-px flex-1 bg-secondary"></span>
+<h2 class="text-white text-2xl font-bold tracking-tight">Our Digital Ecosystem</h2>
+<span class="h-px flex-1 bg-secondary"></span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-4 h-auto md:h-[600px]">
+<!-- Large Feature Image -->
+<div class="md:col-span-2 md:row-span-2 relative rounded-2xl overflow-hidden group border border-secondary">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Futuristic cyber security lock interface glowing green on dark background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDfIn4a7KC9J49tYVNeobRNZmc0G0L7-ELVt5OrdMegcRI5Ay8N1UtLf6hCsvkALRAttQBJ0-1hD4XnE2zcvbea8Ss89KwpS6Ul_4SUvFI18YhNPo8O-zJ1A-1agCgpN8e7udDkBxgU4Cnirb0jTXI-sDW0ksWJJBkvVNeaXX3b-VVyuF9n6wrYJUKTR5_MQY2aOwjlTfLsJn7K5-6Q2pmkcri9aKH8A27q0I1Ro--TnDhMJVm1wTIEoLSTTNwzDnRvl0pIyHK05nU");'>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/50 to-transparent p-8 flex flex-col justify-end">
+<h3 class="text-2xl font-bold text-white mb-2">Cyber-Litigation Ready</h3>
+<p class="text-gray-300 text-sm max-w-md">We don't just understand the law; we understand the code. Representing clients in complex software disputes.</p>
+</div>
+</div>
+<!-- Secondary Info Card -->
+<div class="bg-background-dark border border-secondary rounded-2xl p-6 flex flex-col justify-center relative overflow-hidden">
+<div class="absolute top-0 right-0 -mr-8 -mt-8 size-32 rounded-full bg-primary/5 blur-2xl"></div>
+<span class="material-symbols-outlined text-primary text-4xl mb-4">rocket_launch</span>
+<h3 class="text-lg font-bold text-white mb-2">Startup Accelerator</h3>
+<p class="text-gray-400 text-xs">Specialized legal packages for AI startups from Series A to IPO.</p>
+</div>
+<!-- Secondary Image -->
+<div class="relative rounded-2xl overflow-hidden group border border-secondary">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Rows of computer servers in a data center with green status lights" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCg7Qu0j4oUe-kI8P21ppMFhkUEqZMBpyCSg1gpNFhcBTiqpYb7NTTAD7zNY2ukF37pkESLbFWyouFRR6MUGutVNxSEe0AMldU8JhFrKqisV3IK5OCs8xsQb0XZrVsf78pmlRgmIu1gfnMa8L0_lFgjICvoBgyciF5Q0VS7xClvLS8gHjmBmyfjxim4rB-F3GCVg6YPVuuszY2y7eHxGyyC3Cmq0VRyaAQTRN1TUYnwwjfYKmwYg3RxhNGFZS-Hdf9S3LgbIPOoCC4");'>
+</div>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+<div class="absolute bottom-4 left-4">
+<span class="bg-primary text-background-dark text-xs font-bold px-2 py-1 rounded">Global Scale</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-24 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-b from-background-dark to-surface-dark"></div>
+<!-- Decorative grid lines -->
+<div class="absolute inset-0" style="background-image: linear-gradient(rgba(19, 236, 128, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(19, 236, 128, 0.03) 1px, transparent 1px); background-size: 40px 40px;"></div>
+<div class="layout-container px-4 md:px-10 lg:px-40 flex justify-center relative z-10">
+<div class="w-full max-w-[800px] text-center flex flex-col items-center gap-8">
+<h2 class="text-4xl md:text-5xl font-bold text-white tracking-tight">Ready to upgrade your defense?</h2>
+<p class="text-gray-400 text-lg">
+                        Join the forward-thinking companies securing their future with LexMachina. 
+                        Get a preliminary AI risk assessment in under 24 hours.
+                    </p>
+<form class="flex flex-col sm:flex-row w-full max-w-md gap-3">
+<input class="flex-1 h-12 rounded-xl bg-background-dark border border-secondary text-white placeholder-gray-500 focus:border-primary focus:ring-1 focus:ring-primary px-4 outline-none transition-all" placeholder="Enter your work email" type="email"/>
+<button class="h-12 px-8 rounded-xl bg-primary hover:bg-primary-hover text-background-dark font-bold whitespace-nowrap transition-colors" type="button">
+                            Get Started
+                        </button>
+</form>
+<p class="text-gray-500 text-xs mt-2">By clicking "Get Started", you agree to our Terms of Service. No credit card required for initial audit.</p>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="border-t border-secondary bg-background-dark pt-16 pb-8">
+<div class="layout-container px-4 md:px-10 lg:px-40 flex justify-center">
+<div class="w-full max-w-[1200px] flex flex-col gap-12">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+<!-- Brand -->
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-2 text-white">
+<span class="material-symbols-outlined text-primary">balance</span>
+<span class="text-lg font-bold">Lex<span class="text-primary">Machina</span></span>
+</div>
+<p class="text-gray-400 text-sm">
+                                The world's first fully digital, AI-powered law firm. Redefining justice through code.
+                            </p>
+</div>
+<!-- Links 1 -->
+<div class="flex flex-col gap-4">
+<h4 class="text-white font-bold text-sm uppercase tracking-wider">Services</h4>
+<a class="text-gray-400 hover:text-primary text-sm transition-colors" href="#">IP Protection</a>
+<a class="text-gray-400 hover:text-primary text-sm transition-colors" href="#">Smart Contracts</a>
+<a class="text-gray-400 hover:text-primary text-sm transition-colors" href="#">Data Privacy</a>
+<a class="text-gray-400 hover:text-primary text-sm transition-colors" href="#">Cyber Litigation</a>
+</div>
+<!-- Links 2 -->
+<div class="flex flex-col gap-4">
+<h4 class="text-white font-bold text-sm uppercase tracking-wider">Company</h4>
+<a class="text-gray-400 hover:text-primary text-sm transition-colors" href="#">About Us</a>
+<a class="text-gray-400 hover:text-primary text-sm transition-colors" href="#">AI Lab</a>
+<a class="text-gray-400 hover:text-primary text-sm transition-colors" href="#">Careers</a>
+<a class="text-gray-400 hover:text-primary text-sm transition-colors" href="#">Contact</a>
+</div>
+<!-- Contact -->
+<div class="flex flex-col gap-4">
+<h4 class="text-white font-bold text-sm uppercase tracking-wider">Contact</h4>
+<p class="text-gray-400 text-sm">hello@lexmachina.ai</p>
+<p class="text-gray-400 text-sm">+1 (555) 012-3456</p>
+<div class="flex gap-4 mt-2">
+<a class="text-gray-400 hover:text-primary transition-colors" href="#"><span class="block size-5 bg-current rounded-full opacity-20 hover:opacity-100"></span></a> <!-- Social placeholder -->
+<a class="text-gray-400 hover:text-primary transition-colors" href="#"><span class="block size-5 bg-current rounded-full opacity-20 hover:opacity-100"></span></a>
+<a class="text-gray-400 hover:text-primary transition-colors" href="#"><span class="block size-5 bg-current rounded-full opacity-20 hover:opacity-100"></span></a>
+</div>
+</div>
+</div>
+<div class="border-t border-secondary/50 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-gray-600 text-xs">© 2023 LexMachina Legal Studio. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="text-gray-600 hover:text-gray-400 text-xs" href="#">Privacy Policy</a>
+<a class="text-gray-600 hover:text-gray-400 text-xs" href="#">Terms of Service</a>
+</div>
+</div>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

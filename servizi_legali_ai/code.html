@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="it"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Servizi Legali AI - LexAI Studio</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec80",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#102219",
+                        "surface-dark": "#193326",
+                        "surface-border": "#32674d",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Noto Sans', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#111418] dark:text-white transition-colors duration-200">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 w-full border-b border-solid border-[#e5e7eb] dark:border-[#234836] bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md">
+<div class="px-4 md:px-10 py-3 flex items-center justify-between">
+<div class="flex items-center gap-4 text-[#111418] dark:text-white cursor-pointer">
+<div class="size-8 text-primary">
+<span class="material-symbols-outlined text-[32px]">balance</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">LexAI Studio</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-end gap-8 items-center">
+<nav class="flex items-center gap-9">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-sm font-medium text-primary" href="#">Servizi</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Chi Siamo</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Contatti</a>
+</nav>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-primary text-[#11221a] text-sm font-bold hover:bg-[#10d670] transition-colors">
+<span class="truncate">Prenota Consulenza</span>
+</button>
+</div>
+<!-- Mobile Menu Button -->
+<button class="md:hidden text-[#111418] dark:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="layout-container flex h-full grow flex-col">
+<div class="flex flex-1 justify-center py-5">
+<div class="layout-content-container flex flex-col max-w-[1200px] flex-1 px-4 md:px-6">
+<!-- HeroSection -->
+<section class="@container mb-12">
+<div class="flex flex-col gap-6 py-10 @[864px]:flex-row items-center">
+<div class="flex flex-col gap-6 @[480px]:min-w-[400px] @[480px]:gap-8 flex-1">
+<div class="flex flex-col gap-4 text-left">
+<div class="inline-flex items-center rounded-full bg-primary/10 border border-primary/20 px-3 py-1 text-sm font-medium text-primary w-fit">
+<span class="material-symbols-outlined text-[18px] mr-1">auto_awesome</span>
+                                        Servizi Legali 4.0
+                                    </div>
+<h1 class="text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-6xl text-[#111418] dark:text-white">
+                                        Efficienza Legale <br/>
+<span class="text-primary">Potenziata dall'AI</span>
+</h1>
+<h2 class="text-[#637588] dark:text-[#92c9ad] text-lg font-normal leading-relaxed max-w-xl">
+                                        Trasformiamo la complessità burocratica in flussi di lavoro snelli. I nostri algoritmi analizzano, prevedono e proteggono, permettendo ai nostri avvocati di concentrarsi sulla strategia.
+                                    </h2>
+</div>
+<div class="flex flex-wrap gap-4">
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-primary text-[#11221a] text-base font-bold transition-transform active:scale-95">
+<span class="truncate">Esplora i Servizi</span>
+</button>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-transparent border border-[#e5e7eb] dark:border-[#32674d] text-[#111418] dark:text-white hover:bg-black/5 dark:hover:bg-white/5 text-base font-bold transition-colors">
+<span class="truncate">Come lavoriamo</span>
+</button>
+</div>
+</div>
+<div class="w-full flex-1 aspect-square md:aspect-[4/3] bg-center bg-no-repeat bg-cover rounded-3xl overflow-hidden relative" data-alt="Abstract visualization of digital legal network with green connecting nodes">
+<div class="absolute inset-0 bg-gradient-to-tr from-background-dark/80 via-transparent to-transparent z-10"></div>
+<div class="w-full h-full bg-surface-dark" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCfYR92LybBXkQthEpDRCxZHfalg5dzrkO5q3YKVhFcz__w0_V3OCGzm3eJfmbPfdL0S52d7PKP9sgWkTeIrzW1MUZcCPYghU8rUp41TrAobfdoVfM0Lx9re-57UFV_UklHnBRsr40nojkQne62P445bJuTjoyU5jriR6QI_oT1QeqkQOZUWjpbqCzPawUGBlBuPBSzW01rF1wUtw01ZUq8imaCl03CIQjRfQKEN_rgkNyWGGcPr1z7DmrFlRGH_N55PuNWwJrmXFY"); background-size: cover; background-position: center;'></div>
+</div>
+</div>
+</section>
+<!-- Section Header -->
+<div class="flex flex-col items-center text-center gap-4 mb-10">
+<h2 class="text-3xl font-bold leading-tight tracking-[-0.015em]">Le Nostre Specializzazioni</h2>
+<p class="text-[#637588] dark:text-[#92c9ad] max-w-[700px]">
+                             Uniamo l'esperienza decennale dei nostri legali con la potenza di calcolo delle reti neurali per offrirti servizi ineguagliabili.
+                         </p>
+</div>
+<!-- FeatureSection (Grid of Services) -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+<!-- Card 1 -->
+<div class="group flex flex-col gap-4 rounded-2xl border border-[#e5e7eb] dark:border-surface-border bg-white dark:bg-surface-dark p-6 hover:shadow-[0_0_20px_rgba(19,236,128,0.15)] transition-all duration-300 hover:-translate-y-1">
+<div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-background-dark transition-colors duration-300">
+<span class="material-symbols-outlined text-[28px]">description</span>
+</div>
+<div class="flex flex-col gap-2 flex-1">
+<h3 class="text-xl font-bold leading-tight">Analisi Contrattuale Smart</h3>
+<p class="text-[#637588] dark:text-[#92c9ad] text-sm leading-relaxed">
+                                    Revisione istantanea tramite NLP. Identifica clausole rischiose, ambiguità e non conformità in secondi invece che ore.
+                                </p>
+</div>
+<a class="flex items-center gap-2 text-primary font-bold text-sm mt-2 group-hover:underline" href="#">
+                                Scopri di più <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<!-- Card 2 -->
+<div class="group flex flex-col gap-4 rounded-2xl border border-[#e5e7eb] dark:border-surface-border bg-white dark:bg-surface-dark p-6 hover:shadow-[0_0_20px_rgba(19,236,128,0.15)] transition-all duration-300 hover:-translate-y-1">
+<div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-background-dark transition-colors duration-300">
+<span class="material-symbols-outlined text-[28px]">copyright</span>
+</div>
+<div class="flex flex-col gap-2 flex-1">
+<h3 class="text-xl font-bold leading-tight">Protezione IP Digitale</h3>
+<p class="text-[#637588] dark:text-[#92c9ad] text-sm leading-relaxed">
+                                    Sorveglianza automatizzata 24/7 dei tuoi asset digitali. Rileviamo violazioni di copyright su web e blockchain.
+                                </p>
+</div>
+<a class="flex items-center gap-2 text-primary font-bold text-sm mt-2 group-hover:underline" href="#">
+                                Scopri di più <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<!-- Card 3 -->
+<div class="group flex flex-col gap-4 rounded-2xl border border-[#e5e7eb] dark:border-surface-border bg-white dark:bg-surface-dark p-6 hover:shadow-[0_0_20px_rgba(19,236,128,0.15)] transition-all duration-300 hover:-translate-y-1">
+<div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-background-dark transition-colors duration-300">
+<span class="material-symbols-outlined text-[28px]">gavel</span>
+</div>
+<div class="flex flex-col gap-2 flex-1">
+<h3 class="text-xl font-bold leading-tight">Compliance Automatizzata</h3>
+<p class="text-[#637588] dark:text-[#92c9ad] text-sm leading-relaxed">
+                                    Monitoraggio normativo in tempo reale. Aggiorniamo i protocolli privacy e sicurezza automaticamente.
+                                </p>
+</div>
+<a class="flex items-center gap-2 text-primary font-bold text-sm mt-2 group-hover:underline" href="#">
+                                Scopri di più <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<!-- Card 4 -->
+<div class="group flex flex-col gap-4 rounded-2xl border border-[#e5e7eb] dark:border-surface-border bg-white dark:bg-surface-dark p-6 hover:shadow-[0_0_20px_rgba(19,236,128,0.15)] transition-all duration-300 hover:-translate-y-1">
+<div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-background-dark transition-colors duration-300">
+<span class="material-symbols-outlined text-[28px]">query_stats</span>
+</div>
+<div class="flex flex-col gap-2 flex-1">
+<h3 class="text-xl font-bold leading-tight">Analisi Predittiva Rischi</h3>
+<p class="text-[#637588] dark:text-[#92c9ad] text-sm leading-relaxed">
+                                    Valutiamo la probabilità di successo dei contenziosi basandoci su storici giurisprudenziali massivi.
+                                </p>
+</div>
+<a class="flex items-center gap-2 text-primary font-bold text-sm mt-2 group-hover:underline" href="#">
+                                Scopri di più <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<!-- Card 5 -->
+<div class="group flex flex-col gap-4 rounded-2xl border border-[#e5e7eb] dark:border-surface-border bg-white dark:bg-surface-dark p-6 hover:shadow-[0_0_20px_rgba(19,236,128,0.15)] transition-all duration-300 hover:-translate-y-1">
+<div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-background-dark transition-colors duration-300">
+<span class="material-symbols-outlined text-[28px]">lock_person</span>
+</div>
+<div class="flex flex-col gap-2 flex-1">
+<h3 class="text-xl font-bold leading-tight">GDPR &amp; Data Privacy</h3>
+<p class="text-[#637588] dark:text-[#92c9ad] text-sm leading-relaxed">
+                                    Audit automatici sui flussi di dati aziendali per garantire la totale conformità al GDPR europeo.
+                                </p>
+</div>
+<a class="flex items-center gap-2 text-primary font-bold text-sm mt-2 group-hover:underline" href="#">
+                                Scopri di più <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<!-- Card 6 -->
+<div class="group flex flex-col gap-4 rounded-2xl border border-[#e5e7eb] dark:border-surface-border bg-white dark:bg-surface-dark p-6 hover:shadow-[0_0_20px_rgba(19,236,128,0.15)] transition-all duration-300 hover:-translate-y-1">
+<div class="size-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-background-dark transition-colors duration-300">
+<span class="material-symbols-outlined text-[28px]">smart_toy</span>
+</div>
+<div class="flex flex-col gap-2 flex-1">
+<h3 class="text-xl font-bold leading-tight">Regolamentazione AI</h3>
+<p class="text-[#637588] dark:text-[#92c9ad] text-sm leading-relaxed">
+                                    Consulenza specifica per aziende che sviluppano AI, assicurando etica e legalità secondo l'AI Act.
+                                </p>
+</div>
+<a class="flex items-center gap-2 text-primary font-bold text-sm mt-2 group-hover:underline" href="#">
+                                Scopri di più <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</section>
+<!-- Large Feature Card -->
+<section class="mb-16">
+<div class="flex flex-col md:flex-row items-stretch justify-between gap-8 rounded-3xl bg-white dark:bg-surface-dark p-6 md:p-8 shadow-[0_0_15px_rgba(0,0,0,0.05)] border border-[#e5e7eb] dark:border-surface-border">
+<div class="flex flex-1 flex-col justify-center gap-6">
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-2">
+<span class="inline-block size-2 rounded-full bg-primary animate-pulse"></span>
+<p class="text-primary text-sm font-bold uppercase tracking-wider">Nuovo Servizio</p>
+</div>
+<h2 class="text-2xl md:text-3xl font-bold leading-tight text-[#111418] dark:text-white">LexAI Corporate Shield</h2>
+<p class="text-[#637588] dark:text-[#92c9ad] text-base leading-relaxed">
+                                        Una suite completa per la protezione aziendale. Monitoriamo reputazione, contratti e proprietà intellettuale in un'unica dashboard centralizzata. L'IA apprende dalle tue esigenze e si adatta per offrire una protezione proattiva, non solo reattiva.
+                                    </p>
+</div>
+<div class="flex flex-wrap gap-4">
+<div class="flex items-center gap-2 text-[#637588] dark:text-[#92c9ad] text-sm">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+                                        Monitoraggio 24/7
+                                    </div>
+<div class="flex items-center gap-2 text-[#637588] dark:text-[#92c9ad] text-sm">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+                                        Report Settimanali
+                                    </div>
+<div class="flex items-center gap-2 text-[#637588] dark:text-[#92c9ad] text-sm">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+                                        Supporto Prioritario
+                                    </div>
+</div>
+<button class="flex items-center justify-center gap-2 overflow-hidden rounded-xl h-10 px-6 bg-background-dark dark:bg-[#234836] text-white hover:bg-black dark:hover:bg-[#2f5e46] transition-colors w-fit font-bold text-sm">
+                                    Richiedi Demo
+                                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<div class="w-full md:w-1/2 bg-center bg-no-repeat bg-cover rounded-2xl min-h-[300px]" data-alt="Futuristic dashboard interface displaying legal data analytics on a tablet" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBNUCe9UC6nn8-RL9SgMCDTFDByG4WxP4Z0IByjYXGIXBZHUc1dvtoAWOGHO4NsXalAXmti5umgAeoXWRP8zjJ-7KbCU9yPtHZ7keano5nFTD7-IkbCzucxlTPNW6Kcuji1k4WRrtfb87DFddNsDZcMWQPiCOoA0Lrj0wctatFP3MzgKyiwNMP9UACON_G48UnXUHu-8AnxXZEDMBiBuZo5-7WKPKVdOnaeK7nHiYWdAAvjrjzbKnZTDa5XwOyKfOcw7jlK_4B_9hE");'></div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="border-t border-[#e5e7eb] dark:border-[#234836] pt-12 pb-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-10">
+<div class="col-span-1 md:col-span-2 flex flex-col gap-4">
+<div class="flex items-center gap-3 text-[#111418] dark:text-white">
+<div class="size-6 text-primary">
+<span class="material-symbols-outlined">balance</span>
+</div>
+<h2 class="text-xl font-bold">LexAI Studio</h2>
+</div>
+<p class="text-[#637588] dark:text-[#92c9ad] text-sm max-w-sm">
+                                    Il primo studio legale in Italia completamente integrato con l'intelligenza artificiale. Velocità, precisione e costi certi.
+                                </p>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="text-[#111418] dark:text-white font-bold">Menu</h4>
+<a class="text-[#637588] dark:text-[#92c9ad] text-sm hover:text-primary" href="#">Home</a>
+<a class="text-[#637588] dark:text-[#92c9ad] text-sm hover:text-primary" href="#">Servizi</a>
+<a class="text-[#637588] dark:text-[#92c9ad] text-sm hover:text-primary" href="#">Case Studies</a>
+<a class="text-[#637588] dark:text-[#92c9ad] text-sm hover:text-primary" href="#">Contatti</a>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="text-[#111418] dark:text-white font-bold">Legale</h4>
+<a class="text-[#637588] dark:text-[#92c9ad] text-sm hover:text-primary" href="#">Privacy Policy</a>
+<a class="text-[#637588] dark:text-[#92c9ad] text-sm hover:text-primary" href="#">Cookie Policy</a>
+<a class="text-[#637588] dark:text-[#92c9ad] text-sm hover:text-primary" href="#">Termini di Servizio</a>
+</div>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-center gap-4 pt-8 border-t border-[#e5e7eb] dark:border-[#234836]/50">
+<p class="text-[#637588] dark:text-[#92c9ad] text-sm">© 2023 LexAI Studio. Tutti i diritti riservati.</p>
+<div class="flex gap-4">
+<a class="text-[#637588] dark:text-[#92c9ad] hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="text-[#637588] dark:text-[#92c9ad] hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">mail</span></a>
+</div>
+</div>
+</footer>
+</div>
+</div>
+</main>
+</div>
+</body></html>
