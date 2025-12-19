@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html class="dark" lang="it">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Dashboard Cliente - Studio Legale BCS</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4fffac",
+                        "primary-hover": "#2be68e",
+                        "secondary": "#3a6b54",
+                        "background-light": "#f0fdf7",
+                        "background-dark": "#1a3326",
+                        "surface-dark": "#244233",
+                        "text-muted": "#bbf7d0",
+                        "border-dark": "#3a6b54",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-white antialiased selection:bg-primary selection:text-background-dark flex flex-col min-h-screen">
+
+    <!-- Dashboard Header -->
+    <header
+        class="fixed top-0 left-0 right-0 z-50 bg-background-dark/90 backdrop-blur-md border-b border-border-dark px-4 lg:px-10 py-3">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <a href="index.html" class="flex items-center gap-3 text-white hover:opacity-80 transition-opacity">
+                    <img src="images/logo.png" alt="Logo Studio Legale BCS" class="size-8 object-contain">
+                    <h2 class="hidden md:block text-white text-xl font-bold leading-tight tracking-[-0.015em]">Studio
+                        Legale <span class="text-primary">BCS</span></h2>
+                </a>
+                <div class="h-6 w-px bg-border-dark hidden md:block"></div>
+                <span class="text-sm font-medium text-gray-300">Area Cliente</span>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <div class="flex items-center gap-3 bg-surface-dark border border-border-dark rounded-full py-1 px-3">
+                    <div
+                        class="size-8 rounded-full bg-primary text-background-dark flex items-center justify-center font-bold">
+                        M</div>
+                    <span class="text-sm font-medium hidden sm:inline">Mario Rossi</span>
+                </div>
+                <a href="index.html" class="text-gray-400 hover:text-white transition-colors">
+                    <span class="material-symbols-outlined">logout</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-24 pb-12 px-4 lg:px-10">
+        <div class="max-w-7xl mx-auto space-y-8">
+
+            <!-- Welcome Section -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+                <div>
+                    <h1 class="text-3xl font-bold text-white mb-2">Benvenuto, Mario</h1>
+                    <p class="text-gray-400">Ecco lo stato aggiornato della tua pratica #2024-001</p>
+                </div>
+                <!-- Status Badge -->
+                <div
+                    class="bg-blue-500/10 border border-blue-500/30 text-blue-400 px-4 py-2 rounded-lg flex items-center gap-2">
+                    <span class="relative flex h-3 w-3">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
+                    </span>
+                    <span class="font-bold text-sm">Pratica in Lavorazione</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+                <!-- Main Content (Timeline & Details) -->
+                <div class="lg:col-span-2 space-y-8">
+
+                    <!-- Timeline Card -->
+                    <div class="bg-surface-dark border border-border-dark rounded-2xl p-6 md:p-8">
+                        <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">timeline</span>
+                            Avanzamento Pratica
+                        </h3>
+
+                        <div class="relative pl-8 border-l border-border-dark space-y-8">
+                            <!-- Step 1 (Completed) -->
+                            <div class="relative">
+                                <span
+                                    class="absolute -left-[39px] bg-primary text-background-dark p-1 rounded-full border-4 border-surface-dark">
+                                    <span class="material-symbols-outlined text-sm font-bold">check</span>
+                                </span>
+                                <h4 class="text-white font-bold text-lg">Ricezione Richiesta</h4>
+                                <p class="text-gray-400 text-sm mt-1">17 Dicembre 2024 - Abbiamo ricevuto correttamente
+                                    la tua richiesta tramite il modulo contatti.</p>
+                            </div>
+                            <!-- Step 2 (Completed) -->
+                            <div class="relative">
+                                <span
+                                    class="absolute -left-[39px] bg-primary text-background-dark p-1 rounded-full border-4 border-surface-dark">
+                                    <span class="material-symbols-outlined text-sm font-bold">check</span>
+                                </span>
+                                <h4 class="text-white font-bold text-lg">Verifica Preliminare</h4>
+                                <p class="text-gray-400 text-sm mt-1">18 Dicembre 2024 - I nostri legali stanno
+                                    analizzando la documentazione fornita.</p>
+                            </div>
+                            <!-- Step 3 (Current) -->
+                            <div class="relative">
+                                <span
+                                    class="absolute -left-[39px] bg-blue-500 text-white p-1 rounded-full border-4 border-surface-dark shadow-[0_0_15px_rgba(59,130,246,0.5)]">
+                                    <span class="material-symbols-outlined text-sm font-bold">sync</span>
+                                </span>
+                                <h4 class="text-blue-400 font-bold text-lg">In Elaborazione</h4>
+                                <p class="text-gray-300 text-sm mt-1">Stiamo preparando il parere legale preliminare.
+                                    Riceverai una notifica a breve.</p>
+                            </div>
+                            <!-- Step 4 (Future) -->
+                            <div class="relative opacity-50">
+                                <span
+                                    class="absolute -left-[39px] bg-border-dark text-gray-500 p-1 rounded-full border-4 border-surface-dark">
+                                    <span class="material-symbols-outlined text-sm font-bold">pending</span>
+                                </span>
+                                <h4 class="text-gray-400 font-bold text-lg">Parere Legale</h4>
+                                <p class="text-gray-500 text-sm mt-1">Consegna del documento finale e appuntamento.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Documents Section -->
+                    <div class="bg-surface-dark border border-border-dark rounded-2xl p-6 md:p-8">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-xl font-bold text-white flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary">folder_open</span>
+                                Documenti
+                            </h3>
+                            <button
+                                class="text-sm bg-primary/10 text-primary px-3 py-1.5 rounded-lg hover:bg-primary/20 transition-colors font-bold flex items-center gap-1">
+                                <span class="material-symbols-outlined text-base">upload</span>
+                                Carica Nuovo
+                            </button>
+                        </div>
+
+                        <div class="space-y-4">
+                            <!-- Doc Item -->
+                            <div
+                                class="flex items-center justify-between p-4 bg-background-dark rounded-xl border border-secondary/30 hover:border-primary/50 transition-colors group">
+                                <div class="flex items-center gap-4">
+                                    <span class="material-symbols-outlined text-red-400 text-3xl">picture_as_pdf</span>
+                                    <div>
+                                        <h5 class="text-white font-medium group-hover:text-primary transition-colors">
+                                            Informativa Privacy Firmata.pdf</h5>
+                                        <p class="text-gray-500 text-xs">Caricato il 17/12/2024 • 1.2 MB</p>
+                                    </div>
+                                </div>
+                                <button class="text-gray-400 hover:text-white">
+                                    <span class="material-symbols-outlined">download</span>
+                                </button>
+                            </div>
+                            <!-- Doc Item -->
+                            <div
+                                class="flex items-center justify-between p-4 bg-background-dark rounded-xl border border-secondary/30 hover:border-primary/50 transition-colors group">
+                                <div class="flex items-center gap-4">
+                                    <span class="material-symbols-outlined text-blue-400 text-3xl">description</span>
+                                    <div>
+                                        <h5 class="text-white font-medium group-hover:text-primary transition-colors">
+                                            Contratto di Mandato.docx</h5>
+                                        <p class="text-gray-500 text-xs">Caricato il 17/12/2024 • 450 KB</p>
+                                    </div>
+                                </div>
+                                <button class="text-gray-400 hover:text-white">
+                                    <span class="material-symbols-outlined">download</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Sidebar (Legal Team & Support) -->
+                <div class="space-y-8">
+                    <div class="bg-surface-dark border border-border-dark rounded-2xl p-6">
+                        <h3 class="text-lg font-bold text-white mb-4">Il tuo Avvocato</h3>
+                        <div class="flex items-center gap-4 mb-4">
+                            <img src="https://ui-avatars.com/api/?name=Vincenzo+Sapone&background=4fffac&color=1a3326"
+                                alt="Avv. Sapone" class="size-12 rounded-full">
+                            <div>
+                                <h4 class="font-bold text-white">Avv. Vincenzo Sapone</h4>
+                                <p class="text-xs text-primary">Partner</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-400 mb-4">Per urgenze o comunicazioni dirette relative alla tua
+                            pratica.</p>
+                        <a href="mailto:info@studiodigitale.eu"
+                            class="block w-full text-center bg-white/5 hover:bg-white/10 text-white py-2 rounded-lg text-sm font-bold transition-colors">Inv
+                            email</a>
+                    </div>
+
+                    <div
+                        class="bg-gradient-to-br from-primary/20 to-surface-dark border border-border-dark rounded-2xl p-6">
+                        <h3 class="text-lg font-bold text-white mb-2">Hai bisogno di aiuto?</h3>
+                        <p class="text-sm text-gray-300 mb-4">La nostra segreteria è attiva dal Lunedì al Venerdì, 9:00
+                            - 18:00.</p>
+                        <p class="text-xl font-bold text-primary">031 3515213</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

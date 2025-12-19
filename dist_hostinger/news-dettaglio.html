@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html class="dark" lang="it">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Riforma della Giustizia - Studio Legale BCS</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4fffac",
+                        "primary-hover": "#2be68e",
+                        "secondary": "#3a6b54",
+                        "background-light": "#f0fdf7",
+                        "background-dark": "#1a3326",
+                        "surface-dark": "#244233",
+                        "text-muted": "#bbf7d0",
+                        "surface-border": "#3a6b54",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white antialiased">
+    <!-- Navigation -->
+    <header
+        class="fixed top-0 left-0 right-0 z-50 bg-background-dark/90 backdrop-blur-md border-b border-border-dark px-4 lg:px-10 py-3">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 text-white hover:opacity-80 transition-opacity">
+                <img src="images/logo.png" alt="Logo Studio Legale BCS" class="size-8 object-contain">
+                <h2 class="text-white text-xl font-bold leading-tight tracking-[-0.015em]">Studio Legale <span
+                        class="text-primary">BCS</span></h2>
+            </a>
+            <div class="hidden lg:flex items-center gap-8">
+                <nav class="flex items-center gap-8">
+                    <a class="text-white hover:text-primary transition-colors text-sm font-medium"
+                        href="index.html">Home</a>
+                    <a class="text-white hover:text-primary transition-colors text-sm font-medium"
+                        href="chi-siamo.html">Il Team</a>
+                    <a class="text-white hover:text-primary transition-colors text-sm font-medium"
+                        href="servizi.html">Aree di Competenza</a>
+                    <a class="text-primary text-sm font-bold" href="blog.html">Blog & News</a>
+                    <a class="text-white hover:text-primary transition-colors text-sm font-medium"
+                        href="contatti.html">Contatti</a>
+                </nav>
+                <a href="contatti.html"
+                    class="bg-primary hover:bg-primary-dark transition-colors text-background-dark text-sm font-bold h-10 px-5 rounded-lg flex items-center justify-center">
+                    Contattaci
+                </a>
+            </div>
+            <button class="lg:hidden text-white">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-32 pb-20 px-4">
+        <div class="max-w-4xl mx-auto">
+
+            <div class="mb-8">
+                <a href="blog.html"
+                    class="flex items-center gap-2 text-gray-400 hover:text-primary transition-colors mb-6 text-sm font-medium">
+                    <span class="material-symbols-outlined text-lg">arrow_back</span> Torna al Blog
+                </a>
+                <div class="flex items-center gap-3 mb-4">
+                    <span
+                        class="bg-primary/10 text-primary text-xs font-bold px-3 py-1 rounded-full border border-primary/20 uppercase tracking-wide">Penale</span>
+                    <span class="text-gray-400 text-xs font-medium flex items-center gap-1"><span
+                            class="material-symbols-outlined text-sm">calendar_today</span> 10 Gen 2025</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">Riforma della Giustizia e
+                    processo penale telematico</h1>
+
+                <div class="flex items-center gap-3 border-b border-secondary pb-8 mb-8">
+                    <div
+                        class="size-10 rounded-full bg-surface-dark flex items-center justify-center border border-secondary text-gray-400">
+                        <span class="material-symbols-outlined">person</span>
+                    </div>
+                    <div>
+                        <p class="text-white text-sm font-bold">Avv. Vincenzo Sapone</p>
+                        <p class="text-xs text-gray-400">Founder & Partner</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="prose prose-invert prose-lg max-w-none text-gray-300">
+                <p class="lead text-xl text-white font-medium mb-8">
+                    La digitalizzazione del processo penale è ormai una realtà consolidata. Con l'entrata in vigore
+                    delle ultime disposizioni della Riforma Cartabia, il deposito telematico degli atti è diventato
+                    obbligatorio per la maggior parte delle procedure.
+                </p>
+
+                <h3>Il Portale Deposito atti Penali (PDP)</h3>
+                <p>
+                    Il cuore della riforma è il potenziamento del Portale Deposito atti Penali (PDP). Non si tratta solo
+                    di una dematerializzazione del fascicolo cartaceo, ma di un vero e proprio cambio di paradigma nel
+                    rapporto tra avvocato e cancelleria.
+                </p>
+                <div class="bg-surface-dark p-6 rounded-2xl border-l-4 border-primary my-8">
+                    <p class="italic m-0 text-white">
+                        "L'efficienza del processo passa attraverso la tecnologia, ma la garanzia del diritto di difesa
+                        resta il faro che deve guidare ogni innovazione."
+                    </p>
+                </div>
+
+                <h3>Cosa cambia per gli avvocati</h3>
+                <p>
+                    Le notifiche avvengono esclusivamente via PEC e il domicilio digitale diventa il punto di
+                    riferimento unico per ogni comunicazione. Questo impone agli studi legali una riorganizzazione
+                    interna:
+                </p>
+                <ul>
+                    <li>Monitoraggio costante delle caselle PEC.</li>
+                    <li>Sistemi di backup sicuri per la conservazione degli atti digitali.</li>
+                    <li>Formazione continua del personale di segreteria.</li>
+                </ul>
+
+                <h3>Le prospettive per il 2025</h3>
+                <p>
+                    L'obiettivo è arrivare a un processo "paperless" entro il 2026. Le sfide non mancano, soprattutto
+                    per quanto riguarda l'interoperabilità dei sistemi tra diverse procure, ma la strada è tracciata.
+                    Per i nostri assistiti, questo si traduce in una maggiore velocità di accesso agli atti e in una
+                    riduzione dei tempi morti dovuti alla burocrazia tradizionale.
+                </p>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="border-t border-secondary bg-background-dark pt-16 pb-8">
+        <div class="layout-container px-4 md:px-10 lg:px-40 flex justify-center">
+            <div class="w-full max-w-[1200px] flex flex-col gap-12">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+                    <div class="flex flex-col gap-4">
+                        <div class="flex items-center gap-2 text-white">
+                            <img src="images/logo.png" alt="Logo Studio Legale BCS" class="size-8 object-contain">
+                            <span class="text-lg font-bold">Studio Legale <span class="text-primary">BCS</span></span>
+                        </div>
+                        <p class="text-gray-400 text-sm">
+                            Innovativi, competenti, affidabili.<br>L’alternativa etica e moderna.
+                        </p>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-white font-bold text-sm uppercase tracking-wider">Servizi</h4>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="approfondimento-penale.html">Diritto Penale</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="approfondimento-gioco.html">Diritto del Gioco</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="approfondimento-civile.html">Diritto Civile e Famiglia</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="approfondimento-bancario.html">Bancario e Assicurativo</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="approfondimento-crisi.html">Crisi d'Impresa</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="consulenze-tech.html">Consulenze Tech</a>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-white font-bold text-sm uppercase tracking-wider">Studio</h4>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors" href="chi-siamo.html">Il
+                            Team</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="contatti.html">Contatti</a>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-white font-bold text-sm uppercase tracking-wider">Contatti</h4>
+                        <p class="text-gray-400 text-sm">info@studiodigitale.eu</p>
+                        <p class="text-gray-400 text-sm">031 3515213</p>
+                        <p class="text-gray-400 text-sm">Via Matteotti 33, 22063 Cantù (CO)</p>
+                    </div>
+                </div>
+                <div
+                    class="border-t border-secondary/50 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p class="text-gray-600 text-xs">© 2024 Studio Legale BCS. Tutti i diritti riservati.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop"
+        class="fixed bottom-8 right-8 bg-primary text-background-dark p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 z-50 hover:bg-white">
+        <span class="material-symbols-outlined">arrow_upward</span>
+    </button>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
