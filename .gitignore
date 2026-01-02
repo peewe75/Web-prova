@@ -1,5 +1,18 @@
-node_modules
+node_modules/
 .DS_Store
 *.log
 .vscode
 .idea
+uploads/
+
+# Sensitive configuration files
+config.php
+api/config.php
+reset_admin_password.php
+
+# Temporary/diagnostic files
+diagnostic_result.txt
+admin_check.txt
+test_*.php
+verify_*.php
+create_test_client.php
