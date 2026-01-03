@@ -1,0 +1,11 @@
+# Proteggi il file di log del deploy
+<Files "deploy.log">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Proteggi i file di configurazione
+<FilesMatch "\.(git|gitignore|env)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
