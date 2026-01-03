@@ -65,11 +65,9 @@ if (window.location.pathname.includes('dashboard')) {
         if (window.location.pathname.includes('admin') && user.role !== 'admin') {
             window.location.href = 'dashboard-cliente.html';
         }
-        if (window.location.pathname.includes('cliente') && user.role === 'admin') {
-            // Optional: Admins can view client dashboard? Maybe better to redirect or allow. 
-            // For now, let's keep them on admin unless they explicitly go there? 
-            // Better: Redirect to admin if they land on client dashboard by accident
-            window.location.href = 'dashboard-admin.html';
-        }
+        // Allow admins to view client dashboard for testing/preview purposes
+        // if (window.location.pathname.includes('cliente') && user.role === 'admin') {
+        //     window.location.href = 'dashboard-admin.html';
+        // }
     }
 }

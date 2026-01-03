@@ -7,6 +7,7 @@
     <title>Admin Dashboard - Studio Legale BCS</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script src="js/auth.js"></script>
+    <script src="js/dashboard-functions.js"></script>
     <script>
         tailwind.config = {
             darkMode: "class",
@@ -2728,15 +2729,15 @@
                 transports: ['websocket', 'polling'],
                 reconnection: true
             });
-            
+
             socket.on('connect', () => {
                 console.log('Socket.IO connected');
             });
-            
+
             socket.on('disconnect', () => {
                 console.log('Socket.IO disconnected');
             });
-            
+
             // Listen for admin notifications
             socket.on('admin-notification', (data) => {
                 console.log('Admin notification:', data);
@@ -2750,17 +2751,17 @@
         } catch (error) {
             console.warn('Socket.IO not available:', error);
         }
-        
+
         // Render Leads Function
         function renderLeads(leads) {
             const container = document.getElementById('leads-list');
             if (!container) return;
-            
+
             if (!leads || leads.length === 0) {
                 container.innerHTML = '<p class="text-gray-500 text-center py-8">Nessun lead disponibile</p>';
                 return;
             }
-            
+
             container.innerHTML = leads.map(lead => `
                 <div class="p-4 border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-surface-highlight/10 transition-colors">
                     <div class="flex justify-between items-start">

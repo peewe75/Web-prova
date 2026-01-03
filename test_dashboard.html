@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Dashboard Functions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+</head>
+
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold mb-8">Test Dashboard Interattività</h1>
+
+        <div class="bg-white rounded-lg shadow p-6 mb-6">
+            <h2 class="text-xl font-bold mb-4">Test Funzioni JavaScript</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <button onclick="testShowToast()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                    Test Toast Success
+                </button>
+                <button onclick="testShowLoader()"
+                    class="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600">
+                    Test Loader
+                </button>
+                <button onclick="testFormatDate()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+                    Test Format Date
+                </button>
+                <button onclick="testAnimateCounter()"
+                    class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">
+                    Test Animate Counter
+                </button>
+            </div>
+            <div id="test-counter" class="text-4xl font-bold mt-4 text-center">0</div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow p-6 mb-6">
+            <h2 class="text-xl font-bold mb-4">Test API Endpoints</h2>
+            <div class="space-y-2">
+                <button onclick="testAPI('/api/stats/dashboard.php')"
+                    class="w-full bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600 text-left">
+                    GET /api/stats/dashboard.php
+                </button>
+                <button onclick="testAPI('/api/system/status.php')"
+                    class="w-full bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600 text-left">
+                    GET /api/system/status.php
+                </button>
+                <button onclick="testAPI('/api/activity/recent.php')"
+                    class="w-full bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600 text-left">
+                    GET /api/activity/recent.php
+                </button>
+                <button onclick="testAPI('/api/cases/list.php')"
+                    class="w-full bg-indigo-500 text-white px-4 py-2 rounded hover:bg-indigo-600 text-left">
+                    GET /api/cases/list.php
+                </button>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow p-6">
+            <h2 class="text-xl font-bold mb-4">Risultati Test API</h2>
+            <pre id="api-results" class="bg-gray-100 p-4 rounded text-sm overflow-auto max-h-96"></pre>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard-functions.js"></script>
+    <script>
+        // Test functions
+        function testShowToast() {
+            showToast('Test toast notification!', 'success');
+        }
+
+        function testShowLoader() {
+            showLoader('Caricamento test...');
+            setTimeout(() => {
+                hideLoader();
+                showToast('Loader nascosto!', 'info');
+            }, 2000);
+        }
+
+        function testFormatDate() {
+            const date = new Date();
+            const formatted = formatDate(date.toISOString());
+            showToast('Data formattata: ' + formatted, 'info');
+        }
+
+        function testAnimateCounter() {
+            const element = document.getElementById('test-counter');
+            element.textContent = '0';
+            let current = 0;
+            const target = 100;
+            const increment = target / 30;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                    showToast('Counter animato fino a ' + target, 'success');
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 30);
+        }
+
+        async function testAPI(endpoint) {
+            const resultsEl = document.getElementById('api-results');
+            resultsEl.textContent = `Testing ${endpoint}...\n\n`;
+
+            try {
+                const response = await fetch(endpoint);
+                const data = await response.json();
+
+                resultsEl.textContent += `Status: ${response.status}\n`;
+                resultsEl.textContent += `Response:\n${JSON.stringify(data, null, 2)}`;
+
+                if (data.success) {
+                    showToast(`API ${endpoint} OK!`, 'success');
+                } else {
+                    showToast(`API ${endpoint} returned error`, 'warning');
+                }
+            } catch (error) {
+                resultsEl.textContent += `Error: ${error.message}`;
+                showToast(`API ${endpoint} failed!`, 'error');
+            }
+        }
+
+        // Auto-test on load
+        window.addEventListener('load', () => {
+            showToast('Pagina di test caricata!', 'info');
+        });
+    </script>
+</body>
+
+</html>
