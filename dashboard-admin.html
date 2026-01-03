@@ -1186,6 +1186,32 @@
             renderLeads(filtered);
         }
 
+        // Render Leads Function (must be defined before loadLeads)
+        function renderLeads(leads) {
+            const container = document.getElementById('leads-list');
+            if (!container) return;
+
+            if (!leads || leads.length === 0) {
+                container.innerHTML = '<p class="text-gray-500 text-center py-8">Nessun lead disponibile</p>';
+                return;
+            }
+
+            container.innerHTML = leads.map(lead => `
+                <div class="p-4 border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-surface-highlight/10 transition-colors">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h4 class="font-semibold text-gray-900 dark:text-white">${lead.name || 'N/A'}</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">${lead.email || ''}</p>
+                            <p class="text-xs text-gray-500 mt-1">${lead.message || ''}</p>
+                        </div>
+                        <span class="text-xs px-2 py-1 rounded ${lead.status === 'new' ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-800'}">
+                            ${lead.status || 'new'}
+                        </span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
         async function loadLeads() {
             try {
                 // Using the specific API for dashboard leads
@@ -2722,7 +2748,8 @@
     </script>
     <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
     <script>
-        // Socket.IO Initialization
+        // Socket.IO Initialization (temporarily disabled until Node.js server is configured on Hostinger)
+        /*
         let socket;
         try {
             socket = io('http://localhost:3000', {
@@ -2751,32 +2778,10 @@
         } catch (error) {
             console.warn('Socket.IO not available:', error);
         }
+        */
+        console.log('Socket.IO real-time notifications disabled. Enable when Node.js server is configured.');
 
-        // Render Leads Function
-        function renderLeads(leads) {
-            const container = document.getElementById('leads-list');
-            if (!container) return;
-
-            if (!leads || leads.length === 0) {
-                container.innerHTML = '<p class="text-gray-500 text-center py-8">Nessun lead disponibile</p>';
-                return;
-            }
-
-            container.innerHTML = leads.map(lead => `
-                <div class="p-4 border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-surface-highlight/10 transition-colors">
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <h4 class="font-semibold text-gray-900 dark:text-white">${lead.name || 'N/A'}</h4>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">${lead.email || ''}</p>
-                            <p class="text-xs text-gray-500 mt-1">${lead.message || ''}</p>
-                        </div>
-                        <span class="text-xs px-2 py-1 rounded ${lead.status === 'new' ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-800'}">
-                            ${lead.status || 'new'}
-                        </span>
-                    </div>
-                </div>
-            `).join('');
-        }
+        // renderLeads function moved to main script block (before loadLeads)
     </script>
 </body>
 
