@@ -524,6 +524,41 @@
 
     <!-- Socket.io -->
     <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script>
+        // Socket.IO Initialization for Client
+        let socket;
+        try {
+            socket = io('http://localhost:3000', {
+                transports: ['websocket', 'polling'],
+                reconnection: true
+            });
+
+            socket.on('connect', () => {
+                console.log('Socket.IO connected');
+                const user = AuthService.getSession();
+                if (user) {
+                    socket.emit('register-client', user.id);
+                }
+            });
+
+            socket.on('disconnect', () => {
+                console.log('Socket.IO disconnected');
+            });
+
+            // Listen for client notifications
+            socket.on('client-notification', (data) => {
+                console.log('Client notification:', data);
+                // Show notification
+                if (Notification.permission === 'granted') {
+                    new Notification('Notifica', {
+                        body: data.message || 'Hai una nuova notifica'
+                    });
+                }
+            });
+        } catch (error) {
+            console.warn('Socket.IO not available:', error);
+        }
+    </script>
     <script src="js/auth.js"></script>
 
     <!-- MODALS -->
