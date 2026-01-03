@@ -40,19 +40,7 @@ function setupMobileMenu() {
     }
 
     // Clone "Area Riservata" Button (it's usually outside the nav)
-    const areaBtn = document.querySelector('a[href="login.html"]');
-    if (areaBtn) {
-        const cloneBtn = areaBtn.cloneNode(true);
-        cloneBtn.className = 'flex items-center gap-2 bg-primary text-background-dark px-6 py-3 rounded-xl font-bold uppercase tracking-wider mt-4';
-        mobileNav.appendChild(cloneBtn);
-    } else {
-        // Fallback if not found (e.g. older header version) - though we are standardizing
-        const loginLink = document.createElement('a');
-        loginLink.href = 'login.html';
-        loginLink.innerHTML = '<span class="material-symbols-outlined align-middle mr-1">lock</span>Area Riservata';
-        loginLink.className = 'flex items-center gap-2 bg-primary text-background-dark px-6 py-3 rounded-xl font-bold uppercase tracking-wider mt-4';
-        mobileNav.appendChild(loginLink);
-    }
+    // Login button removed per decommissioning request
 
     // Toggle Logic
     function toggleMenu() {

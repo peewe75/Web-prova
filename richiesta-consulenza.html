@@ -70,11 +70,6 @@
                     <a class="text-white hover:text-primary transition-colors text-sm font-medium"
                         href="contatti.html">Contatti</a>
                 </nav>
-                <a href="login.html"
-                    class="flex items-center gap-2 bg-surface-dark border border-border-dark hover:border-primary transition-colors px-3 py-1.5 rounded-lg text-white text-xs font-bold uppercase tracking-wider whitespace-nowrap">
-                    <span class="material-symbols-outlined text-sm text-primary">lock</span>
-                    Area Riservata
-                </a>
             </div>
             <button class="lg:hidden text-white">
                 <span class="material-symbols-outlined">menu</span>
@@ -109,64 +104,17 @@
         <section class="relative z-10 pb-20 -mt-10">
             <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
                 <div class="rounded-2xl border border-border-dark bg-surface-dark p-6 md:p-10 shadow-xl">
-                    <form class="space-y-6">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="space-y-2">
-                                <label class="text-sm font-medium text-white/90" for="name">Nome</label>
-                                <input required
-                                    class="w-full rounded-xl border border-border-dark bg-[#11221a] px-4 py-3 text-white placeholder-white/30 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
-                                    id="name" placeholder="Il tuo nome" type="text" />
-                            </div>
-                            <div class="space-y-2">
-                                <label class="text-sm font-medium text-white/90" for="surname">Cognome</label>
-                                <input required
-                                    class="w-full rounded-xl border border-border-dark bg-[#11221a] px-4 py-3 text-white placeholder-white/30 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
-                                    id="surname" placeholder="Il tuo cognome" type="text" />
-                            </div>
-                        </div>
-
-                        <div class="space-y-2">
-                            <label class="text-sm font-medium text-white/90" for="email">Email</label>
-                            <input required
-                                class="w-full rounded-xl border border-border-dark bg-[#11221a] px-4 py-3 text-white placeholder-white/30 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
-                                id="email" placeholder="latua@email.it" type="email" />
-                        </div>
-
-                        <div class="space-y-2">
-                            <label class="text-sm font-medium text-white/90" for="area">Area di Competenza</label>
-                            <select id="competenza"
-                                class="w-full rounded-xl border border-border-dark bg-[#11221a] px-4 py-3 text-white placeholder-white/30 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all appearance-none">
-                                <option value="" disabled selected>Seleziona un argomento</option>
-                                <option value="Diritto Penale">Diritto Penale</option>
-                                <option value="Diritto del Gioco">Diritto del Gioco</option>
-                                <option value="Diritto Civile">Diritto Civile e Famiglia</option>
-                                <option value="Diritto Bancario">Bancario e Assicurativo</option>
-                                <option value="Crisi d'Impresa">Crisi d'Impresa</option>
-                                <option value="Consulenze Tech">Consulenze Tech</option>
-                                <option value="Altro">Altro</option>
-                            </select>
-                        </div>
-
-                        <div class="space-y-2">
-                            <label class="text-sm font-medium text-white/90" for="message">Messaggio (Opzionale)</label>
-                            <textarea
-                                class="w-full rounded-xl border border-border-dark bg-[#11221a] px-4 py-3 text-white placeholder-white/30 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none"
-                                id="message" placeholder="Descrivi brevemente la tua esigenza..." rows="4"></textarea>
-                        </div>
-
-                        <!-- Account Creation Disclaimer -->
-                        <div class="bg-primary/5 border border-primary/20 rounded-lg p-3 flex items-start gap-3">
-                            <span class="material-symbols-outlined text-primary text-lg mt-0.5">verified_user</span>
-                            <p class="text-xs text-text-secondary leading-relaxed">
-                                I tuoi dati sono trattati con la massima riservatezza secondo le normative vigenti.
-                            </p>
-                        </div>
-
-                        <button type="submit"
-                            class="w-full bg-primary hover:bg-primary-hover text-background-dark font-bold py-4 rounded-xl transition-all shadow-[0_0_20px_rgba(19,236,128,0.3)] hover:scale-[1.02]">
-                            Invia Richiesta di Consulenza
-                        </button>
-                    </form>
+                    <div class="space-y-6 text-center">
+                        <p class="text-gray-300 text-lg">
+                            Per un servizio più rapido ed efficiente, inviaci direttamente una richiesta via email.
+                            Specifica le tue esigenze e ti ricontatteremo a breve.
+                        </p>
+                        <a href="mailto:info@studiodigitale.eu?subject=Richiesta%20di%20Consulenza"
+                            class="inline-flex items-center justify-center gap-3 bg-primary hover:bg-primary-hover text-background-dark font-bold text-lg px-8 py-4 rounded-xl transition-all shadow-[0_0_20px_rgba(19,236,128,0.3)] hover:scale-[1.02] w-full">
+                            <span class="material-symbols-outlined">mail</span>
+                            Invia Richiesta via Email
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -289,55 +237,7 @@
         }
 
         // Form Handling with Real API
-        document.querySelector('form').addEventListener('submit', async function (e) {
-            e.preventDefault();
-            const btn = this.querySelector('button[type="submit"]');
-            const originalText = btn.innerHTML;
-
-            btn.disabled = true;
-            btn.innerHTML = 'Invio in corso...';
-
-            const formData = {
-                nome: document.getElementById('name').value,
-                cognome: document.getElementById('surname').value,
-                email: document.getElementById('email').value,
-                competenza: document.getElementById('competenza').value,
-                message: document.getElementById('message').value
-            };
-
-            try {
-                const response = await fetch('api/submit_lead.php', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(formData)
-                });
-
-                const result = await response.json();
-
-                if (result.success) {
-                    btn.classList.remove('bg-primary', 'hover:bg-primary-hover', 'text-background-dark');
-                    btn.classList.add('bg-green-500', 'text-white');
-                    btn.innerHTML = `<span class="material-symbols-outlined mr-2">check_circle</span> Richiesta Inviata!`;
-
-                    showToast(result.info || 'Richiesta ricevuta con successo!', 'success');
-
-                    setTimeout(() => {
-                        window.location.href = result.info.includes('password') ? 'login.html' : 'index.html';
-                        // Redirect logic can be refined: stay or go home
-                    }, 4000);
-
-                } else {
-                    showToast(result.message || 'Errore durante l\'invio', 'error');
-                    btn.disabled = false;
-                    btn.innerHTML = originalText;
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                showToast('Errore di connessione al server', 'error');
-                btn.disabled = false;
-                btn.innerHTML = originalText;
-            }
-        });
+        // Form Handling Removed - Using Mailto Link
     </script>
     <script src="js/main.js"></script>
 </body>
