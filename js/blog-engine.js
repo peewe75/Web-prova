@@ -117,11 +117,14 @@ async function initBlogGrid(containerId, categoryFilter = 'all', dateFilter = 'a
             article.href = post.custom_url ? post.custom_url : `article.html?id=${post.id}`;
             article.className = 'blog-article bg-surface-dark rounded-3xl overflow-hidden border border-surface-border group hover:border-primary transition-colors flex flex-col h-full shadow-lg block';
 
-            // Handle Image
-            const imgStyle = post.image ? `background-image: url('${post.image}');` : `background: linear-gradient(to bottom right, #1a3326, #244233);`;
+            // Build image HTML
+            const imageHtml = post.image
+                ? `<img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover object-center" loading="lazy">`
+                : `<div class="w-full h-full" style="background: linear-gradient(to bottom right, #1a3326, #244233);"></div>`;
 
             article.innerHTML = `
-                <div class="h-56 overflow-hidden relative bg-cover bg-center" style="${imgStyle}">
+                <div class="h-48 md:h-56 overflow-hidden relative bg-surface-dark">
+                    ${imageHtml}
                     <div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent opacity-60"></div>
                     <div class="absolute top-4 left-4">
                         <span class="bg-background-dark/90 backdrop-blur-sm text-primary text-xs font-bold px-3 py-1 rounded-full border border-primary/20 uppercase tracking-wide shadow-lg">
