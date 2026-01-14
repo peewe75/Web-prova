@@ -3,8 +3,11 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: POST");
 
+// Load configuration (API keys)
+require_once 'config.php';
+
 // CONFIGURATION
-$API_KEY = 'AIzaSyBHsjGTPoeg5qRZYlCbRQ1EQq438kzhsnw'; // Gemini API Key
+$API_KEY = GEMINI_API_KEY;
 $TEMP_DIR = '../images/temp/';
 
 // Ensure temp directory exists
