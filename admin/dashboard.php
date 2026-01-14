@@ -57,7 +57,6 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             <form id="postForm" class="flex flex-col h-full gap-4">
                 <input type="hidden" name="id" id="postId">
                 <input type="hidden" name="existing_image" id="existingImage">
-                <input type="hidden" name="generated_image" id="generatedImage">
 
                 <div class="flex justify-between items-start gap-4">
                     <div class="flex-grow">
@@ -91,14 +90,10 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                     <label class="text-xs text-gray-400 uppercase font-bold tracking-wider">Immagine Copertina</label>
                     <div class="flex items-center gap-4 mt-1">
                         <input type="file" name="image" id="postImageDisplay" class="text-sm text-gray-400"
-                            onchange="document.getElementById('generatedImage').value = ''">
-                        <button type="button" onclick="generateImage()"
-                            class="bg-purple-600 hover:bg-purple-700 text-white px-3 py-1 rounded text-sm font-bold flex items-center gap-2">
-                            <span class="material-symbols-outlined text-[18px]">auto_awesome</span> Genera con AI
-                        </button>
+                            accept="image/*">
                         <div id="currentImagePreview" class="h-10 w-10 rounded bg-gray-700 bg-cover bg-center hidden">
                         </div>
-                        <span id="genImageStatus" class="text-xs text-gray-400 italic"></span>
+                        <span class="text-xs text-gray-400">Formato consigliato: 1200x675px (16:9)</span>
                     </div>
                 </div>
 
@@ -363,58 +358,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                 alert('Errore di connessione');
             }
         }
-        async function generateImage() {
-            const title = document.getElementById('postTitle').value;
-            const summary = document.getElementById('postSummary').value;
-            const status = document.getElementById('genImageStatus');
-
-            if (!title) {
-                alert('Inserisci almeno il titolo per generare l\'immagine.');
-                return;
-            }
-
-            const btn = document.querySelector('button[onclick="generateImage()"]');
-            const originalContent = btn.innerHTML;
-            btn.disabled = true;
-            btn.innerHTML = '<span class="animate-spin material-symbols-outlined text-[18px]">sync</span> Generazione...';
-            status.innerHTML = '<span class="text-yellow-400 animate-pulse">L\'AI sta creando l\'immagine... (Attendere 10-15s)</span>';
-
-            try {
-                const res = await fetch('../api/generate_image.php', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ title, summary })
-                });
-
-                const data = await res.json();
-
-                if (data.success) {
-                    // Update preview
-                    const preview = document.getElementById('currentImagePreview');
-                    preview.style.backgroundImage = `url('../${data.image_url}')`;
-                    preview.classList.remove('hidden');
-
-                    // Update hidden input
-                    document.getElementById('generatedImage').value = data.temp_filename;
-
-                    // Clear file input
-                    document.getElementById('postImageDisplay').value = '';
-
-                    status.innerHTML = '<span class="text-green-400">Immagine generata con successo!</span>';
-                } else {
-                    status.innerHTML = `<span class="text-red-400">Errore: ${data.message}</span>`;
-                    alert('Errore generazione: ' + data.message);
-                }
-
-            } catch (err) {
-                console.error(err);
-                status.innerHTML = `<span class="text-red-400">Errore di connessione.</span>`;
-                alert('Errore di connessione durante la generazione.');
-            }
-
-            btn.disabled = false;
-            btn.innerHTML = originalContent;
-        }
+        // AI Image generation removed - manual upload only
     </script>
 </body>
 
