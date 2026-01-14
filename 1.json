@@ -1,0 +1,451 @@
+import React, { useState, useEffect } from 'react';
+import { 
+  ShieldAlert, 
+  Scale, 
+  Gavel, 
+  Globe, 
+  TrendingUp, 
+  Clock, 
+  Lock, 
+  Info,
+  ChevronRight, 
+  AlertTriangle, 
+  FileText, 
+  UserCheck, 
+  Banknote, 
+  Bell,
+  BookOpen, 
+  ShieldCheck, 
+  ArrowUpRight,
+  ChevronDown,
+  Scale as Balance
+} from 'lucide-react';
+
+const App = () => {
+  const [activeChapter, setActiveChapter] = useState('introduzione');
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (window.scrollY / totalHeight) * 100;
+      setScrollProgress(progress);
+
+      const sections = ['introduzione', 'quadro', 'tecnica', 'processo', 'nazionale', 'tutele'];
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 150 && rect.bottom >= 150) {
+            setActiveChapter(section);
+          }
+        }
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const chapters = [
+    { id: 'introduzione', label: 'Introduzione', icon: <BookOpen size={18}/> },
+    { id: 'quadro', label: 'Quadro Normativo', icon: <Scale size={18}/> },
+    { id: 'tecnica', label: 'Art. 577-bis c.p.', icon: <Gavel size={18}/> },
+    { id: 'processo', label: 'Impatto Processuale', icon: <FileText size={18}/> },
+    { id: 'nazionale', label: 'Scenario Nazionale', icon: <Globe size={18}/> },
+    { id: 'tutele', label: 'Tutele e Alert', icon: <ShieldCheck size={18}/> }
+  ];
+
+  const comparisons = [
+    { 
+      title: "Divieto di avvicinamento", 
+      pre: "Efficacia limitata dalla mancanza di monitoraggio tecnologico costante.", 
+      post: "Monitoraggio con braccialetto elettronico obbligatorio h24 su tutto il territorio.",
+      status: "Massima Protezione"
+    },
+    { 
+      title: "Arresto in Flagranza", 
+      pre: "Vincolato esclusivamente al momento del compimento del reato.", 
+      post: "Flagranza differita (48h) tramite prove video, digitali e monitoraggio social.",
+      status: "Esecuzione Rapida"
+    },
+    { 
+      title: "Rito Abbreviato", 
+      pre: "Sconto di un terzo della pena accessibile quasi sempre.", 
+      post: "Divieto assoluto per omicidio aggravato (rischio ergastolo pieno).",
+      status: "Rigore Sanzionatorio"
+    },
+    { 
+      title: "Benefici Penitenziari", 
+      pre: "Accesso standard a permessi premio e lavoro esterno.", 
+      post: "Inserimento in Art. 4-bis O.P. con percorsi di recupero obbligatori.",
+      status: "Restrizione Benefici"
+    }
+  ];
+
+  const scrollTo = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop - 100,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-red-100 selection:text-red-900">
+      {/* Barra di progresso lettura */}
+      <div className="fixed top-0 left-0 w-full h-1.5 z-[70] bg-slate-100">
+        <div 
+          className="h-full bg-red-600 transition-all duration-150 ease-out" 
+          style={{ width: `${scrollProgress}%` }}
+        ></div>
+      </div>
+
+      {/* Navigazione */}
+      <nav className="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 py-4 shadow-sm">
+        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+          <div className="flex items-center gap-3 font-black text-2xl tracking-tighter">
+            <div className="bg-slate-950 text-white p-1 rounded-lg">L.</div>
+            <span className="hidden sm:inline">181/2025 <span className="text-red-600 font-normal text-xs uppercase tracking-widest ml-2">Osservatorio Nazionale</span></span>
+          </div>
+          <div className="hidden lg:flex gap-8 text-[11px] font-bold uppercase tracking-widest text-slate-500">
+            {chapters.map(c => (
+              <button 
+                key={c.id} 
+                onClick={() => scrollTo(c.id)}
+                className={`hover:text-red-600 transition-colors py-2 border-b-2 transition-all ${activeChapter === c.id ? 'border-red-600 text-red-600' : 'border-transparent'}`}
+              >
+                {c.label}
+              </button>
+            ))}
+          </div>
+          <button className="bg-red-600 text-white px-6 py-2.5 rounded-full text-xs font-bold hover:bg-red-700 transition-all active:scale-95 shadow-lg shadow-red-200">
+            Richiedi Assistenza
+          </button>
+        </div>
+      </nav>
+
+      {/* Header / Hero */}
+      <header className="pt-40 pb-20 bg-slate-50 relative overflow-hidden border-b border-slate-200">
+        <div className="max-w-5xl mx-auto px-6 relative z-10 text-center md:text-left">
+          <div className="flex items-center justify-center md:justify-start gap-3 text-red-600 font-bold text-[10px] tracking-[0.4em] uppercase mb-8">
+            <Globe size={14}/> Consulenza Legale Nazionale
+          </div>
+          <h1 className="text-5xl md:text-7xl font-black text-slate-950 mb-8 leading-[1.1] tracking-tight">
+            Legge <span className="text-red-600 italic">181/2025</span>:<br /> 
+            Analisi delle nuove aggravanti tecniche.
+          </h1>
+          <p className="text-xl md:text-2xl text-slate-500 max-w-3xl font-light leading-relaxed mb-12">
+            Un'analisi approfondita sulla riforma del Femminicidio: nuove aggravanti, stop ai riti premiali e tutele per le vittime applicate in tutta Italia.
+          </p>
+          <div className="flex flex-wrap justify-center md:justify-start gap-8 pt-10 border-t border-slate-200">
+            <div className="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-widest">
+              <Clock size={16} className="text-red-600" /> 15 Minuti di Lettura
+            </div>
+            <div className="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-widest">
+              <Balance size={16} className="text-red-600" /> Art. 577-bis c.p.
+            </div>
+            <div className="flex items-center gap-2 text-xs font-bold text-slate-400 uppercase tracking-widest">
+              <ShieldCheck size={16} className="text-red-600" /> Operatività h24
+            </div>
+          </div>
+        </div>
+        <div className="absolute right-0 top-0 w-1/3 h-full opacity-5 pointer-events-none">
+          <Balance size={800} className="translate-x-1/4 -translate-y-1/4" />
+        </div>
+      </header>
+
+      {/* Main Content Area */}
+      <main className="max-w-7xl mx-auto px-6 py-24 grid lg:grid-cols-[1fr_350px] gap-20">
+        <div className="space-y-32">
+          {/* INTRODUZIONE */}
+          <section id="introduzione" className="scroll-mt-32">
+            <div className="prose prose-slate prose-lg max-w-none text-slate-700 leading-relaxed">
+              <h2 className="text-4xl font-black text-slate-900 mb-8 leading-tight tracking-tighter">
+                Oltre il Codice Rosso: una riforma di sistema.
+              </h2>
+              <p>
+                La violenza di genere richiede risposte legislative ferme e uniformi. Con l'approvazione della <strong>Legge 181/2025</strong>, il legislatore ha introdotto una stretta decisiva, ridefinendo i contorni giuridici dei reati contro le donne su tutto il territorio nazionale.
+              </p>
+              <p>
+                Questa riforma non è solo teorica: i Tribunali italiani stanno già applicando le nuove normative con un rigore senza precedenti. In questo articolo analizziamo le novità tecniche, le aggravanti e l'impatto concreto che la normativa sta avendo nella giurisprudenza nazionale, focalizzandoci sulla tutela immediata della persona offesa.
+              </p>
+              
+              <div className="mt-12 bg-slate-900 text-white p-12 rounded-[2.5rem] shadow-2xl relative overflow-hidden group">
+                <div className="relative z-10">
+                  <ShieldAlert className="text-red-500 mb-6" size={48}/>
+                  <h4 className="text-2xl font-bold mb-4 uppercase tracking-tighter">Protezione Preventiva</h4>
+                  <p className="text-slate-400 text-lg leading-relaxed italic">
+                    "L'obiettivo primario della L. 181/2025 è duplice: punizione severa per il reo e protezione preventiva immediata per la vittima attraverso misure cautelari stringenti, applicate con celerità dalle Procure."
+                  </p>
+                </div>
+                <div className="absolute -right-10 -bottom-10 opacity-5 group-hover:scale-110 transition-transform duration-700">
+                  <Gavel size={350} />
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* QUADRO NORMATIVO */}
+          <section id="quadro" className="scroll-mt-32 space-y-12">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-red-600 text-white rounded-xl flex items-center justify-center font-black text-xl">01</div>
+              <h2 className="text-3xl font-black text-slate-900 uppercase tracking-tighter">Il Nuovo Quadro Normativo</h2>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-10">
+              <div className="p-8 bg-white border border-slate-200 rounded-3xl hover:shadow-xl hover:border-red-100 transition-all duration-300">
+                <h3 className="text-xl font-bold mb-4 flex items-center gap-2"><AlertTriangle className="text-orange-500" size={20}/> Velocità d'Intervento</h3>
+                <p className="text-slate-500 text-sm leading-relaxed">
+                  La norma mira a colmare le lacune del Codice Rosso, velocizzando i tempi di intervento e inasprendo il trattamento sanzionatorio sin dalle prime segnalazioni, garantendo risposte entro 24-48 ore.
+                </p>
+              </div>
+              <div className="p-8 bg-white border border-slate-200 rounded-3xl hover:shadow-xl hover:border-red-100 transition-all duration-300">
+                <h3 className="text-xl font-bold mb-4 flex items-center gap-2"><Clock className="text-blue-500" size={20}/> Flagranza Differita</h3>
+                <p className="text-slate-500 text-sm leading-relaxed">
+                  Introdotta per permettere l'arresto basato su prove digitali, video o social network entro le 48 ore dal fatto, superando i limiti della flagranza tradizionale in casi di violenza domestica e stalking.
+                </p>
+              </div>
+            </div>
+            
+            <div className="bg-slate-50 p-8 rounded-3xl border border-slate-200 flex gap-6 items-start">
+              <Info className="text-slate-400 shrink-0 mt-1" size={20} />
+              <div className="text-sm leading-relaxed text-slate-600">
+                Le modifiche al Codice Penale sono sostanziali: l'inasprimento per i reati di <strong>stalking</strong> e <strong>maltrattamenti in famiglia</strong> si accompagna a una revisione delle circostanze per l'arresto, strumento ora fondamentale per le forze dell'ordine su tutto il territorio nazionale.
+              </div>
+            </div>
+          </section>
+
+          {/* ANALISI TECNICA ART. 577-BIS */}
+          <section id="tecnica" className="scroll-mt-32 space-y-12">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-red-600 text-white rounded-xl flex items-center justify-center font-black text-xl">02</div>
+              <h2 className="text-3xl font-black text-slate-900 uppercase tracking-tighter">Analisi Tecnica: L'Art. 577-bis c.p.</h2>
+            </div>
+            
+            <p className="text-xl text-slate-600 leading-relaxed max-w-3xl border-l-4 border-red-600 pl-8 py-2">
+              La Legge 181/2025 non istituisce un reato autonomo di "femminicidio", ma potenzia le circostanze <strong>aggravanti speciali</strong> applicate all'omicidio volontario (art. 575 c.p.).
+            </p>
+
+            <div className="grid gap-6 mt-12">
+              {[
+                {
+                  title: "Relazioni Affettive (Anche Terminate)",
+                  icon: <UserCheck size={20}/>,
+                  desc: "L'art. 577-bis c.p. copre ogni forma di relazione affettiva, inclusa quella cessata o priva di coabitazione. È sufficiente la prova di un legame stabile pregresso per far scattare l'aggravante, eliminando zone d'ombra interpretative."
+                },
+                {
+                  title: "L'Aggravante per Rifiuto",
+                  icon: <ShieldAlert size={20}/>,
+                  desc: "Innovazione di rilievo: l'aggravante specifica per i reati commessi a seguito del rifiuto della vittima di instaurare o ripristinare una relazione. Si punisce con un aumento fino a un terzo il movente possessivo."
+                },
+                {
+                  title: "Violenza Assistita ed Economica",
+                  icon: <Banknote size={20}/>,
+                  desc: "Pena drasticamente aumentata se i maltrattamenti (art. 572 c.p.) avvengono alla presenza di minori. Viene inoltre codificata la violenza economica come privazione deliberata delle risorse finanziarie della vittima."
+                }
+              ].map((item, idx) => (
+                <div key={idx} className="group flex gap-8 p-10 bg-white border border-slate-200 rounded-[2.5rem] hover:border-red-600 transition-all shadow-sm">
+                  <div className="bg-slate-950 text-white p-4 rounded-2xl h-fit group-hover:bg-red-600 transition-colors shadow-lg">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-black mb-3 text-slate-950 uppercase tracking-tight">{item.title}</h4>
+                    <p className="text-slate-500 leading-relaxed text-sm">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* IMPATTO PROCESSUALE */}
+          <section id="processo" className="scroll-mt-32 space-y-12">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-red-600 text-white rounded-xl flex items-center justify-center font-black text-xl">03</div>
+              <h2 className="text-3xl font-black text-slate-900 uppercase tracking-tighter">Impatto Processuale e Penitenziario</h2>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-12">
+              <div className="space-y-6">
+                <div className="w-16 h-16 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center shadow-inner">
+                  <Lock size={32} />
+                </div>
+                <h3 className="text-2xl font-black text-slate-950 tracking-tight">Stop al Rito Abbreviato</h3>
+                <p className="text-slate-600 leading-relaxed">
+                  La riforma estende il divieto di accesso al rito abbreviato (e al conseguente sconto di pena di un terzo) per tutti i delitti di omicidio aggravato dalle relazioni affettive. Gli imputati dovranno affrontare il dibattimento pieno in <strong>Corte d'Assise</strong>, rischiando l'ergastolo pieno.
+                </p>
+              </div>
+              <div className="space-y-6">
+                <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center shadow-inner">
+                  <UserCheck size={32} />
+                </div>
+                <h3 className="text-2xl font-black text-slate-950 tracking-tight">Limiti ai Benefici (Art. 4-bis O.P.)</h3>
+                <p className="text-slate-600 leading-relaxed">
+                  L'accesso a permessi premio o lavoro all'esterno è ora limitato. L'ottenimento di misure alternative richiede ora percorsi di recupero psicologico specifici e obbligatori, monitorati con estremo rigore dai Tribunali di Sorveglianza nazionali.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* TREND NAZIONALI */}
+          <section id="nazionale" className="scroll-mt-32 space-y-12">
+            <div className="bg-slate-950 text-white p-12 md:p-20 rounded-[3.5rem] relative overflow-hidden shadow-2xl">
+              <div className="relative z-10">
+                <div className="text-center mb-16">
+                  <h2 className="text-4xl font-black mb-4 italic tracking-tighter uppercase">Trend della Giurisprudenza Nazionale</h2>
+                  <p className="text-slate-400 font-bold tracking-[0.3em] uppercase text-[10px]">Monitoraggio Post-Riforma 2025</p>
+                </div>
+                
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left border-collapse">
+                    <thead>
+                      <tr className="border-b border-white/10">
+                        <th className="py-6 font-bold text-[10px] uppercase tracking-widest text-slate-500">Misura Cautelare</th>
+                        <th className="py-6 font-bold text-[10px] uppercase tracking-widest text-slate-500">Scenario Pre-2025</th>
+                        <th className="py-6 font-bold text-[10px] uppercase tracking-widest text-red-500">Post-Legge 181/2025</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-white/5">
+                      {comparisons.map((c, idx) => (
+                        <tr key={idx} className="group hover:bg-white/5 transition-colors duration-300">
+                          <td className="py-8 pr-6">
+                            <span className="block font-black text-white text-lg group-hover:text-red-500 transition-colors uppercase tracking-tight">{c.title}</span>
+                            <span className="text-[10px] text-red-600 font-black uppercase tracking-widest">{c.status}</span>
+                          </td>
+                          <td className="py-8 text-sm text-slate-400 leading-relaxed pr-6 italic">{c.pre}</td>
+                          <td className="py-8 text-sm font-bold text-white leading-relaxed">{c.post}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div className="absolute -right-20 -top-20 opacity-5 pointer-events-none">
+                <Globe size={600} />
+              </div>
+            </div>
+            <p className="text-center text-sm text-slate-400 italic">Dati basati sull'analisi delle prime sentenze e ordinanze emesse su scala nazionale dopo l'entrata in vigore della L. 181/2025.</p>
+          </section>
+
+          {/* TUTELE PATRIMONIALI E ALERT */}
+          <section id="tutele" className="scroll-mt-32 space-y-12 bg-red-600 text-white p-16 rounded-[3.5rem] shadow-2xl relative overflow-hidden">
+            <div className="relative z-10 grid md:grid-cols-2 gap-16">
+              <div className="space-y-6">
+                <div className="p-4 bg-white/20 w-fit rounded-2xl shadow-lg"><Banknote size={32}/></div>
+                <h2 className="text-3xl font-black uppercase italic tracking-tighter">Confisca e Risarcimento</h2>
+                <p className="text-white/80 leading-relaxed">
+                  Estensione della confisca dei beni all'imputato a garanzia del risarcimento. I giudici possono ordinare il <strong>sequestro preventivo</strong> di immobili e conti correnti già nelle fasi preliminari dell'indagine, assicurando la copertura effettiva per le provvisionali spettanti alle vittime o ai loro eredi.
+                </p>
+              </div>
+              <div className="space-y-6">
+                <div className="p-4 bg-white/20 w-fit rounded-2xl shadow-lg"><Bell size={32}/></div>
+                <h2 className="text-3xl font-black uppercase italic tracking-tighter">Sistemi di Alert h24</h2>
+                <p className="text-white/80 leading-relaxed">
+                  Diritto all'informazione in tempo reale su ogni spostamento del detenuto: scarcerazione, trasferimenti o permessi premio. Questo sistema di alert tecnologico consente alle persone offese di adottare le precauzioni necessarie, evitando il rischio di contatti a sorpresa.
+                </p>
+              </div>
+            </div>
+            <ShieldCheck className="absolute -left-10 -bottom-10 text-white/10" size={300} />
+          </section>
+
+          {/* CONCLUSIONI */}
+          <section className="scroll-mt-32 bg-slate-50 p-12 rounded-[2.5rem] border border-slate-200">
+             <h2 className="text-3xl font-black text-slate-900 mb-6 tracking-tighter uppercase">Considerazioni Finali</h2>
+             <div className="prose prose-slate max-w-none text-slate-600">
+                <p>La Legge 181/2025 segna un punto di non ritorno nella lotta alla violenza di genere in Italia. L'applicazione rigorosa da parte dei Tribunali nazionali dimostra che il sistema giudiziario ha recepito la gravità del fenomeno, spostando il baricentro della tutela sulla prevenzione effettiva.</p>
+                <p>Tuttavia, la norma richiede un monitoraggio costante e un'assistenza legale altamente specializzata per navigare le nuove complessità procedurali e garantire che ogni strumento di protezione venga attivato correttamente.</p>
+             </div>
+          </section>
+        </div>
+
+        {/* Sidebar Sticky */}
+        <aside>
+          <div className="sticky top-28 space-y-10">
+            {/* CTA Legale */}
+            <div className="bg-white p-10 rounded-[2.5rem] border border-slate-200 shadow-2xl shadow-slate-200 text-center group">
+              <div className="w-20 h-20 bg-slate-950 text-white rounded-full flex items-center justify-center mx-auto mb-8 shadow-xl group-hover:scale-110 transition-transform duration-500">
+                <ShieldCheck size={32} />
+              </div>
+              <h3 className="text-2xl font-black mb-4 uppercase tracking-tighter">Supporto Specializzato</h3>
+              <p className="text-slate-500 text-sm mb-10 leading-relaxed font-medium">
+                Il nostro studio opera in tutta Italia fornendo assistenza legale d'urgenza e consulenza tecnica sull'applicazione della Legge 181/2025.
+              </p>
+              <button className="w-full bg-red-600 text-white py-5 rounded-2xl font-black uppercase text-[10px] tracking-[0.2em] hover:bg-slate-950 transition-all flex items-center justify-center gap-3 group shadow-lg shadow-red-100">
+                Consulenza Urgente <ArrowUpRight size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"/>
+              </button>
+            </div>
+
+            {/* Sommario Interattivo */}
+            <div className="bg-slate-950 text-white p-10 rounded-[2.5rem] shadow-xl">
+              <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-red-600 mb-10">Sommario Articolo</h3>
+              <nav className="space-y-6">
+                {chapters.map(c => (
+                  <button 
+                    key={c.id} 
+                    onClick={() => scrollTo(c.id)}
+                    className={`flex items-center gap-4 w-full text-left group transition-all ${activeChapter === c.id ? 'translate-x-2' : ''}`}
+                  >
+                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all ${activeChapter === c.id ? 'bg-red-600 text-white scale-110 shadow-lg shadow-red-600/20' : 'bg-white/5 text-slate-500 group-hover:text-white group-hover:bg-white/10'}`}>
+                      {c.icon}
+                    </div>
+                    <span className={`text-[10px] font-bold uppercase tracking-widest transition-colors ${activeChapter === c.id ? 'text-white' : 'text-slate-500 group-hover:text-slate-300'}`}>
+                      {c.label}
+                    </span>
+                  </button>
+                ))}
+              </nav>
+            </div>
+
+            {/* Disclaimer */}
+            <div className="p-8 border-2 border-dashed border-slate-200 rounded-[2.5rem]">
+              <p className="text-[10px] text-slate-400 font-bold uppercase tracking-tighter leading-relaxed">
+                Avvertenza: Le analisi contenute in questo portale hanno scopo informativo e non costituiscono parere legale se non a seguito di conferimento di incarico professionale.
+              </p>
+            </div>
+          </div>
+        </aside>
+      </main>
+
+      {/* Footer */}
+      <footer className="bg-white border-t border-slate-200 py-32 px-6">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-20">
+          <div className="md:col-span-2 space-y-10">
+            <div className="flex items-center gap-3 font-black text-4xl tracking-tighter">
+              <div className="bg-slate-950 text-white p-1 rounded-lg">L.</div>
+              <span>Osservatorio <span className="text-red-600 underline decoration-4 underline-offset-8">Nazionale</span></span>
+            </div>
+            <p className="max-w-md text-slate-500 text-xl font-light leading-relaxed">
+              Dalla parte delle persone offese in tutti i Tribunali d'Italia. Specialisti in diritto penale e nuove tutele per il contrasto alla violenza di genere.
+            </p>
+          </div>
+          <div className="space-y-8">
+            <h5 className="font-black uppercase text-xs tracking-widest text-slate-950">Approfondimenti</h5>
+            <ul className="space-y-4 text-xs font-bold text-slate-500 uppercase tracking-widest">
+              <li className="hover:text-red-600 transition-colors cursor-pointer">Art. 577-bis c.p.</li>
+              <li className="hover:text-red-600 transition-colors cursor-pointer">Codice Rosso Evolution</li>
+              <li className="hover:text-red-600 transition-colors cursor-pointer">Tutele Patrimoniali</li>
+              <li className="hover:text-red-600 transition-colors cursor-pointer">Protocolli Emergenza</li>
+            </ul>
+          </div>
+          <div className="space-y-8">
+            <h5 className="font-black uppercase text-xs tracking-widest text-slate-950">Servizi Nazionali</h5>
+            <ul className="space-y-4 text-xs font-bold text-slate-500 uppercase tracking-widest">
+              <li className="hover:text-red-600 transition-colors cursor-pointer">Consulenza h24</li>
+              <li className="hover:text-red-600 transition-colors cursor-pointer">Assistenza Vittime</li>
+              <li className="hover:text-red-600 transition-colors cursor-pointer">Analisi Fascicoli</li>
+              <li className="hover:text-red-600 transition-colors cursor-pointer">Richiesta Sequestri</li>
+            </ul>
+          </div>
+        </div>
+        <div className="max-w-7xl mx-auto pt-20 mt-20 border-t border-slate-100 text-center">
+          <p className="text-[10px] font-black uppercase tracking-[0.5em] text-slate-300">
+            &copy; 2026 Nuova Legge Blog - Tutti i diritti riservati.
+          </p>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default App;

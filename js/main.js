@@ -1,9 +1,15 @@
 
-document.addEventListener('DOMContentLoaded', () => {
+const init = () => {
     setupSearch();
     setupBackToTop();
     setupMobileMenu();
-});
+};
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+} else {
+    init();
+}
 
 /**
  * Mobile Menu Toggle

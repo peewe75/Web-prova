@@ -359,7 +359,8 @@
                         <div class="flex flex-col gap-4">
                             <h4 class="text-white font-bold text-sm uppercase tracking-wider">Studio</h4>
                             <a class="text-gray-400 hover:text-primary text-sm transition-colors"
-                                href="chi-siamo.html">Il Team</a>
+                                href="chi-siamo.html">Il
+                                Team</a>
                             <a class="text-gray-400 hover:text-primary text-sm transition-colors"
                                 href="contatti.html">Contatti</a>
                         </div>
@@ -403,6 +404,12 @@
     </button>
 
     <script src="js/main.js"></script>
+    <script src="js/blog-engine.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initLatestNews('homepage-news', 3);
+        });
+    </script>
 </body>
 
 </html>
