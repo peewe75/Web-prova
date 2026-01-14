@@ -24,12 +24,12 @@ if (!$input || !isset($input['title'])) {
 $title = $input['title'];
 $summary = isset($input['summary']) ? $input['summary'] : '';
 
-// Construct Prompt
-$prompt = "Create a high quality, professional, abstract or symbolic blog cover image about: " . $title . ". ";
+// Construct Prompt - IMPORTANT: No text/words in generated images
+$prompt = "Create a high quality, professional, abstract or symbolic blog cover image visually representing the concept of: " . $title . ". ";
 if ($summary) {
-    $prompt .= "Context: " . $summary . ". ";
+    $prompt .= "Visual context inspiration: " . $summary . ". ";
 }
-$prompt .= "Style: Modern, corporate legal aesthetics, primary color #4fffac (neon green) and dark green #1a3326 accents, professional, minimalistic, abstract or symbolic, high resolution, 16:9 aspect ratio. No text on image.";
+$prompt .= "Style requirements: Modern, corporate legal aesthetics, primary color palette using neon green (#4fffac) and dark green (#1a3326), professional, minimalistic, abstract geometric shapes or symbolic imagery, high resolution, 16:9 aspect ratio. CRITICAL: DO NOT include ANY text, words, letters, numbers, watermarks, or writing of any kind in the image. The image must be purely visual with no textual elements whatsoever. Focus on abstract shapes, patterns, icons, or symbolic representations only.";
 
 // Call Imagen 3 (via Gemini API check correctness for image gen endpoint)
 // Note: As of late 2024/2025, getting image gen via standard Gemini API might vary. 
