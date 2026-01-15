@@ -18,45 +18,74 @@ This workflow describes the process of converting a PDF document (e.g., a newsle
 - Identify the Main Title, Sections (H1, H2, H3), and specific blocks (Info, Warnings).
 - **Clean up**: Remove AI artifacts, fix placeholders (e.g., change `[Nome Città]` to `Cantù`).
 
-### 2. Cover Image Generation (NEW)
-- Use the `generate_image` tool to create a cover image.
-- **Prompt**: Base it on the article's **Title** and **Summary**.
-- **Style**: Include site branding: "Modern legal aesthetics, neon green #4fffac and dark green #1a3326 accents, professional, minimalistic, 16:9 aspect ratio, no text."
-- **File Location**: Save directly to `images/copertina_[newsname].png`.
-- **Note**: The image will be auto-generated and embedded in the HTML.
+### 2. Cover Image Generation
+- **Strategy**: Do NOT generate images with AI.
+- **Action**: Ask the User to upload a cover image via the Dashboard during the article creation process.
+- **Code**: Use the "Dynamic Image Loader" script in the HTML (see below) to automatically fetch the image uploaded to the dashboard.
 
 ### 3. HTML Generation
-- Create a new file (e.g., `nomenews.html`).
+- Create a new file (e.g., `news/nomenews.html`).
 - **Structure**:
     - Use the standard HTML5 boilerplate.
-    - Include Tailwind CSS CDN and Config (see `index.html`).
+    - Include Tailwind CSS CDN and Config.
     - Include Fonts: `Space Grotesk` (Display) and `Noto Sans` (Body).
 - **Layout**:
-    - **Header**: Copy the *exact* `<header>` block from `index.html` (Navigation, Logo, Links).
-    - **Cover Image**: Use `<img src="../../images/copertina_[newsname].png" class="w-full h-auto object-contain max-h-[400px] mx-auto">`.
-    - **Sidebar**: Create a sticky `<aside>` with a Table of Contents linking to sections.
-    - **Content**: Wrap the extracted text in `<article>`. Use semantic tags (`<section>`, `<h2>`, `<p>`).
-    - **Footer**: Copy the *exact* `<footer>` block from `index.html` (4 columns: Logo, Servizi, Studio, Contatti).
+    - **Header**: Copy the *exact* `<header>` block from `index.html`.
+    - **Footer**: Copy the *exact* `<footer>` block from `index.html`.
 - **Critical - Paths**:
-    - All paths MUST use `../../` prefix (e.g., `../../index.html`, `../../images/logo.png`) because news pages are served from `news_pages/[folder]/`.
+    - **MUST USE ABSOLUTE PATHS** (e.g., `/index.html`, `/images/logo.png`).
+    - Do NOT use `../../` anymore. This ensures compatibility when served from root or subdirectories managed by the dashboard.
 
-### 4. Feature Implementation
-- **Dark Mode**: Ensure `class="dark"` is on `<html>` and colors use `bg-background-dark`, `text-gray-N`.
-- **Back to Top**: Add the floating button script.
-- **Smooth Scroll**: Ensure `scroll-behavior: smooth;` is active.
+- **Header Image Implementation**:
+Instead of a static `<img>` tag, use this script to load the image dynamically from the dashboard:
 
-### 5. Verification
-- Check navigation links (Home, Back to Top).
-- Check visual consistency with `index.html`.
-- Verify cover image displays correctly.
+```html
+<!-- Header Image - Dynamically loaded from dashboard -->
+<div id="header-image" class="w-full relative">
+    <img id="dynamic-header-img" src="" alt="[News Title]"
+        class="w-full h-auto object-contain max-h-[400px] mx-auto" style="display: none;">
+    <div class="absolute inset-0 bg-gradient-to-t from-background-dark/80 to-transparent pointer-events-none"></div>
+</div>
 
-### 6. Delivery
-- The HTML file is ready for direct upload via dashboard (supports .html files).
-- The cover image is already in `images/` folder and will work once synced/deployed.
-
-## Example Prompt for Image Generation
+<script>
+    // Dynamic Header Image Loader - Fetches image from dashboard data
+    (async function loadHeaderImage() {
+        try {
+            const currentPath = window.location.pathname;
+            const res = await fetch('/api/blog.php');
+            const posts = await res.json();
+            
+            // Find the post that links to this page
+            const matchingPost = posts.find(post => {
+                if (!post.custom_url) return false;
+                // Check if custom_url matches current page
+                return currentPath.includes(post.custom_url) || 
+                       post.custom_url.includes(currentPath.split('/').pop()) ||
+                       currentPath.endsWith(post.custom_url.split('/').pop());
+            });
+            
+            const img = document.getElementById('dynamic-header-img');
+            if (matchingPost && matchingPost.image) {
+                img.src = '/' + matchingPost.image;
+                img.style.display = 'block';
+            } else {
+                // Fallback: show a gradient background
+                document.getElementById('header-image').style.background = 'linear-gradient(to right, #1a3326, #244233)';
+                document.getElementById('header-image').style.minHeight = '200px';
+            }
+        } catch (e) {
+            console.log('Could not load dynamic header image:', e);
+            document.getElementById('header-image').style.background = 'linear-gradient(to right, #1a3326, #244233)';
+            document.getElementById('header-image').style.minHeight = '200px';
+        }
+    })();
+</script>
 ```
-Create a professional blog cover image for a legal article titled "[TITLE]". 
-Context: [SUMMARY]. 
-Style: Modern corporate legal aesthetics, primary color #4fffac (neon green) and dark green #1a3326 accents, professional, minimalistic, abstract or symbolic, high resolution, 16:9 aspect ratio. No text on image.
-```
+
+### 4. Upload via Dashboard
+1. Go to `/admin/dashboard.php`.
+2. Create **New Article**.
+3. Fill in Title, Summary, Category.
+4. **Upload Cover Image**: Select the image file.
+5. **Upload AI Page**: Select the generated `.html` file.
+6. Click **Save**.

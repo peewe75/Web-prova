@@ -90,12 +90,26 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                     <label class="text-xs text-gray-400 uppercase font-bold tracking-wider">Immagine Copertina</label>
                     <div class="flex items-center gap-4 mt-1">
                         <input type="file" name="image" id="postImageDisplay" class="text-sm text-gray-400"
-                            accept="image/*">
+                            accept="image/*" onchange="previewImage(this)">
                         <div id="currentImagePreview" class="h-10 w-10 rounded bg-gray-700 bg-cover bg-center hidden">
                         </div>
                         <span class="text-xs text-gray-400">Formato consigliato: 1200x675px (16:9)</span>
                     </div>
                 </div>
+
+                <script>
+                    function previewImage(input) {
+                        const preview = document.getElementById('currentImagePreview');
+                        if (input.files && input.files[0]) {
+                            const reader = new FileReader();
+                            reader.onload = function (e) {
+                                preview.style.backgroundImage = `url('${e.target.result}')`;
+                                preview.classList.remove('hidden');
+                            }
+                            reader.readAsDataURL(input.files[0]);
+                        }
+                    }
+                </script>
 
                 <div>
                     <label class="text-xs text-gray-400 uppercase font-bold tracking-wider">Sommario (Breve
