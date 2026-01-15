@@ -71,12 +71,12 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                         <label class="text-xs text-gray-400 uppercase font-bold tracking-wider">Categoria</label>
                         <select name="category" id="postCategory"
                             class="w-full bg-gray-700 border border-gray-600 rounded p-2 focus:border-green-400 focus:outline-none">
-                            <option value="News">News Generiche</option>
-                            <option value="Penale">Diritto Penale</option>
-                            <option value="Civile">Diritto Civile</option>
-                            <option value="Tech">Tech & Privacy</option>
+                            <option value="Penale">Penale</option>
+                            <option value="Civile">Civile</option>
+                            <option value="Gaming">Gaming</option>
+                            <option value="Tech">Tech</option>
+                            <option value="Sovraindebitamento">Sovraindebitamento</option>
                             <option value="Crisi">Crisi d'Impresa</option>
-                            <option value="Bancario">Bancario</option>
                         </select>
                     </div>
                     <div>
