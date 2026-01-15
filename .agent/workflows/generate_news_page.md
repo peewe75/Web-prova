@@ -82,12 +82,46 @@ Tell user the file location: `studiodigitale/news/[slug].html`
         </nav>
     </header>
 
-    <!-- HEADER IMAGE: Use blog thumbnail -->
+    <!-- HEADER IMAGE: Dynamically loaded from dashboard -->
     <div id="header-image" class="w-full relative">
-        <img src="/images/blog/[THUMBNAIL_FILENAME]" 
-             alt="[TITLE]" 
-             class="w-full h-auto object-contain max-h-[400px] mx-auto">
+        <img id="dynamic-header-img" src="" alt="[TITLE]"
+            class="w-full h-auto object-contain max-h-[400px] mx-auto" style="display: none;">
+        <div class="absolute inset-0 bg-gradient-to-t from-background-dark/80 to-transparent pointer-events-none"></div>
     </div>
+
+    <script>
+        // Dynamic Header Image Loader - Fetches image from dashboard data
+        (async function loadHeaderImage() {
+            try {
+                const currentPath = window.location.pathname;
+                const res = await fetch('/api/blog.php');
+                const posts = await res.json();
+                
+                // Find the post that links to this page
+                const matchingPost = posts.find(post => {
+                    if (!post.custom_url) return false;
+                    // Check if custom_url matches current page
+                    return currentPath.includes(post.custom_url) || 
+                           post.custom_url.includes(currentPath.split('/').pop()) ||
+                           currentPath.endsWith(post.custom_url.split('/').pop());
+                });
+                
+                const img = document.getElementById('dynamic-header-img');
+                if (matchingPost && matchingPost.image) {
+                    img.src = '/' + matchingPost.image;
+                    img.style.display = 'block';
+                } else {
+                    // Fallback: show a gradient background
+                    document.getElementById('header-image').style.background = 'linear-gradient(to right, #1a3326, #244233)';
+                    document.getElementById('header-image').style.minHeight = '200px';
+                }
+            } catch (e) {
+                console.log('Could not load dynamic header image:', e);
+                document.getElementById('header-image').style.background = 'linear-gradient(to right, #1a3326, #244233)';
+                document.getElementById('header-image').style.minHeight = '200px';
+            }
+        })();
+    </script>
 
     <!-- MAIN CONTENT -->
     <main class="flex-grow layout-container px-4 md:px-10 lg:px-40 flex justify-center py-12 md:py-20">
@@ -143,8 +177,9 @@ Tell user the file location: `studiodigitale/news/[slug].html`
 
 - [ ] PDF text extracted completely
 - [ ] Asked user for thumbnail filename
+- [ ] Checklist updated
 - [ ] HTML created with **ABSOLUTE PATHS** (`/images/`, `/index.html`)
-- [ ] Header image set to `/images/blog/[user_filename]`
+- [ ] Header image uses **Dynamic Image Loader script**
 - [ ] Table of Contents generated with anchor links
 - [ ] All navigation links use absolute paths
 - [ ] File saved to `news/[slug].html`
