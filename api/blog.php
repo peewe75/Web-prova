@@ -38,9 +38,14 @@ if ($method === 'GET') {
     if (isset($_GET['category']) && $_GET['category'] !== 'all') {
         $categories = array_map('trim', explode(',', strtolower($_GET['category'])));
 
+        // FAILSAFE: Alias 'gioco' to 'gaming' to handle caching/old frontend requests
+        if (in_array('gioco', $categories)) {
+            $categories[] = 'gaming';
+        }
+
         $posts = array_filter($posts, function ($post) use ($categories) {
             // Case insensitive check against multiple categories
-            return in_array(strtolower($post['category']), $categories);
+            return in_array(strtolower(trim($post['category'])), $categories);
         });
         // Re-index array
         $posts = array_values($posts);

@@ -1,5 +1,16 @@
 [
     {
+        "id": "chiara_ferragni",
+        "title": "Assoluzione Chiara Ferragni: Perché l'Esclusione della \"Minorata Difesa\" ha Cambiato Tutto",
+        "summary": "Analisi della sentenza del Tribunale di Milano sul caso Balocco-Pandoro. Perché l'esclusione dell'aggravante della minorata difesa ha portato al proscioglimento dell'imprenditrice digitale.",
+        "content": "",
+        "category": "Penale",
+        "author": "Studio Legale BCS",
+        "date": "2026-01-14",
+        "image": "images/blog/ferragni_news.png",
+        "custom_url": "news/ferragni.html"
+    },
+    {
         "id": "accertamenti_bancari",
         "title": "Accertamenti Bancari Sale Giochi",
         "summary": "Accertamenti bancari per sale slot e VLT a Milano? La Cassazione offre nuove tutele agli esercenti lombardi contro le pretese illegittime dell'Agenzia delle Entrate. Scopri come proteggere la tua attività.",
@@ -7,7 +18,7 @@
         "category": "Gaming",
         "author": "Redazione",
         "date": "2026-01-15",
-        "image": "images/blog/Gioco riciclaggio.png",
+        "image": "images/blog/gioco_riciclaggio.png",
         "custom_url": "news/accertamenti-bancari-sale-giochi.html"
     },
     {
