@@ -251,10 +251,10 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             document.getElementById('hiddenContent').value = quill.root.innerHTML;
 
             const formData = new FormData(e.target);
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
 
             try {
-                const btn = e.target.querySelector('button[type="submit"]');
-                const originalText = btn.innerHTML;
                 btn.disabled = true;
                 btn.innerHTML = 'Salvataggio...';
 
@@ -263,20 +263,29 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
                     body: formData
                 });
 
+                const responseText = await res.text();
+                let data;
+                try {
+                    data = JSON.parse(responseText);
+                } catch (e) {
+                    console.error('Server response:', responseText);
+                    throw new Error('Risposta server non valida');
+                }
+
                 if (res.ok) {
                     alert('Articolo salvato con successo!');
                     resetForm();
                     fetchPosts(); // Refresh list
                 } else {
-                    alert('Errore durante il salvataggio.');
+                    alert('Errore: ' + (data.message || 'Errore durante il salvataggio'));
                 }
 
+            } catch (err) {
+                console.error('Save error:', err);
+                alert('Errore: ' + err.message);
+            } finally {
                 btn.disabled = false;
                 btn.innerHTML = originalText;
-
-            } catch (err) {
-                console.error(err);
-                alert('Errore di connessione');
             }
         });
 
