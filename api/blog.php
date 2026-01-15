@@ -36,10 +36,11 @@ if ($method === 'GET') {
 
     // Filter by category if requested
     if (isset($_GET['category']) && $_GET['category'] !== 'all') {
-        $category = $_GET['category'];
-        $posts = array_filter($posts, function ($post) use ($category) {
-            // Case insensitive check
-            return strtolower($post['category']) === strtolower($category);
+        $categories = array_map('trim', explode(',', strtolower($_GET['category'])));
+
+        $posts = array_filter($posts, function ($post) use ($categories) {
+            // Case insensitive check against multiple categories
+            return in_array(strtolower($post['category']), $categories);
         });
         // Re-index array
         $posts = array_values($posts);
