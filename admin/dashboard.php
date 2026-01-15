@@ -235,9 +235,7 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
             document.getElementById('postForm').reset();
             document.getElementById('postId').value = '';
             document.getElementById('existingImage').value = '';
-            document.getElementById('generatedImage').value = '';
             document.getElementById('currentImagePreview').classList.add('hidden');
-            document.getElementById('genImageStatus').innerHTML = '';
             document.getElementById('customUrl').value = '';
             document.getElementById('zipStatus').textContent = "Nessun file caricato (Verrà usato l'editor di testo)";
             document.getElementById('postDate').valueAsDate = new Date();
