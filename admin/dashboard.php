@@ -274,8 +274,16 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
 
                 if (res.ok) {
                     alert('Articolo salvato con successo!');
-                    resetForm();
-                    fetchPosts(); // Refresh list
+                    try {
+                        resetForm();
+                    } catch (e) {
+                        console.warn("Error resetting form:", e);
+                    }
+                    try {
+                        fetchPosts(); // Refresh list
+                    } catch (e) {
+                        console.warn("Error refreshing list:", e);
+                    }
                 } else {
                     alert('Errore: ' + (data.message || 'Errore durante il salvataggio'));
                 }
