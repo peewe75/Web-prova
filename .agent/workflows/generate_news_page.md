@@ -25,35 +25,37 @@ studiodigitale/
 
 1. **Read PDF**: Extract ALL text content visually via browser agent.
 
-2. **Generate Cover Image**:
-   - Use `generate_image` tool.
-   - Prompt based on Title + Summary.
-   - Style: "Modern legal aesthetics, neon green #4fffac and dark green #1a3326, professional, minimalistic, 16:9, no text."
-   - Save to: `news/images/copertina_[slug].png`
+2. **Header Image**: 
+   - DO NOT generate cover image
+   - Use the thumbnail that user manually uploads to blog dashboard
+   - Reference the image URL provided by user
 
 3. **Create HTML File**:
    - Use Master Template (below).
+   - **Use ABSOLUTE PATHS** (start with `/`) for all resources
    - Replace content placeholders.
    - Generate Table of Contents with anchor links.
    - Save to: `news/[slug].html`
 
-4. **Notify User**: Provide paths for upload.
+4. **Notify User**: Provide path for upload.
 
 ---
 
-## Path Reference (from `news/[file].html`)
+## Path Reference (ABSOLUTE PATHS - work from any location)
 
 | Resource | Path |
 |----------|------|
-| Site Logo | `../images/logo.png` |
-| Cover Image | `images/copertina_[slug].png` |
-| Home | `../index.html` |
-| Chi Siamo | `../chi-siamo.html` |
-| Servizi | `../servizi.html` |
-| Blog | `../blog.html` |
-| Consulenze Tech | `../consulenze-tech.html` |
-| Contatti | `../contatti.html` |
-| Approfondimenti | `../approfondimento-*.html` |
+| Site Logo | `/images/logo.png` |
+| Header Image | `[URL from blog thumbnail]` |
+| Home | `/index.html` |
+| Chi Siamo | `/chi-siamo.html` |
+| Servizi | `/servizi.html` |
+| Blog | `/blog.html` |
+| Consulenze Tech | `/consulenze-tech.html` |
+| Contatti | `/contatti.html` |
+| Approfondimenti | `/approfondimento-*.html` |
+
+> **IMPORTANT**: Always use absolute paths starting with `/` so links work regardless of where the file is deployed (e.g., `news_pages/[timestamp]/file.html`).
 
 ---
 
@@ -71,12 +73,12 @@ studiodigitale/
 
     <!-- HEADER: Exact copy from index.html (Navigation bar) -->
     <header class="sticky top-0 z-50 ...">
-        <!-- Logo (../images/logo.png), Nav links (../*.html) -->
+        <!-- Logo (/images/logo.png), Nav links (/*.html) - USE ABSOLUTE PATHS -->
     </header>
 
-    <!-- COVER IMAGE -->
+    <!-- HEADER IMAGE: Use blog thumbnail URL -->
     <div id="header-image" class="w-full relative">
-        <img src="images/copertina_[SLUG].png" 
+        <img src="[BLOG_THUMBNAIL_URL]" 
              alt="[TITLE]" 
              class="w-full h-auto object-contain max-h-[400px] mx-auto">
         <div class="absolute inset-0 bg-gradient-to-t from-background-dark/80 to-transparent"></div>
@@ -94,7 +96,7 @@ studiodigitale/
                         <!-- [GENERATED ANCHOR LINKS] -->
                     </nav>
                     <div class="mt-8 pt-8 border-t border-secondary/50">
-                        <a href="../index.html" class="flex items-center gap-2 text-primary text-sm font-bold">
+                        <a href="/index.html" class="flex items-center gap-2 text-primary text-sm font-bold">
                             ← Torna alla Home
                         </a>
                     </div>
