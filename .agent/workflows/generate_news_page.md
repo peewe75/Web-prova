@@ -4,58 +4,54 @@ description: Generate a new standalone AI News Page from JSON data
 
 # Master Template News - studiodigitale.eu
 
-## Folder Structure
-```
-studiodigitale/
-├── news/                      ← All news pages go here
-│   ├── images/                ← All cover images go here
-│   │   └── copertina_[slug].png
-│   └── [slug].html            ← News page HTML files
-├── images/                    ← Site-wide images (logo, etc.)
-├── index.html                 ← Main site
-└── ...
-```
+## ⚠️ CRITICAL RULES
 
-## Protocol for News Generation
-
-### Input Required
-- PDF file in the `studiodigitale` folder
-
-### Automatic Steps (Full Automation Mode)
-
-1. **Read PDF**: Extract ALL text content visually via browser agent.
-
-2. **Header Image**: 
-   - DO NOT generate cover image
-   - Use the thumbnail that user manually uploads to blog dashboard
-   - Reference the image URL provided by user
-
-3. **Create HTML File**:
-   - Use Master Template (below).
-   - **Use ABSOLUTE PATHS** (start with `/`) for all resources
-   - Replace content placeholders.
-   - Generate Table of Contents with anchor links.
-   - Save to: `news/[slug].html`
-
-4. **Notify User**: Provide path for upload.
+1. **ABSOLUTE PATHS ONLY** - All links MUST start with `/` (e.g., `/images/logo.png`, `/index.html`)
+2. **NO AI IMAGE GENERATION** - Use thumbnail manually uploaded by user
+3. **ASK FOR THUMBNAIL URL** - Before creating HTML, ask user for the blog thumbnail filename
 
 ---
 
-## Path Reference (ABSOLUTE PATHS - work from any location)
+## Protocol for News Generation
+
+### Step 1: Read PDF
+Extract ALL text content visually via browser agent.
+
+### Step 2: Ask User for Thumbnail
+**BEFORE creating HTML, ask the user:**
+> "Qual è il nome del file della miniatura che hai caricato nel blog? (es: `Gemini_Generated_Image_xyz.png`)"
+
+The full path will be: `/images/blog/[FILENAME]`
+
+### Step 3: Create HTML File
+- Use the Master Template below
+- **ALL paths must be absolute** (start with `/`)
+- Replace `[BLOG_THUMBNAIL_URL]` with `/images/blog/[user_filename]`
+- Generate Table of Contents with anchor links
+- Save to: `news/[slug].html`
+
+### Step 4: Notify User
+Tell user the file location: `studiodigitale/news/[slug].html`
+
+---
+
+## Path Reference (ABSOLUTE PATHS)
 
 | Resource | Path |
 |----------|------|
 | Site Logo | `/images/logo.png` |
-| Header Image | `[URL from blog thumbnail]` |
+| Header Image | `/images/blog/[FILENAME_FROM_USER]` |
 | Home | `/index.html` |
 | Chi Siamo | `/chi-siamo.html` |
 | Servizi | `/servizi.html` |
 | Blog | `/blog.html` |
 | Consulenze Tech | `/consulenze-tech.html` |
 | Contatti | `/contatti.html` |
-| Approfondimenti | `/approfondimento-*.html` |
-
-> **IMPORTANT**: Always use absolute paths starting with `/` so links work regardless of where the file is deployed (e.g., `news_pages/[timestamp]/file.html`).
+| Diritto Penale | `/approfondimento-penale.html` |
+| Diritto del Gioco | `/approfondimento-gioco.html` |
+| Diritto Civile | `/approfondimento-civile.html` |
+| Bancario | `/approfondimento-bancario.html` |
+| Crisi d'Impresa | `/approfondimento-crisi.html` |
 
 ---
 
@@ -71,24 +67,33 @@ studiodigitale/
 </head>
 <body class="bg-background-dark font-display text-white">
 
-    <!-- HEADER: Exact copy from index.html (Navigation bar) -->
+    <!-- HEADER -->
     <header class="sticky top-0 z-50 ...">
-        <!-- Logo (/images/logo.png), Nav links (/*.html) - USE ABSOLUTE PATHS -->
+        <a href="/index.html">
+            <img src="/images/logo.png" alt="Logo Studio Legale BCS">
+        </a>
+        <nav>
+            <a href="/index.html">Home</a>
+            <a href="/chi-siamo.html">Il Team</a>
+            <a href="/servizi.html">Aree di Competenza</a>
+            <a href="/blog.html">Blog & News</a>
+            <a href="/consulenze-tech.html">Consulenze Tech</a>
+            <a href="/contatti.html">Contatti</a>
+        </nav>
     </header>
 
-    <!-- HEADER IMAGE: Use blog thumbnail URL -->
+    <!-- HEADER IMAGE: Use blog thumbnail -->
     <div id="header-image" class="w-full relative">
-        <img src="[BLOG_THUMBNAIL_URL]" 
+        <img src="/images/blog/[THUMBNAIL_FILENAME]" 
              alt="[TITLE]" 
              class="w-full h-auto object-contain max-h-[400px] mx-auto">
-        <div class="absolute inset-0 bg-gradient-to-t from-background-dark/80 to-transparent"></div>
     </div>
 
     <!-- MAIN CONTENT -->
     <main class="flex-grow layout-container px-4 md:px-10 lg:px-40 flex justify-center py-12 md:py-20">
         <div class="w-full max-w-[1000px] flex flex-col lg:flex-row gap-12">
             
-            <!-- SIDEBAR: Table of Contents (sticky, auto-generated) -->
+            <!-- SIDEBAR: Table of Contents -->
             <aside class="lg:w-1/3 order-2 lg:order-1">
                 <div class="sticky top-32 bg-surface-dark border border-secondary rounded-2xl p-6 shadow-xl">
                     <h3 class="text-primary font-bold uppercase tracking-widest text-sm mb-6">Indice Contenuti</h3>
@@ -114,37 +119,33 @@ studiodigitale/
                 </header>
 
                 <!-- [SEMANTIC HTML CONTENT] -->
-                <!-- Use <section id="anchorN">, <h2>, <h3>, <p>, <ul>, <table>, etc. -->
                 
             </article>
         </div>
     </main>
 
-    <!-- FOOTER: Exact copy from index.html (4-column layout) -->
+    <!-- FOOTER -->
     <footer class="border-t border-secondary bg-background-dark pt-16 pb-8 mt-auto">
-        <!-- Logo (../images/logo.png), Servizi links (../*.html), Contatti -->
+        <img src="/images/logo.png" alt="Logo">
+        <!-- All footer links use absolute paths: /chi-siamo.html, /contatti.html, etc. -->
     </footer>
 
     <!-- BACK TO TOP BUTTON -->
-    <button id="backToTop" class="fixed bottom-8 right-8 bg-primary text-background-dark p-3 rounded-full shadow-lg opacity-0 invisible transition-all z-50">
-        <span class="material-symbols-outlined">arrow_upward</span>
-    </button>
-
-    <script>
-        // Back to Top + Smooth Scroll script (embedded)
-    </script>
+    <button id="backToTop">...</button>
+    <script>// Back to Top script</script>
 </body>
 </html>
 ```
 
 ---
 
-## Checklist for Each News
+## Checklist
 
 - [ ] PDF text extracted completely
-- [ ] Cover image generated and saved to `news/images/`
-- [ ] HTML created with correct paths (`../` for site resources)
+- [ ] Asked user for thumbnail filename
+- [ ] HTML created with **ABSOLUTE PATHS** (`/images/`, `/index.html`)
+- [ ] Header image set to `/images/blog/[user_filename]`
 - [ ] Table of Contents generated with anchor links
-- [ ] All navigation links functional
-- [ ] Self-contained code (CSS/JS embedded)
+- [ ] All navigation links use absolute paths
 - [ ] File saved to `news/[slug].html`
+- [ ] User notified of file location
