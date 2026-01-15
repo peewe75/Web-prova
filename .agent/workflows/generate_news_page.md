@@ -158,10 +158,61 @@ Tell user the file location: `studiodigitale/news/[slug].html`
         </div>
     </main>
 
-    <!-- FOOTER -->
+    <!-- FOOTER: Exact copy from index.html (4-column layout) -->
     <footer class="border-t border-secondary bg-background-dark pt-16 pb-8 mt-auto">
-        <img src="/images/logo.png" alt="Logo">
-        <!-- All footer links use absolute paths: /chi-siamo.html, /contatti.html, etc. -->
+        <div class="layout-container px-4 md:px-10 lg:px-40 flex justify-center">
+            <div class="w-full max-w-[1200px] flex flex-col gap-12">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+                    <div class="flex flex-col gap-4">
+                        <div class="flex items-center gap-2 text-white">
+                            <img src="/images/logo.png" alt="Logo Studio Legale BCS"
+                                class="h-24 w-auto object-contain">
+                        </div>
+                        <p class="text-gray-400 text-sm">
+                            Innovativi, competenti, affidabili.<br>L’alternativa etica e moderna.
+                        </p>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-white font-bold text-sm uppercase tracking-wider">Servizi</h4>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="/approfondimento-penale.html">Diritto Penale</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="/approfondimento-gioco.html">Diritto del Gioco</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="/approfondimento-civile.html">Diritto Civile e Famiglia</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="/approfondimento-bancario.html">Bancario e Assicurativo</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="/approfondimento-crisi.html">Crisi d'Impresa</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="/consulenze-tech.html">Consulenze Tech</a>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-white font-bold text-sm uppercase tracking-wider">Studio</h4>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="/chi-siamo.html">Il
+                            Team</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="/contatti.html">Contatti</a>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-white font-bold text-sm uppercase tracking-wider">Contatti</h4>
+                        <a href="mailto:info@studiodigitale.eu"
+                            class="text-gray-400 hover:text-primary text-sm transition-colors">info@studiodigitale.eu</a>
+                        <a href="tel:+390313515213"
+                            class="text-gray-400 hover:text-primary text-sm transition-colors">031 3515213</a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Via+Matteotti+33,+22063+Cantù+(CO)"
+                            target="_blank" class="text-gray-400 hover:text-primary text-sm transition-colors">Via
+                            Matteotti 33, 22063 Cantù (CO)</a>
+                    </div>
+                </div>
+                <div class="border-t border-secondary pt-8">
+                    <p class="text-gray-500 text-sm text-center">
+                        © 2026 Studio Legale Sapone. Tutti i diritti riservati.
+                    </p>
+                </div>
+            </div>
+        </div>
     </footer>
 
     <!-- BACK TO TOP BUTTON -->
