@@ -68,18 +68,32 @@ Tell user the file location: `studiodigitale/news/[slug].html`
 <body class="bg-background-dark font-display text-white">
 
     <!-- HEADER -->
-    <header class="sticky top-0 z-50 ...">
-        <a href="/index.html">
-            <img src="/images/logo.png" alt="Logo Studio Legale BCS">
-        </a>
-        <nav>
-            <a href="/index.html">Home</a>
-            <a href="/chi-siamo.html">Il Team</a>
-            <a href="/servizi.html">Aree di Competenza</a>
-            <a href="/blog.html">Blog & News</a>
-            <a href="/consulenze-tech.html">Consulenze Tech</a>
-            <a href="/contatti.html">Contatti</a>
-        </nav>
+    <header class="sticky top-0 z-50 w-full border-b border-secondary/40 bg-background-dark/80 backdrop-blur-md">
+        <div class="layout-container flex h-full grow flex-col">
+            <div class="px-4 md:px-10 lg:px-40 flex flex-1 justify-center">
+                <div class="layout-content-container flex flex-col w-full max-w-[1200px] flex-1">
+                    <div class="flex items-center justify-between py-2 lg:py-4">
+                        <a href="/index.html" class="flex items-center gap-3 text-white cursor-pointer hover:opacity-80 transition-opacity">
+                            <img src="/images/logo.png" alt="Logo Studio Legale BCS" class="h-12 lg:h-24 w-auto object-contain">
+                            <span class="text-xl font-bold tracking-widest uppercase font-display hidden lg:block text-white">Studio Legale</span>
+                        </a>
+                        <div class="hidden lg:flex items-center gap-6">
+                            <nav class="flex items-center gap-6">
+                                <a class="text-white hover:text-primary transition-colors text-sm font-medium" href="/index.html">Home</a>
+                                <a class="text-white hover:text-primary transition-colors text-sm font-medium" href="/chi-siamo.html">Il Team</a>
+                                <a class="text-white hover:text-primary transition-colors text-sm font-medium" href="/servizi.html">Aree di Competenza</a>
+                                <a class="text-primary font-bold transition-colors text-sm" href="/blog.html">Blog & News</a>
+                                <a class="text-white hover:text-primary transition-colors text-sm font-medium" href="/consulenze-tech.html">Consulenze Tech</a>
+                                <a class="text-white hover:text-primary transition-colors text-sm font-medium" href="/contatti.html">Contatti</a>
+                            </nav>
+                        </div>
+                        <button class="lg:hidden text-white">
+                            <span class="material-symbols-outlined">menu</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
 
     <!-- HEADER IMAGE: Dynamically loaded from dashboard -->
