@@ -8,7 +8,7 @@ description: Generate a new standalone AI News Page from JSON data
 
 1. **ABSOLUTE PATHS ONLY** - All links MUST start with `/` (e.g., `/images/logo.png`, `/index.html`)
 2. **NO AI IMAGE GENERATION** - Use thumbnail manually uploaded by user
-3. **ASK FOR THUMBNAIL URL** - Before creating HTML, ask user for the blog thumbnail filename
+3. **THUMBNAIL STRATEGY** - If user provides filename, use it. Otherwise, leave image field empty for Dashboard upload.
 
 ---
 
@@ -17,9 +17,10 @@ description: Generate a new standalone AI News Page from JSON data
 ### Step 1: Read PDF
 Extract ALL text content visually via browser agent.
 
-### Step 2: Ask User for Thumbnail
-**BEFORE creating HTML, ask the user:**
-> "Qual è il nome del file della miniatura che hai caricato nel blog? (es: `Gemini_Generated_Image_xyz.png`)"
+### Step 2: Thumbnail Configuration
+**Do NOT block execution to ask for thumbnail.**
+- If user provides filename: Use it.
+- If not provided: Leave image field empty in `posts.json` (User will upload via Dashboard).
 
 The full path will be: `/images/blog/[FILENAME]`
 

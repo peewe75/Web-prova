@@ -119,7 +119,7 @@ async function initBlogGrid(containerId, categoryFilter = 'all', dateFilter = 'a
 
             // Build image HTML
             const imageHtml = post.image
-                ? `<img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover object-center" loading="lazy">`
+                ? `<div class="bg-surface-dark w-full h-full flex items-center justify-center"><img src="${post.image}" alt="${post.title}" class="w-full h-full object-contain" loading="lazy"></div>`
                 : `<div class="w-full h-full" style="background: linear-gradient(to bottom right, #1a3326, #244233);"></div>`;
 
             article.innerHTML = `

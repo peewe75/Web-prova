@@ -8,6 +8,11 @@ $method = $_SERVER['REQUEST_METHOD'];
 $dataFile = '../data/posts.json';
 $uploadDir = '../images/blog/';
 
+// Increase upload limits
+ini_set('upload_max_filesize', '50M');
+ini_set('post_max_size', '50M');
+ini_set('memory_limit', '256M');
+
 // Ensure upload directory exists
 if (!file_exists($uploadDir)) {
     mkdir($uploadDir, 0777, true);
@@ -108,7 +113,27 @@ if ($method === 'POST') {
 
         if (move_uploaded_file($tmpName, $uploadDir . $newFilename)) {
             $imagePath = 'images/blog/' . $newFilename;
+        } else {
+            http_response_code(500);
+            echo json_encode(["message" => "Failed to move uploaded file."]);
+            exit();
         }
+    } elseif (isset($_FILES['image']) && $_FILES['image']['error'] !== UPLOAD_ERR_NO_FILE) {
+        // Upload failed with error
+        $uploadErrorParams = [
+            UPLOAD_ERR_INI_SIZE => 'File exceeds upload_max_filesize directive',
+            UPLOAD_ERR_FORM_SIZE => 'File exceeds MAX_FILE_SIZE directive',
+            UPLOAD_ERR_PARTIAL => 'File was only partially uploaded',
+            UPLOAD_ERR_NO_TMP_DIR => 'Missing temporary folder',
+            UPLOAD_ERR_CANT_WRITE => 'Failed to write file to disk',
+            UPLOAD_ERR_EXTENSION => 'A PHP extension stopped the file upload'
+        ];
+        $errCode = $_FILES['image']['error'];
+        $errMsg = isset($uploadErrorParams[$errCode]) ? $uploadErrorParams[$errCode] : 'Unknown upload error';
+
+        http_response_code(400);
+        echo json_encode(["message" => "Image upload failed: " . $errMsg]);
+        exit();
     } elseif (isset($input['generated_image']) && !empty($input['generated_image'])) {
         // Handle Generated Image
         $tempFile = '../images/temp/' . basename($input['generated_image']);
