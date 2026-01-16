@@ -1,4 +1,4 @@
-ï»¿<!DOCTYPE html>
+<!DOCTYPE html>
 <html class="dark" lang="it">
 
 <head>
@@ -94,7 +94,7 @@
                 </h1>
                 <p id="dynamic-subtitle"
                     class="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed">
-                    Compila il form sottostante. Il nostro team valuterÃ  la tua richiesta e ti ricontatterÃ  al piÃ¹
+                    Compila il form sottostante. Il nostro team valuterà la tua richiesta e ti ricontatterà al più
                     presto.
                 </p>
             </div>
@@ -196,7 +196,7 @@
                                 class="h-12 lg:h-24 w-auto object-contain">
                         </div>
                         <p class="text-gray-400 text-sm">
-                            Innovativi, competenti, affidabili.<br>Lâ€™alternativa etica e moderna.
+                            Innovativi, competenti, affidabili.<br>L’alternativa etica e moderna.
                         </p>
                     </div>
                     <div class="flex flex-col gap-4">
@@ -227,14 +227,14 @@
                             class="text-gray-400 hover:text-primary text-sm transition-colors">info@studiodigitale.eu</a>
                         <a href="tel:+390313515213"
                             class="text-gray-400 hover:text-primary text-sm transition-colors">031 3515213</a>
-                        <a href="https://www.google.com/maps/search/?api=1&query=Via+Matteotti+33,+22063+CantÃ¹+(CO)"
+                        <a href="https://www.google.com/maps/search/?api=1&query=Via+Matteotti+33,+22063+Cantù+(CO)"
                             target="_blank" class="text-gray-400 hover:text-primary text-sm transition-colors">Via
-                            Matteotti 33, 22063 CantÃ¹ (CO)</a>
+                            Matteotti 33, 22063 Cantù (CO)</a>
                     </div>
                 </div>
                 <div
                     class="border-t border-secondary/50 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p class="text-gray-600 text-xs">Â© 2024 Studio Legale BCS. Tutti i diritti riservati.</p>
+                    <p class="text-gray-600 text-xs">© 2024 Studio Legale BCS. Tutti i diritti riservati.</p>
                     <a href="cookie-policy.html"
                         class="text-gray-600 hover:text-primary text-xs transition-colors">Cookie Policy</a>
                 </div>
@@ -253,10 +253,10 @@
 
             if (ref) {
                 // If referenced by a team member
-                titleElement.innerHTML = `Richiesta di Consulenza â€“ <span class="text-primary">${ref}</span>`;
+                titleElement.innerHTML = `Richiesta di Consulenza – <span class="text-primary">${ref}</span>`;
             } else if (topic) {
                 // If referenced by a topic
-                titleElement.innerHTML = `Richiesta di Consulenza â€“ <span class="text-primary">${topic}</span>`;
+                titleElement.innerHTML = `Richiesta di Consulenza – <span class="text-primary">${topic}</span>`;
 
                 // Try to auto-select the topic in the dropdown
                 for (let i = 0; i < selectElement.options.length; i++) {
@@ -350,13 +350,13 @@
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('Errore di connessione. Riprova piÃ¹ tardi.');
+                alert('Errore di connessione. Riprova più tardi.');
                 btn.disabled = false;
                 btn.innerHTML = originalText;
             }
         });
     </script>
-    <script src="js/main.js"></script>
+    <script src="js/cookie-consent.js"></script>`n    <script src="js/main.js"></script>
 </body>
 
 </html>
