@@ -5,6 +5,10 @@ node_modules/
 .idea
 uploads/
 
+# Server-managed data (modified by dashboard)
+data/posts.json
+images/blog/
+
 # Sensitive configuration files
 config.php
 api/config.php
