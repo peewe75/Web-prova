@@ -3,6 +3,7 @@ const init = () => {
     setupSearch();
     setupBackToTop();
     setupMobileMenu();
+    setupCookieConsent(); // Initialize Cookie Consent
 };
 
 if (document.readyState === 'loading') {
@@ -147,5 +148,81 @@ function setupBackToTop() {
             top: 0,
             behavior: 'smooth'
         });
+    });
+}
+
+/**
+ * Cookie Consent Popup
+ */
+function setupCookieConsent() {
+    const consent = localStorage.getItem('cookieConsent');
+    if (consent) return; // Already accepted or rejected
+
+    // Create Popup Container
+    const popup = document.createElement('div');
+    popup.id = 'cookie-popup';
+    popup.className = 'fixed bottom-0 left-0 right-0 z-[60] p-4 md:p-6 bg-surface-dark border-t border-secondary shadow-[0_-5px_20px_rgba(0,0,0,0.5)] transform transition-transform duration-500 translate-y-full';
+
+    // Determine relative path to cookie-policy.html based on Logo location
+    // This allows it to work in subdirectories (news/, etc.)
+    const logo = document.querySelector('img[alt*="Logo"]');
+    let policyPath = 'cookie-policy.html';
+
+    if (logo) {
+        // logo.getAttribute returns the raw string in the HTML (e.g. "../images/logo.png")
+        // We replace 'images/logo.png' with '' to get the relative root (e.g. "../")
+        const logoSrc = logo.getAttribute('src');
+        if (logoSrc && logoSrc.includes('images/logo.png')) {
+            policyPath = logoSrc.replace('images/logo.png', 'cookie-policy.html');
+        }
+    }
+
+    popup.innerHTML = `
+        <div class="layout-container max-w-[1200px] mx-auto flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8">
+            <div class="text-sm text-gray-300 text-center md:text-left">
+                <p>
+                    Utilizziamo cookie tecnici e di terze parti per migliorare la tua esperienza. 
+                    Continuando a navigare, accetti la nostra 
+                    <a href="${policyPath}" class="text-primary hover:underline font-bold">Cookie Policy</a>.
+                </p>
+                <div class="mt-1 text-xs text-gray-500">
+                    Il rifiuto potrebbe limitare alcune funzionalità.
+                </div>
+            </div>
+            <div class="flex items-center gap-3 shrink-0">
+                <button id="btn-reject" class="px-4 py-2 rounded-lg border border-secondary text-gray-300 hover:text-white hover:border-white transition-colors text-sm font-bold">
+                    Rifiuta
+                </button>
+                <button id="btn-accept" class="px-6 py-2 rounded-lg bg-primary hover:bg-primary-hover text-background-dark shadow-[0_0_15px_rgba(79,255,172,0.3)] transition-all text-sm font-bold">
+                    Accetta
+                </button>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(popup);
+
+    // Animate In (small delay to ensure render)
+    setTimeout(() => {
+        popup.classList.remove('translate-y-full');
+    }, 100);
+
+    // Handlers
+    const btnAccept = popup.querySelector('#btn-accept');
+    const btnReject = popup.querySelector('#btn-reject');
+
+    const closePopup = () => {
+        popup.classList.add('translate-y-full');
+        setTimeout(() => popup.remove(), 500);
+    };
+
+    btnAccept.addEventListener('click', () => {
+        localStorage.setItem('cookieConsent', 'accepted');
+        closePopup();
+    });
+
+    btnReject.addEventListener('click', () => {
+        localStorage.setItem('cookieConsent', 'rejected');
+        closePopup();
     });
 }
