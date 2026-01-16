@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html class="dark" lang="it">
 
 <head>
@@ -164,6 +164,18 @@
                                 rows="5"></textarea>
                         </div>
 
+                        <div class="flex items-start gap-3">
+                            <div class="flex items-center h-5">
+                                <input id="gdpr-consent" type="checkbox" required
+                                    class="w-4 h-4 border border-border-dark rounded bg-[#11221a] text-primary focus:ring-primary focus:ring-offset-0 focus:ring-offset-transparent">
+                            </div>
+                            <label for="gdpr-consent" class="text-sm text-gray-400">
+                                Ho letto l'informativa privacy e acconsento al trattamento dei dati personali ai
+                                sensi del GDPR. <a href="cookie-policy.html" target="_blank"
+                                    class="text-primary hover:underline">Leggi Policy</a>
+                            </label>
+                        </div>
+
                         <button type="submit"
                             class="w-full bg-primary hover:bg-primary-hover text-background-dark font-bold py-4 rounded-xl transition-all shadow-[0_0_20px_rgba(19,236,128,0.3)] hover:scale-[1.02]">
                             Invia Richiesta
@@ -223,6 +235,7 @@
                 <div
                     class="border-t border-secondary/50 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
                     <p class="text-gray-600 text-xs">© 2024 Studio Legale BCS. Tutti i diritti riservati.</p>
+                        <a href="cookie-policy.html" class="text-gray-600 hover:text-primary text-xs transition-colors">Cookie Policy</a>
                 </div>
             </div>
         </div>
