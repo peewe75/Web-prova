@@ -1,0 +1,390 @@
+﻿<!DOCTYPE html>
+<html class="dark" lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hater, Diffamazione e Influencer: Guida Legale - Studio Legale BCS</title>
+    <meta name="description"
+        content="Analisi giuridica sul confine tra diritto di critica e diffamazione aggravata sui social. Scopri come difenderti dagli hater e tutelare la tua reputazione digitale.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#13EC80',
+                        'primary-hover': '#4fffac',
+                        'secondary': '#3a6b54',
+                        'background-dark': '#111714',
+                        'surface-dark': '#1a2520'
+                    },
+                    fontFamily: {
+                        'display': ['"Space Grotesk"', 'sans-serif'],
+                        'body': ['"Noto Sans"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a2520;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #3a6b54;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #13EC80;
+        }
+    </style>
+</head>
+
+<body class="bg-background-dark font-display text-white">
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-50 w-full border-b border-secondary/40 bg-background-dark/80 backdrop-blur-md">
+        <div class="layout-container flex h-full grow flex-col">
+            <div class="px-4 md:px-10 lg:px-40 flex flex-1 justify-center">
+                <div class="layout-content-container flex flex-col w-full max-w-[1200px] flex-1">
+                    <div class="flex items-center justify-between py-2 lg:py-4">
+                        <a href="/index.html"
+                            class="flex items-center gap-3 text-white cursor-pointer hover:opacity-80 transition-opacity">
+                            <img src="/images/logo.png" alt="Logo Studio Legale BCS"
+                                class="h-12 lg:h-24 w-auto object-contain">
+                            <span
+                                class="text-xl font-bold tracking-widest uppercase font-display hidden lg:block text-white">Studio
+                                Legale</span>
+                        </a>
+                        <div class="hidden lg:flex items-center gap-6">
+                            <nav class="flex items-center gap-6">
+                                <a class="text-white hover:text-primary transition-colors text-sm font-medium"
+                                    href="/index.html">Home</a>
+                                <a class="text-white hover:text-primary transition-colors text-sm font-medium"
+                                    href="/chi-siamo.html">Il Team</a>
+                                <a class="text-white hover:text-primary transition-colors text-sm font-medium"
+                                    href="/servizi.html">Aree di Competenza</a>
+                                <a class="text-primary font-bold transition-colors text-sm" href="/blog.html">Blog &
+                                    News</a>
+                                <a class="text-white hover:text-primary transition-colors text-sm font-medium"
+                                    href="/consulenze-tech.html">Consulenze Tech</a>
+                                <a class="text-white hover:text-primary transition-colors text-sm font-medium"
+                                    href="/contatti.html">Contatti</a>
+                            </nav>
+                        </div>
+                        <button class="lg:hidden text-white">
+                            <span class="material-symbols-outlined">menu</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HEADER IMAGE: Dynamically loaded from dashboard -->
+    <div id="header-image" class="w-full relative">
+        <img id="dynamic-header-img" src="" alt="Hater e Reati Penali"
+            class="w-full h-auto object-contain max-h-[400px] mx-auto" style="display: none;">
+        <div class="absolute inset-0 bg-gradient-to-t from-background-dark/80 to-transparent pointer-events-none"></div>
+    </div>
+
+    <script>
+            // Dynamic Header Image Loader - Fetches image from dashboard data
+            (async function loadHeaderImage() {
+                try {
+                    const currentPath = window.location.pathname;
+                    const res = await fetch('/api/blog.php');
+                    const posts = await res.json();
+
+                    // Find the post that links to this page
+                    const matchingPost = posts.find(post => {
+                        if (!post.custom_url) return false;
+                        // Check if custom_url matches current page
+                        return currentPath.includes(post.custom_url) ||
+                            post.custom_url.includes(currentPath.split('/').pop()) ||
+                            currentPath.endsWith(post.custom_url.split('/').pop());
+                    });
+
+                    const img = document.getElementById('dynamic-header-img');
+                    if (matchingPost && matchingPost.image) {
+                        img.src = '/' + matchingPost.image;
+                        img.style.display = 'block';
+                    } else {
+                        // Fallback: show a gradient background
+                        document.getElementById('header-image').style.background = 'linear-gradient(to right, #1a3326, #244233)';
+                        document.getElementById('header-image').style.minHeight = '200px';
+                    }
+                } catch (e) {
+                    console.log('Could not load dynamic header image:', e);
+                    document.getElementById('header-image').style.background = 'linear-gradient(to right, #1a3326, #244233)';
+                    document.getElementById('header-image').style.minHeight = '200px';
+                }
+            })();
+    </script>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow layout-container px-4 md:px-10 lg:px-40 flex justify-center py-12 md:py-20">
+        <div class="w-full max-w-[1000px] flex flex-col lg:flex-row gap-12">
+
+            <!-- SIDEBAR: Table of Contents -->
+            <aside class="lg:w-1/3 order-2 lg:order-1">
+                <div class="sticky top-32 bg-surface-dark border border-secondary rounded-2xl p-6 shadow-xl">
+                    <h3 class="text-primary font-bold uppercase tracking-widest text-sm mb-6">Indice Contenuti</h3>
+                    <nav class="flex flex-col gap-4">
+                        <a href="#intro" class="text-gray-400 hover:text-primary text-sm transition-colors">Diritto e
+                            Digitale</a>
+                        <a href="#differenza" class="text-gray-400 hover:text-primary text-sm transition-colors">Critica
+                            vs Diffamazione</a>
+                        <a href="#limiti" class="text-gray-400 hover:text-primary text-sm transition-colors">I Limiti
+                            della Critica</a>
+                        <a href="#dissenso-reato"
+                            class="text-gray-400 hover:text-primary text-sm transition-colors">Quando il Dissenso è
+                            Reato</a>
+                        <a href="#aggravata"
+                            class="text-gray-400 hover:text-primary text-sm transition-colors">Diffamazione
+                            Aggravata</a>
+                        <a href="#hate-speech" class="text-gray-400 hover:text-primary text-sm transition-colors">Hate
+                            Speech</a>
+                        <a href="#rischi" class="text-gray-400 hover:text-primary text-sm transition-colors">Cosa
+                            Rischia l'Hater</a>
+                        <a href="#denuncia" class="text-gray-400 hover:text-primary text-sm transition-colors">Come
+                            Denunciare</a>
+                    </nav>
+                    <div class="mt-8 pt-8 border-t border-secondary/50">
+                        <a href="/index.html" class="flex items-center gap-2 text-primary text-sm font-bold">
+                            ← Torna alla Home
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- ARTICLE CONTENT -->
+            <article class="lg:w-2/3 order-1 lg:order-2 font-body text-gray-200 leading-relaxed space-y-8">
+                <header class="mb-10">
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 mb-6">
+                        <span class="text-primary text-xs font-bold uppercase tracking-wider">Diritto Penale
+                            Digitale</span>
+                    </div>
+                    <h1 class="text-4xl md:text-5xl font-display font-bold text-white mb-6">Hater e Reati Penali: Quando
+                        il Commento Social Supera il Diritto di Critica</h1>
+                    <p class="text-xl text-gray-400 font-light">Analisi giuridica dei confini tra libertà di parola e
+                        diffamazione online. Come tutelarsi dagli attacchi degli hater.</p>
+                </header>
+
+                <div id="intro" class="space-y-6">
+                    <p>Nell'era dei social media, la visibilità è una medaglia a due facce. Da un lato offre opportunità
+                        di business e community building, dall'altro espone creator e influencer al lato oscuro del web:
+                        gli hater. Ma dove finisce la libertà di espressione e dove inizia il reato?</p>
+                    <p>Molti utenti credono erroneamente che il mondo virtuale sia una zona franca dove tutto è
+                        permesso. La realtà giuridica italiana è ben diversa: offendere la reputazione altrui online può
+                        costare caro, sia in termini economici che penali.</p>
+                </div>
+
+                <div id="differenza" class="space-y-6 pt-10 border-t border-secondary/30">
+                    <h2 class="text-2xl font-bold text-white mb-4">Differenza tra diritto di critica e reato di
+                        diffamazione</h2>
+                    <p>Il diritto di critica è garantito dall'articolo 21 della Costituzione italiana. Tuttavia, questo
+                        diritto non è assoluto. Quando si parla di personaggi pubblici o influencer, la legge ammette un
+                        margine di critica più ampio, ma non tollera l'aggressione gratuita alla dignità della persona.
+                    </p>
+                    <div class="bg-surface-dark border border-secondary p-4 rounded-xl">
+                        <p class="text-sm"><strong>La regola d'oro:</strong> Se il giudizio verte sull’operato o sui
+                            contenuti, siamo nell’ambito della critica. Se l’attacco si sposta sulla sfera personale,
+                            morale o fisica con l’intento di umiliare, si scivola nella diffamazione.</p>
+                    </div>
+                </div>
+
+                <div id="limiti" class="space-y-6 pt-10 border-t border-secondary/30">
+                    <h2 class="text-2xl font-bold text-white mb-4">I Limiti del Diritto di Critica</h2>
+                    <p>La Giurisprudenza ha stabilito il "decalogo" per rendere legittima una critica:</p>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-300">
+                        <li><strong>Verità:</strong> I fatti citati devono essere veri.</li>
+                        <li><strong>Pertinenza:</strong> Deve esserci un interesse pubblico o della community.</li>
+                        <li><strong>Continenza:</strong> La forma espositiva deve essere civile, priva di insulti
+                            gratuiti.</li>
+                    </ul>
+
+                    <div class="overflow-x-auto bg-surface-dark rounded-xl border border-secondary p-4 mt-6">
+                        <table class="w-full text-sm text-left text-gray-400">
+                            <thead class="text-xs text-primary uppercase bg-background-dark/50">
+                                <tr>
+                                    <th class="px-4 py-3">Elemento</th>
+                                    <th class="px-4 py-3">Diritto di Critica (Legale)</th>
+                                    <th class="px-4 py-3">Diffamazione (Illegale)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-secondary/30 hover:bg-white/5">
+                                    <td class="px-4 py-3 font-bold text-white">Oggetto</td>
+                                    <td class="px-4 py-3">Il contenuto, il prodotto</td>
+                                    <td class="px-4 py-3">La persona, la moralità</td>
+                                </tr>
+                                <tr class="hover:bg-white/5">
+                                    <td class="px-4 py-3 font-bold text-white">Scopo</td>
+                                    <td class="px-4 py-3">Esprimere dissenso</td>
+                                    <td class="px-4 py-3">Distruggere la reputazione</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="dissenso-reato" class="space-y-6 pt-10 border-t border-secondary/30">
+                    <h2 class="text-2xl font-bold text-white mb-4">Quando il dissenso diventa reato</h2>
+                    <p>Il dissenso diventa reato quando manca la funzionalità critica (<em>argumentum ad hominem</em>).
+                        L'uso di epiteti come "ladro", "truffatore" (senza prove), o insulti sessisti e razzisti, fa
+                        decadere ogni scriminante. In questi casi, l'influencer ha pieno diritto di agire legalmente.
+                    </p>
+                </div>
+
+                <div id="aggravata" class="space-y-6 pt-10 border-t border-secondary/30">
+                    <h2 class="text-2xl font-bold text-white mb-4">Diffamazione Aggravata</h2>
+                    <p>Sui social (Instagram, TikTok, Facebook), si parla quasi sempre di <strong>diffamazione
+                            aggravata</strong> (art. 595 c.p., terzo comma) perché il mezzo è idoneo a raggiungere un
+                        numero indeterminato di persone.</p>
+                    <p class="bg-primary/5 p-4 rounded-lg border-l-4 border-primary"><strong>Viralità:</strong> Anche se
+                        il commento viene cancellato, se è stato letto o screenshotttato da migliaia di utenti, il reato
+                        è consumato.</p>
+                </div>
+
+                <div id="hate-speech" class="space-y-6 pt-10 border-t border-secondary/30">
+                    <h2 class="text-2xl font-bold text-white mb-4">Hate Speech e Responsabilità</h2>
+                    <p>Se gli insulti si basano su discriminazione (razziale, etnica, religiosa, orientamento sessuale),
+                        si entra nel campo dell'Hate Speech e delle aggravanti previste dalla Legge Mancino. Qui è in
+                        gioco la dignità umana e l'ordine pubblico, non solo la reputazione.</p>
+                </div>
+
+                <div id="rischi" class="space-y-6 pt-10 border-t border-secondary/30">
+                    <h2 class="text-2xl font-bold text-white mb-4">Cosa rischia chi offende?</h2>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-surface-dark p-6 rounded-xl border border-secondary">
+                            <h3 class="text-primary font-bold text-lg mb-2">Rischi Penali</h3>
+                            <p class="text-sm">Reclusione da 6 mesi a 3 anni o multa minima di 516€. La condanna macchia
+                                il casellario giudiziale, con conseguenze lavorative future.</p>
+                        </div>
+                        <div class="bg-surface-dark p-6 rounded-xl border border-secondary">
+                            <h3 class="text-primary font-bold text-lg mb-2">Rischi Civili (Risarcimento)</h3>
+                            <p class="text-sm">Risarcimento per: <strong>Danno morale</strong> (sofferenza),
+                                <strong>Danno all'immagine</strong> (reputazione) e <strong>Danno patrimoniale</strong>
+                                (perdita di contratti/chance).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="denuncia" class="space-y-6 pt-10 border-t border-secondary/30">
+                    <h2 class="text-2xl font-bold text-white mb-4">Come denunciare un hater</h2>
+                    <p>Se sei vittima di odio online, ecco come muoverti per raccogliere prove valide:</p>
+                    <ol class="list-decimal pl-6 space-y-2 text-gray-300">
+                        <li><strong>URL:</strong> Salva l'indirizzo preciso del post o commento.</li>
+                        <li><strong>Copia Forense:</strong> Uno screenshot semplice non basta. Serve una copia forense o
+                            una marcatura temporale certificata.</li>
+                        <li><strong>Notaio:</strong> In alternativa, autentica il contenuto da un notaio.</li>
+                        <li><strong>Polizia Postale:</strong> Sporgi denuncia/querela. Le autorità possono risalire
+                            all'indirizzo IP anche dietro profili fake o anonimi.</li>
+                    </ol>
+                </div>
+
+            </article>
+        </div>
+    </main>
+
+    <!-- FOOTER: Exact copy from index.html (4-column layout) -->
+    <footer class="border-t border-secondary bg-background-dark pt-16 pb-8 mt-auto">
+        <div class="layout-container px-4 md:px-10 lg:px-40 flex justify-center">
+            <div class="w-full max-w-[1200px] flex flex-col gap-12">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+                    <div class="flex flex-col gap-4">
+                        <div class="flex items-center gap-2 text-white">
+                            <img src="/images/logo.png" alt="Logo Studio Legale BCS" class="h-24 w-auto object-contain">
+                        </div>
+                        <p class="text-gray-400 text-sm">
+                            Innovativi, competenti, affidabili.<br>L’alternativa etica e moderna.
+                        </p>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-white font-bold text-sm uppercase tracking-wider">Servizi</h4>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="/approfondimento-penale.html">Diritto Penale</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="/approfondimento-gioco.html">Diritto del Gioco</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="/approfondimento-civile.html">Diritto Civile e Famiglia</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="/approfondimento-bancario.html">Bancario e Assicurativo</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="/approfondimento-crisi.html">Crisi d'Impresa</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="/consulenze-tech.html">Consulenze Tech</a>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-white font-bold text-sm uppercase tracking-wider">Studio</h4>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors" href="/chi-siamo.html">Il
+                            Team</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="/contatti.html">Contatti</a>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-white font-bold text-sm uppercase tracking-wider">Contatti</h4>
+                        <a href="mailto:info@studiodigitale.eu"
+                            class="text-gray-400 hover:text-primary text-sm transition-colors">info@studiodigitale.eu</a>
+                        <a href="tel:+390313515213"
+                            class="text-gray-400 hover:text-primary text-sm transition-colors">031 3515213</a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Via+Matteotti+33,+22063+Cantù+(CO)"
+                            target="_blank" class="text-gray-400 hover:text-primary text-sm transition-colors">Via
+                            Matteotti 33, 22063 Cantù (CO)</a>
+                    </div>
+                </div>
+                <div class="border-t border-secondary pt-8">
+                    <p class="text-gray-500 text-sm text-center">
+                        © 2026 Studio Legale Sapone. Tutti i diritti riservati.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BACK TO TOP BUTTON -->
+    <button id="backToTop"
+        class="fixed bottom-8 right-8 bg-primary text-background-dark p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 z-50 hover:bg-white border-2 border-transparent hover:border-primary">
+        <span class="material-symbols-outlined">arrow_upward</span>
+    </button>
+    <script>
+        const backToTopButton = document.getElementById("backToTop");
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.remove("opacity-0", "invisible");
+            } else {
+                backToTopButton.classList.add("opacity-0", "invisible");
+            }
+        });
+        backToTopButton.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,499 @@
+﻿<!DOCTYPE html>
+<html class="dark" lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unioni Civili 2025: Guida alla Cassazione n. 25495 - Studio Legale BCS</title>
+    <meta name="description"
+        content="Approfondimento sulla Cassazione n. 25495/2025 in materia di unioni civili e assegno di scioglimento.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4fffac',
+                        secondary: '#3a6b54',
+                        background: {
+                            dark: '#0a1a12',
+                            light: '#ffffff'
+                        },
+                        surface: {
+                            dark: '#12261a',
+                            light: '#f3f4f6'
+                        }
+                    },
+                    fontFamily: {
+                        display: ['Space Grotesk', 'sans-serif'],
+                        body: ['Noto Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a1a12;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #3a6b54;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4fffac;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body class="bg-background-dark font-display text-white">
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-50 w-full border-b border-secondary/40 bg-background-dark/80 backdrop-blur-md">
+        <div class="layout-container flex h-full grow flex-col">
+            <div class="px-4 md:px-10 lg:px-40 flex flex-1 justify-center">
+                <div class="layout-content-container flex flex-col w-full max-w-[1200px] flex-1">
+                    <div class="flex items-center justify-between py-2 lg:py-4">
+                        <a href="/index.html"
+                            class="flex items-center gap-3 text-white cursor-pointer hover:opacity-80 transition-opacity">
+                            <img src="/images/logo.png" alt="Logo Studio Legale BCS"
+                                class="h-12 lg:h-24 w-auto object-contain">
+                            <span
+                                class="text-xl font-bold tracking-widest uppercase font-display hidden lg:block text-white">Studio
+                                Legale</span>
+                        </a>
+                        <div class="hidden lg:flex items-center gap-6">
+                            <nav class="flex items-center gap-6">
+                                <a class="text-white hover:text-primary transition-colors text-sm font-medium"
+                                    href="/index.html">Home</a>
+                                <a class="text-white hover:text-primary transition-colors text-sm font-medium"
+                                    href="/chi-siamo.html">Il Team</a>
+                                <a class="text-white hover:text-primary transition-colors text-sm font-medium"
+                                    href="/servizi.html">Aree di Competenza</a>
+                                <a class="text-primary font-bold transition-colors text-sm" href="/blog.html">Blog &
+                                    News</a>
+                                <a class="text-white hover:text-primary transition-colors text-sm font-medium"
+                                    href="/consulenze-tech.html">Consulenze Tech</a>
+                                <a class="text-white hover:text-primary transition-colors text-sm font-medium"
+                                    href="/contatti.html">Contatti</a>
+                            </nav>
+                        </div>
+                        <button class="lg:hidden text-white">
+                            <span class="material-symbols-outlined">menu</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HEADER IMAGE: Dynamically loaded from dashboard -->
+    <div id="header-image" class="w-full relative min-h-[300px] flex items-center justify-center bg-surface-dark">
+        <img id="dynamic-header-img" src="" alt="Unioni Civili 2025"
+            class="w-full h-auto object-cover max-h-[500px] mx-auto opacity-0 transition-opacity duration-500"
+            style="display: none;">
+        <div
+            class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent pointer-events-none">
+        </div>
+        <!-- Loader / Fallback -->
+        <div id="img-placeholder" class="text-gray-500 text-sm">Caricamento immagine...</div>
+    </div>
+
+    <script>
+            // Dynamic Header Image Loader - Fetches image from dashboard data
+            (async function loadHeaderImage() {
+                try {
+                    const currentPath = window.location.pathname;
+                    const res = await fetch('/api/blog.php');
+                    const posts = await res.json();
+
+                    // Find the post that links to this page
+                    const matchingPost = posts.find(post => {
+                        if (!post.custom_url) return false;
+                        // Check if custom_url matches current page
+                        return currentPath.includes(post.custom_url) ||
+                            post.custom_url.includes(currentPath.split('/').pop()) ||
+                            currentPath.endsWith(post.custom_url.split('/').pop());
+                    });
+
+                    const img = document.getElementById('dynamic-header-img');
+                    const placeholder = document.getElementById('img-placeholder');
+
+                    if (matchingPost && matchingPost.image) {
+                        img.src = '/' + matchingPost.image;
+                        img.onload = () => {
+                            img.style.display = 'block';
+                            img.classList.remove('opacity-0');
+                            placeholder.style.display = 'none';
+                        };
+                    } else {
+                        // Fallback: show a gradient background
+                        const headerContainer = document.getElementById('header-image');
+                        headerContainer.style.background = 'linear-gradient(135deg, #1a3326 0%, #0f2218 100%)';
+                        placeholder.innerHTML = 'Immagine non disponibile';
+                    }
+                } catch (e) {
+                    console.log('Could not load dynamic header image:', e);
+                    const headerContainer = document.getElementById('header-image');
+                    headerContainer.style.background = 'linear-gradient(135deg, #1a3326 0%, #0f2218 100%)';
+                }
+            })();
+    </script>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow layout-container px-4 md:px-10 lg:px-40 flex justify-center py-12 md:py-20">
+        <div class="w-full max-w-[1000px] flex flex-col lg:flex-row gap-12">
+
+            <!-- SIDEBAR: Table of Contents -->
+            <aside class="lg:w-1/3 order-2 lg:order-1">
+                <div class="sticky top-32 bg-surface-dark border border-secondary rounded-2xl p-6 shadow-xl">
+                    <h3 class="text-primary font-bold uppercase tracking-widest text-sm mb-6">Indice Contenuti</h3>
+                    <nav class="flex flex-col gap-4">
+                        <a href="#intro"
+                            class="text-gray-400 hover:text-primary text-sm transition-colors">Introduzione</a>
+                        <a href="#principio" class="text-gray-400 hover:text-primary text-sm transition-colors">Il
+                            Principio di Diritto</a>
+                        <a href="#differenza"
+                            class="text-gray-400 hover:text-primary text-sm transition-colors">Mantenimento vs
+                            Scioglimento</a>
+                        <a href="#funzione" class="text-gray-400 hover:text-primary text-sm transition-colors">Funzione
+                            Compensativa</a>
+                        <a href="#tenore" class="text-gray-400 hover:text-primary text-sm transition-colors">Tenore di
+                            Vita</a>
+                        <a href="#requisiti"
+                            class="text-gray-400 hover:text-primary text-sm transition-colors">Requisiti</a>
+                        <a href="#tabella" class="text-gray-400 hover:text-primary text-sm transition-colors">Tabella
+                            Criteri</a>
+                        <a href="#convivenza" class="text-gray-400 hover:text-primary text-sm transition-colors">Nuova
+                            Convivenza</a>
+                        <a href="#conclusione"
+                            class="text-gray-400 hover:text-primary text-sm transition-colors">Conclusioni</a>
+                    </nav>
+                    <div class="mt-8 pt-8 border-t border-secondary/50">
+                        <a href="/index.html"
+                            class="flex items-center gap-2 text-primary text-sm font-bold hover:underline">
+                            ← Torna alla Home
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- ARTICLE CONTENT -->
+            <article class="lg:w-2/3 order-1 lg:order-2 font-body text-gray-200 leading-relaxed space-y-8">
+                <header class="mb-10">
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 mb-6">
+                        <span class="text-primary text-xs font-bold uppercase tracking-wider">Diritto Civile</span>
+                    </div>
+                    <h1 class="text-4xl md:text-5xl font-display font-bold text-white mb-6">Unioni Civili: Guida alla
+                        Cassazione n. 25495/2025</h1>
+                    <p class="text-xl text-gray-400 font-light">
+                        Recente pronuncia della Corte di Cassazione in merito all'assegno di scioglimento nelle unioni
+                        civili.
+                    </p>
+                </header>
+
+                <section id="intro">
+                    <p class="font-bold text-lg text-white mb-6">
+                        Con l'ordinanza n. 25495, la Corte di Cassazione ha ridefinito i criteri economici per lo
+                        scioglimento delle unioni civili. Questa pronuncia segna un punto di svolta per le dispute
+                        post-relazionali del 2025, chiarendo i limiti tra autoresponsabilità economica e solidarietà
+                        post-unione.
+                    </p>
+                    <p>
+                        Questa guida analizza come la sentenza impatta il diritto all'assegno per l'ex partner,
+                        abbandonando gli automatismi del passato in favore di una valutazione rigorosa dei contributi
+                        forniti alla vita di coppia.
+                    </p>
+                </section>
+
+                <section id="principio">
+                    <h2 class="text-2xl font-display font-bold text-white mb-4">Cosa stabilisce la Cassazione 25495/2025
+                        sull'assegno di scioglimento</h2>
+                    <p>
+                        La sentenza n. 25495 chiarisce l'applicazione della Legge 76/2016 (Legge Cirinnà) in materia di
+                        assegni post-unione. Il principio cardine stabilito dalla Corte è che <strong>l'assegno non è
+                            una rendita automatica</strong>.
+                    </p>
+                    <p class="mt-4">
+                        Il diritto al contributo economico sussiste solo presenza di un <strong>nesso causale</strong>
+                        dimostrabile: la mancanza di mezzi adeguati del richiedente deve essere diretta conseguenza
+                        delle scelte condivise durante l'unione civile. Non basta la disparità economica; serve provare
+                        che tale disparità derivi dalla vita familiare.
+                    </p>
+                </section>
+
+                <section id="differenza">
+                    <h2 class="text-2xl font-display font-bold text-white mb-4">Differenza tra assegno di mantenimento e
+                        assegno di scioglimento</h2>
+                    <p>
+                        Per una corretta strategia legale, è fondamentale distinguere i due istituti, spesso confusi:
+                    </p>
+                    <ul class="list-disc pl-6 space-y-2 mt-4 marker:text-primary">
+                        <li><strong>Assegno di mantenimento:</strong> Tipico della separazione matrimoniale, mira a
+                            preservare il tenore di vita. <strong>Non esiste nelle unioni civili</strong>, poiché non è
+                            prevista la fase di separazione.</li>
+                        <li><strong>Assegno di scioglimento (o divorzile):</strong> Unica misura applicabile alla fine
+                            dell'unione civile.</li>
+                    </ul>
+                    <p class="mt-4">
+                        La Cassazione 25495 ribadisce che l'assegno di scioglimento non ha lo scopo di replicare il
+                        benessere goduto durante l'unione, ma di compensare o assistere l'ex partner in base a criteri
+                        di <strong>indipendenza economica</strong>.
+                    </p>
+                </section>
+
+                <section id="funzione">
+                    <h2 class="text-2xl font-display font-bold text-white mb-4">La funzione perequativo-compensativa: Il
+                        nuovo criterio dominante</h2>
+                    <p>
+                        La sentenza 25495 consolida la natura <strong>perequativo-compensativa</strong> dell'assegno. Il
+                        giudice non valuta solo lo stato di bisogno (funzione assistenziale), ma indaga le
+                        <strong>ragioni</strong> della disparità patrimoniale.
+                    </p>
+                    <p class="mt-4">L'assegno spetta se il partner economicamente più debole ha:</p>
+                    <ul class="list-disc pl-6 space-y-2 mt-4 marker:text-primary">
+                        <li>Sacrificato la propria carriera o ridotto l'orario di lavoro.</li>
+                        <li>Rinunciato a opportunità professionali per dedicarsi alla casa o alla famiglia.</li>
+                        <li>Permesso, con il proprio supporto domestico, l'arricchimento dell'altro partner.</li>
+                    </ul>
+                    <p class="mt-4">
+                        In questi casi, l'assegno serve a <strong>riequilibrare</strong> le sorti economiche,
+                        riconoscendo il contributo al patrimonio comune.
+                    </p>
+                </section>
+
+                <section id="tenore">
+                    <h2 class="text-2xl font-display font-bold text-white mb-4">Tenore di vita e autoresponsabilità:
+                        Cosa cambia nel 2025</h2>
+                    <p>
+                        Il "tenore di vita" goduto durante l'unione civile <strong>cessa di essere il parametro
+                            esclusivo</strong> di riferimento. Con la giurisprudenza 2025, il principio guida diventa
+                        l'<strong>autoresponsabilità</strong>.
+                    </p>
+                    <p class="mt-4">
+                        Se il richiedente è giovane, abile al lavoro e possiede una formazione spendibile, l'alto tenore
+                        di vita precedente non garantisce l'assegno. L'obiettivo della Cassazione è favorire
+                        l'indipendenza futura, non perpetuare lo status quo del passato.
+                    </p>
+                </section>
+
+                <section id="requisiti">
+                    <h2 class="text-2xl font-display font-bold text-white mb-4">Requisiti per richiedere l'assegno di
+                        scioglimento</h2>
+                    <p>Alla luce della sentenza 25495, il richiedente deve soddisfare tre requisiti stringenti:</p>
+                    <ol class="list-decimal pl-6 space-y-2 mt-4 marker:text-primary">
+                        <li><strong>Mancanza di mezzi adeguati:</strong> Impossibilità oggettiva di vivere
+                            dignitosamente in autonomia.</li>
+                        <li><strong>Impossibilità oggettiva di reddito:</strong> La disoccupazione o il basso reddito
+                            devono dipendere da fattori esterni (età, salute, mercato) e non da inerzia colpevole.</li>
+                        <li><strong>Contributo effettivo:</strong> Prova documentata del contributo fornito alla
+                            formazione del patrimonio dell'altro partner o di quello comune (incluso il lavoro
+                            casalingo).</li>
+                    </ol>
+                </section>
+
+                <section id="tabella">
+                    <h2 class="text-2xl font-display font-bold text-white mb-4">Tabella dei criteri di quantificazione
+                        dell'assegno</h2>
+                    <p class="mb-4">La Cassazione 25495 adotta un "criterio composito" per il calcolo, basato su una
+                        valutazione integrata dei seguenti parametri:</p>
+
+                    <div class="overflow-x-auto">
+                        <table
+                            class="w-full text-left border-collapse border border-secondary/30 rounded-lg overflow-hidden">
+                            <thead class="bg-surface-dark text-primary">
+                                <tr>
+                                    <th class="p-4 border-b border-secondary/30 font-bold">Parametro</th>
+                                    <th class="p-4 border-b border-secondary/30 font-bold">Peso nel Calcolo</th>
+                                    <th class="p-4 border-b border-secondary/30 font-bold">Descrizione</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-secondary/20">
+                                <tr>
+                                    <td class="p-4 font-medium text-white">Durata dell'Unione</td>
+                                    <td class="p-4 text-gray-300">Alto</td>
+                                    <td class="p-4 text-gray-400">Più lunga è l'unione, maggiore è l'aspettativa di
+                                        compensazione per i sacrifici fatti.</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 font-medium text-white">Età del Richiedente</td>
+                                    <td class="p-4 text-gray-300">Alto</td>
+                                    <td class="p-4 text-gray-400">Un'età avanzata riduce le possibilità di
+                                        ricollocamento lavorativo.</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 font-medium text-white">Sacrifici Professionali</td>
+                                    <td class="p-4 text-gray-300">Determinante</td>
+                                    <td class="p-4 text-gray-400">Rinunce di carriera per favorire la famiglia aumentano
+                                        sensibilmente l'importo.</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 font-medium text-white">Potenziale Lavorativo</td>
+                                    <td class="p-4 text-gray-300">Medio/Alto</td>
+                                    <td class="p-4 text-gray-400">Titoli di studio ed esperienze pregresse influiscono
+                                        sulla capacità di reddito futura.</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 font-medium text-white">Divario Economico</td>
+                                    <td class="p-4 text-gray-300">Base</td>
+                                    <td class="p-4 text-gray-400">La differenza reddituale netta tra le parti è il punto
+                                        di partenza dell'analisi.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="calcolo">
+                    <h2 class="text-2xl font-display font-bold text-white mb-4">Calcolo per il partner economicamente
+                        debole</h2>
+                    <p>
+                        Il calcolo non è una sottrazione matematica tra stipendi. Il giudice valuta il <strong>costo
+                            opportunità</strong>: se un partner ha rinunciato a 10 anni di carriera full-time, l'assegno
+                        deve compensare il mancato guadagno (lucro cessante) e il deficit previdenziale, valorizzando
+                        economicamente il lavoro di cura.
+                    </p>
+                </section>
+
+                <section id="convivenza">
+                    <h2 class="text-2xl font-display font-bold text-white mb-4">Nuova convivenza e perdita dell'assegno
+                    </h2>
+                    <p>
+                        La Cassazione affronta il tema delle nuove relazioni post-scioglimento. La creazione di un nuovo
+                        nucleo familiare (convivenza di fatto stabile e duratura) <strong>recide il diritto alla
+                            componente assistenziale</strong> dell'assegno.
+                    </p>
+                    <p class="mt-4">
+                        Tuttavia, la sentenza 25495 specifica che la <strong>componente compensativa</strong> può
+                        sopravvivere: se l'assegno mira a ripagare sacrifici passati definitivi (es. rinuncia alla
+                        carriera ormai irrecuperabile), una quota potrebbe rimanere dovuta nonostante la nuova
+                        convivenza.
+                    </p>
+                </section>
+
+                <section id="conclusione">
+                    <h2 class="text-2xl font-display font-bold text-white mb-4">Conclusioni: Come tutelarsi dopo la
+                        sentenza 25495</h2>
+                    <p>
+                        La sentenza n. 25495 del 2025 elimina l'assistenzialismo e premia il contributo effettivo dato
+                        alla coppia. L'assegno di scioglimento dell'unione civile diventa un riconoscimento del lavoro
+                        svolto nel progetto di vita condiviso, non una garanzia vitalizia.
+                    </p>
+                    <p class="mt-4">
+                        Per chi affronta lo scioglimento, è cruciale dimostrare il nesso tra le scelte passate e la
+                        condizione economica attuale.
+                    </p>
+                    <div class="mt-8 p-6 bg-surface-dark border border-primary/20 rounded-xl">
+                        <p class="text-gray-300">
+                            <strong class="text-primary">Se ritieni di rientrare in queste casistiche</strong>, è
+                            essenziale un'analisi patrimoniale approfondita. Contattaci per una valutazione alla luce
+                            dei nuovi criteri.
+                        </p>
+                    </div>
+                </section>
+
+            </article>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-secondary bg-background-dark pt-16 pb-8 mt-auto">
+        <div class="layout-container px-4 md:px-10 lg:px-40 flex justify-center">
+            <div class="w-full max-w-[1200px] flex flex-col gap-12">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+                    <div class="flex flex-col gap-4">
+                        <div class="flex items-center gap-2 text-white">
+                            <img src="/images/logo.png" alt="Logo Studio Legale BCS" class="h-24 w-auto object-contain">
+                        </div>
+                        <p class="text-gray-400 text-sm">
+                            Innovativi, competenti, affidabili.<br>L’alternativa etica e moderna.
+                        </p>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-white font-bold text-sm uppercase tracking-wider">Servizi</h4>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="/approfondimento-penale.html">Diritto Penale</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="/approfondimento-gioco.html">Diritto del Gioco</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="/approfondimento-civile.html">Diritto Civile e Famiglia</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="/approfondimento-bancario.html">Bancario e Assicurativo</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="/approfondimento-crisi.html">Crisi d'Impresa</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="/consulenze-tech.html">Consulenze Tech</a>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-white font-bold text-sm uppercase tracking-wider">Studio</h4>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors" href="/chi-siamo.html">Il
+                            Team</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="/contatti.html">Contatti</a>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-white font-bold text-sm uppercase tracking-wider">Contatti</h4>
+                        <a href="mailto:info@studiodigitale.eu"
+                            class="text-gray-400 hover:text-primary text-sm transition-colors">info@studiodigitale.eu</a>
+                        <a href="tel:+390313515213"
+                            class="text-gray-400 hover:text-primary text-sm transition-colors">031 3515213</a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Via+Matteotti+33,+22063+Cantù+(CO)"
+                            target="_blank" class="text-gray-400 hover:text-primary text-sm transition-colors">Via
+                            Matteotti 33, 22063 Cantù (CO)</a>
+                    </div>
+                </div>
+                <div class="border-t border-secondary pt-8">
+                    <p class="text-gray-500 text-sm text-center">
+                        © 2026 Studio Legale Sapone. Tutti i diritti riservati.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BACK TO TOP BUTTON -->
+    <button id="backToTop"
+        class="fixed bottom-8 right-8 bg-primary text-background-dark p-3 rounded-full shadow-lg opacity-0 pointer-events-none transition-all duration-300 hover:bg-white z-50">
+        <span class="material-symbols-outlined">arrow_upward</span>
+    </button>
+    <script>
+        const backToTopButton = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.remove('opacity-0', 'pointer-events-none');
+            } else {
+                backToTopButton.classList.add('opacity-0', 'pointer-events-none');
+            }
+        });
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+
+</html>

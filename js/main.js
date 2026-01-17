@@ -36,7 +36,7 @@ function setupMobileMenu() {
     const mobileNav = mobileMenu.querySelector('nav');
 
     // Clone Links
-    const desktopNav = document.querySelector('nav'); // Select the first nav (desktop)
+    const desktopNav = header.querySelector('nav'); // Select the nav inside header (desktop)
     if (desktopNav) {
         const links = desktopNav.querySelectorAll('a');
         links.forEach(link => {

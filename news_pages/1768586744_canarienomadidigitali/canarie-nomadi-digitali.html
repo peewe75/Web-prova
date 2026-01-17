@@ -1,0 +1,413 @@
+﻿<!DOCTYPE html>
+<html class="dark" lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isole Canarie: Paradiso dei Nomadi Digitali - Studio Legale BCS</title>
+    <meta name="description"
+        content="Guida completa per vivere e lavorare alle Canarie: costi, logistica, vantaggi fiscali e confronto tra Gran Canaria e Tenerife.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#13EC80',
+                        'primary-hover': '#4fffac',
+                        'secondary': '#3a6b54',
+                        'background-dark': '#111714',
+                        'surface-dark': '#1a2520'
+                    },
+                    fontFamily: {
+                        'display': ['"Space Grotesk"', 'sans-serif'],
+                        'body': ['"Noto Sans"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a2520;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #3a6b54;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #13EC80;
+        }
+    </style>
+</head>
+
+<body class="bg-background-dark font-display text-white">
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-50 w-full border-b border-secondary/40 bg-background-dark/80 backdrop-blur-md">
+        <div class="layout-container flex h-full grow flex-col">
+            <div class="px-4 md:px-10 lg:px-40 flex flex-1 justify-center">
+                <div class="layout-content-container flex flex-col w-full max-w-[1200px] flex-1">
+                    <div class="flex items-center justify-between py-2 lg:py-4">
+                        <a href="/index.html"
+                            class="flex items-center gap-3 text-white cursor-pointer hover:opacity-80 transition-opacity">
+                            <img src="/images/logo.png" alt="Logo Studio Legale BCS"
+                                class="h-12 lg:h-24 w-auto object-contain">
+                            <span
+                                class="text-xl font-bold tracking-widest uppercase font-display hidden lg:block text-white">Studio
+                                Legale</span>
+                        </a>
+                        <div class="hidden lg:flex items-center gap-6">
+                            <nav class="flex items-center gap-6">
+                                <a class="text-white hover:text-primary transition-colors text-sm font-medium"
+                                    href="/index.html">Home</a>
+                                <a class="text-white hover:text-primary transition-colors text-sm font-medium"
+                                    href="/chi-siamo.html">Il Team</a>
+                                <a class="text-white hover:text-primary transition-colors text-sm font-medium"
+                                    href="/servizi.html">Aree di Competenza</a>
+                                <a class="text-primary font-bold transition-colors text-sm" href="/blog.html">Blog &
+                                    News</a>
+                                <a class="text-white hover:text-primary transition-colors text-sm font-medium"
+                                    href="/consulenze-tech.html">Consulenze Tech</a>
+                                <a class="text-white hover:text-primary transition-colors text-sm font-medium"
+                                    href="/contatti.html">Contatti</a>
+                            </nav>
+                        </div>
+                        <button class="lg:hidden text-white">
+                            <span class="material-symbols-outlined">menu</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HEADER IMAGE: Dynamically loaded from dashboard -->
+    <div id="header-image" class="w-full relative">
+        <img id="dynamic-header-img" src="" alt="Canarie Nomadi Digitali"
+            class="w-full h-auto object-contain max-h-[400px] mx-auto" style="display: none;">
+        <div class="absolute inset-0 bg-gradient-to-t from-background-dark/80 to-transparent pointer-events-none"></div>
+    </div>
+
+    <script>
+            // Dynamic Header Image Loader - Fetches image from dashboard data
+            (async function loadHeaderImage() {
+                try {
+                    const currentPath = window.location.pathname;
+                    const res = await fetch('/api/blog.php');
+                    const posts = await res.json();
+
+                    // Find the post that links to this page
+                    const matchingPost = posts.find(post => {
+                        if (!post.custom_url) return false;
+                        // Check if custom_url matches current page
+                        return currentPath.includes(post.custom_url) ||
+                            post.custom_url.includes(currentPath.split('/').pop()) ||
+                            currentPath.endsWith(post.custom_url.split('/').pop());
+                    });
+
+                    const img = document.getElementById('dynamic-header-img');
+                    if (matchingPost && matchingPost.image) {
+                        img.src = '/' + matchingPost.image;
+                        img.style.display = 'block';
+                    } else {
+                        // Fallback: show a gradient background
+                        document.getElementById('header-image').style.background = 'linear-gradient(to right, #1a3326, #244233)';
+                        document.getElementById('header-image').style.minHeight = '200px';
+                    }
+                } catch (e) {
+                    console.log('Could not load dynamic header image:', e);
+                    document.getElementById('header-image').style.background = 'linear-gradient(to right, #1a3326, #244233)';
+                    document.getElementById('header-image').style.minHeight = '200px';
+                }
+            })();
+    </script>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow layout-container px-4 md:px-10 lg:px-40 flex justify-center py-12 md:py-20">
+        <div class="w-full max-w-[1000px] flex flex-col lg:flex-row gap-12">
+
+            <!-- SIDEBAR: Table of Contents -->
+            <aside class="lg:w-1/3 order-2 lg:order-1">
+                <div class="sticky top-32 bg-surface-dark border border-secondary rounded-2xl p-6 shadow-xl">
+                    <h3 class="text-primary font-bold uppercase tracking-widest text-sm mb-6">Indice Contenuti</h3>
+                    <nav class="flex flex-col gap-4">
+                        <a href="#intro"
+                            class="text-gray-400 hover:text-primary text-sm transition-colors">Introduzione</a>
+                        <a href="#perche-canarie"
+                            class="text-gray-400 hover:text-primary text-sm transition-colors">Perché le Canarie?</a>
+                        <a href="#costo-vita" class="text-gray-400 hover:text-primary text-sm transition-colors">Costo
+                            della Vita</a>
+                        <a href="#gran-canaria-tenerife"
+                            class="text-gray-400 hover:text-primary text-sm transition-colors">Gran Canaria vs
+                            Tenerife</a>
+                        <a href="#logistica"
+                            class="text-gray-400 hover:text-primary text-sm transition-colors">Logistica e
+                            Infrastrutture</a>
+                        <a href="#fisco" class="text-gray-400 hover:text-primary text-sm transition-colors">Aspetti
+                            Fiscali</a>
+                        <a href="#faq" class="text-gray-400 hover:text-primary text-sm transition-colors">FAQ</a>
+                    </nav>
+                    <div class="mt-8 pt-8 border-t border-secondary/50">
+                        <a href="/index.html" class="flex items-center gap-2 text-primary text-sm font-bold">
+                            ← Torna alla Home
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- ARTICLE CONTENT -->
+            <article class="lg:w-2/3 order-1 lg:order-2 font-body text-gray-200 leading-relaxed space-y-8">
+                <header class="mb-10">
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 mb-6">
+                        <span class="text-primary text-xs font-bold uppercase tracking-wider">News Legali & Tech</span>
+                    </div>
+                    <h1 class="text-4xl md:text-5xl font-display font-bold text-white mb-6">Isole Canarie: Perché Las
+                        Palmas e Tenerife sono il Paradiso dei Nomadi Digitali UE</h1>
+                    <p class="text-xl text-gray-400 font-light">Lavora, Esplora, Vivi: la guida completa per trasferirsi
+                        e lavorare in remoto dall'arcipelago dell'eterna primavera.</p>
+                </header>
+
+                <div id="intro" class="space-y-6">
+                    <p>Finire una call su Zoom e tuffarsi nell'Oceano Atlantico a 24 gradi cinque minuti dopo? Benvenuti
+                        alle Canarie. Per i remote worker europei, queste isole non sono solo una destinazione
+                        turistica, ma il principale hub continentale per il lavoro agile.</p>
+                    <p>Combinano uno stile di vita tropicale con infrastrutture europee di primo livello, offrendo un
+                        equilibrio perfetto tra produttività e qualità della vita.</p>
+                </div>
+
+                <div id="perche-canarie" class="space-y-6 pt-10 border-t border-secondary/30">
+                    <h2 class="text-2xl font-bold text-white mb-4">Perché le Canarie?</h2>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-300">
+                        <li><strong>Clima da "Eterna Primavera":</strong> Temperature costanti tra i 18°C e i 30°C tutto
+                            l'anno.</li>
+                        <li><strong>Fuso Orario:</strong> GMT (come Londra), perfetto per lavorare con clienti e
+                            colleghi in Europa senza jet lag.</li>
+                        <li><strong>Sicurezza e Salute:</strong> Territorio spagnolo, quindi standard legali e sanitari
+                            dell'Unione Europea.</li>
+                        <li><strong>Facilità di Accesso:</strong> Nessun visto per i cittadini UE, moneta Euro, e
+                            roaming dati europeo incluso.</li>
+                    </ul>
+                </div>
+
+                <div id="costo-vita" class="space-y-6 pt-10 border-t border-secondary/30">
+                    <h2 class="text-2xl font-bold text-white mb-4">Costo della Vita</h2>
+                    <p>Rispetto a città come Milano o Parigi, il costo della vita è significativamente inferiore (30-40%
+                        in meno).</p>
+                    <div class="overflow-x-auto bg-surface-dark rounded-xl border border-secondary p-4">
+                        <table class="w-full text-sm text-left text-gray-400">
+                            <thead class="text-xs text-primary uppercase bg-background-dark/50">
+                                <tr>
+                                    <th class="px-4 py-3">Voce di Spesa</th>
+                                    <th class="px-4 py-3">Stima Costo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-secondary/30 hover:bg-white/5">
+                                    <td class="px-4 py-3">Affitto mensile</td>
+                                    <td class="px-4 py-3">Variabile (ma inferiore alle capitali UE)</td>
+                                </tr>
+                                <tr class="border-b border-secondary/30 hover:bg-white/5">
+                                    <td class="px-4 py-3">Cena fuori</td>
+                                    <td class="px-4 py-3">15€ - 25€</td>
+                                </tr>
+                                <tr class="hover:bg-white/5">
+                                    <td class="px-4 py-3">Imposte indirette (IGIC)</td>
+                                    <td class="px-4 py-3">7% (vs IVA standard UE)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-sm italic text-gray-500 mt-2">Budget mensile stimato: storicamente tra 1.550€ e
+                        2.450€ in base allo stile di vita e all'alloggio.</p>
+                </div>
+
+                <div id="gran-canaria-tenerife" class="space-y-6 pt-10 border-t border-secondary/30">
+                    <h2 class="text-2xl font-bold text-white mb-4">Gran Canaria o Tenerife?</h2>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-surface-dark p-6 rounded-xl border border-secondary">
+                            <h3 class="text-primary font-bold text-lg mb-2">Gran Canaria (Las Palmas)</h3>
+                            <p class="text-sm mb-4">La "Surf City" cosmopolita. Offre un'atmosfera urbana, è
+                                percorribile a piedi e vanta una forte community di networking.</p>
+                            <p class="text-xs text-gray-400"><strong>Coworking top:</strong> Talleres Palermo, The
+                                House.</p>
+                        </div>
+                        <div class="bg-surface-dark p-6 rounded-xl border border-secondary">
+                            <h3 class="text-primary font-bold text-lg mb-2">Tenerife</h3>
+                            <p class="text-sm mb-4">Ideale per gli amanti della natura e del trekking (Teide). Richiede
+                                un'auto per spostarsi. Clima diverso tra Nord (verde) e Sud (soleggiato).</p>
+                            <p class="text-xs text-gray-400"><strong>Hub:</strong> Nine Coliving.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="logistica" class="space-y-6 pt-10 border-t border-secondary/30">
+                    <h2 class="text-2xl font-bold text-white mb-4">Logistica e Infrastrutture</h2>
+                    <ul class="list-disc pl-6 space-y-2 text-gray-300">
+                        <li><strong>Internet:</strong> Fibra ottica ad alta velocità (fino a 1Gbps) e copertura 5G
+                            diffusa, spesso superiore a molte città italiane.</li>
+                        <li><strong>Alloggi:</strong> Per soggiorni lunghi, si consiglia di utilizzare portali locali
+                            come <em>Idealista</em> o <em>Fotocasa</em>, o gruppi Facebook dedicati, evitando i prezzi
+                            turistici di Airbnb.</li>
+                    </ul>
+                </div>
+
+                <div id="fisco" class="space-y-6 pt-10 border-t border-secondary/30">
+                    <h2 class="text-2xl font-bold text-white mb-4">Aspetti Fiscali</h2>
+                    <div class="bg-primary/5 border border-primary/20 p-6 rounded-xl">
+                        <h3 class="text-primary font-bold mb-3 flex items-center gap-2">
+                            <span class="material-symbols-outlined">account_balance</span>
+                            Residenza e Tasse
+                        </h3>
+                        <p class="mb-3">La residenza fiscale si stabilisce generalmente dopo <strong>183 giorni</strong>
+                            di permanenza.</p>
+                        <p>Le Canarie offrono regimi vantaggiosi come la <strong>ZEC (Zona Especial Canaria)</strong>
+                            con aliquota societaria al 4% per determinati business, e regimi specifici per lavoratori
+                            autonomi.</p>
+                    </div>
+                </div>
+
+                <div id="faq" class="space-y-6 pt-10 border-t border-secondary/30">
+                    <h2 class="text-2xl font-bold text-white mb-4">Domande Frequenti (FAQ)</h2>
+                    <div class="space-y-4">
+                        <details class="bg-surface-dark rounded-xl border border-secondary p-4 group">
+                            <summary
+                                class="font-bold text-white cursor-pointer list-none flex justify-between items-center text-lg">
+                                Serve l'auto?
+                                <span
+                                    class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+                            </summary>
+                            <div class="mt-2 text-gray-400">
+                                A Tenerife e nelle zone rurali di Gran Canaria è quasi indispensabile. A Las Palmas
+                                città ci si muove bene a piedi, in bici o con i mezzi.
+                            </div>
+                        </details>
+                        <details class="bg-surface-dark rounded-xl border border-secondary p-4 group">
+                            <summary
+                                class="font-bold text-white cursor-pointer list-none flex justify-between items-center text-lg">
+                                La connessione internet è affidabile?
+                                <span
+                                    class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+                            </summary>
+                            <div class="mt-2 text-gray-400">
+                                Assolutamente sì. La fibra ottica è lo standard e la velocità è spesso superiore alla
+                                media italiana.
+                            </div>
+                        </details>
+                        <details class="bg-surface-dark rounded-xl border border-secondary p-4 group">
+                            <summary
+                                class="font-bold text-white cursor-pointer list-none flex justify-between items-center text-lg">
+                                È un posto sicuro?
+                                <span
+                                    class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+                            </summary>
+                            <div class="mt-2 text-gray-400">
+                                I livelli di sicurezza sono molto alti, tra i migliori in Europa.
+                            </div>
+                        </details>
+                    </div>
+                </div>
+
+            </article>
+        </div>
+    </main>
+
+    <!-- FOOTER: Exact copy from index.html (4-column layout) -->
+    <footer class="border-t border-secondary bg-background-dark pt-16 pb-8 mt-auto">
+        <div class="layout-container px-4 md:px-10 lg:px-40 flex justify-center">
+            <div class="w-full max-w-[1200px] flex flex-col gap-12">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+                    <div class="flex flex-col gap-4">
+                        <div class="flex items-center gap-2 text-white">
+                            <img src="/images/logo.png" alt="Logo Studio Legale BCS" class="h-24 w-auto object-contain">
+                        </div>
+                        <p class="text-gray-400 text-sm">
+                            Innovativi, competenti, affidabili.<br>L’alternativa etica e moderna.
+                        </p>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-white font-bold text-sm uppercase tracking-wider">Servizi</h4>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="/approfondimento-penale.html">Diritto Penale</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="/approfondimento-gioco.html">Diritto del Gioco</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="/approfondimento-civile.html">Diritto Civile e Famiglia</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="/approfondimento-bancario.html">Bancario e Assicurativo</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="/approfondimento-crisi.html">Crisi d'Impresa</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="/consulenze-tech.html">Consulenze Tech</a>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-white font-bold text-sm uppercase tracking-wider">Studio</h4>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors" href="/chi-siamo.html">Il
+                            Team</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="/contatti.html">Contatti</a>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-white font-bold text-sm uppercase tracking-wider">Contatti</h4>
+                        <a href="mailto:info@studiodigitale.eu"
+                            class="text-gray-400 hover:text-primary text-sm transition-colors">info@studiodigitale.eu</a>
+                        <a href="tel:+390313515213"
+                            class="text-gray-400 hover:text-primary text-sm transition-colors">031 3515213</a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Via+Matteotti+33,+22063+Cantù+(CO)"
+                            target="_blank" class="text-gray-400 hover:text-primary text-sm transition-colors">Via
+                            Matteotti 33, 22063 Cantù (CO)</a>
+                    </div>
+                </div>
+                <div class="border-t border-secondary pt-8">
+                    <p class="text-gray-500 text-sm text-center">
+                        © 2026 Studio Legale Sapone. Tutti i diritti riservati.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BACK TO TOP BUTTON -->
+    <button id="backToTop"
+        class="fixed bottom-8 right-8 bg-primary text-background-dark p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 z-50 hover:bg-white border-2 border-transparent hover:border-primary">
+        <span class="material-symbols-outlined">arrow_upward</span>
+    </button>
+    <script>
+        const backToTopButton = document.getElementById("backToTop");
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.remove("opacity-0", "invisible");
+            } else {
+                backToTopButton.classList.add("opacity-0", "invisible");
+            }
+        });
+        backToTopButton.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+    </script>
+</body>
+
+</html>

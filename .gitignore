@@ -5,7 +5,8 @@ node_modules/
 .idea
 uploads/
 
-# Server-managed data (images only - posts.json now tracked)
+# Server-managed data (modified by dashboard)
+data/posts.json
 images/blog/
 
 # Sensitive configuration files

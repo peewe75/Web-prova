@@ -1,0 +1,565 @@
+﻿<!DOCTYPE html>
+<html class="dark" lang="it">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Manuale Operativo AdER: 5 Errori da Evitare - Studio Legale Sapone</title>
+    <!-- Fonts from main site -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+
+    <!-- Tailwind CDN for styling matching the main site -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4fffac",
+                        "primary-hover": "#2be68e",
+                        "secondary": "#3a6b54",
+                        "background-light": "#f0fdf7",
+                        "background-dark": "#1a3326",
+                        "surface-dark": "#244233",
+                        "text-muted": "#bbf7d0",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "2xl": "2rem",
+                        "full": "9999px"
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        /* Custom scrollbar for better blend */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a3326;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #3a6b54;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4fffac;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-white antialiased selection:bg-primary selection:text-background-dark flex flex-col min-h-screen">
+
+    <!-- Header from index.html -->
+    <header class="sticky top-0 z-50 w-full border-b border-secondary/40 bg-background-dark/80 backdrop-blur-md">
+        <div class="layout-container flex h-full grow flex-col">
+            <div class="px-4 md:px-10 lg:px-40 flex flex-1 justify-center">
+                <div class="layout-content-container flex flex-col w-full max-w-[1200px] flex-1">
+                    <div class="flex items-center justify-between py-2 lg:py-4">
+                        <a href="../../index.html"
+                            class="flex items-center gap-3 text-white cursor-pointer hover:opacity-80 transition-opacity">
+                            <img src="../../images/logo.png" alt="Logo Studio Legale BCS"
+                                class="h-12 lg:h-24 w-auto object-contain">
+                            <span
+                                class="text-xl font-bold tracking-widest uppercase font-display hidden lg:block text-white">Studio
+                                Legale</span>
+                        </a>
+                        <div class="hidden lg:flex items-center gap-6">
+                            <nav class="flex items-center gap-6">
+                                <a class="text-primary font-bold transition-colors text-sm"
+                                    href="../../index.html">Home</a>
+                                <a class="text-white hover:text-primary transition-colors text-sm font-medium"
+                                    href="../../chi-siamo.html">Il Team</a>
+                                <a class="text-white hover:text-primary transition-colors text-sm font-medium"
+                                    href="../../servizi.html">Aree di Competenza</a>
+                                <a class="text-white hover:text-primary transition-colors text-sm font-medium"
+                                    href="../../blog.html">Blog & News</a>
+                                <a class="text-white hover:text-primary transition-colors text-sm font-medium"
+                                    href="../../consulenze-tech.html">Consulenze Tech</a>
+                                <a class="text-white hover:text-primary transition-colors text-sm font-medium"
+                                    href="../../contatti.html">Contatti</a>
+                            </nav>
+                        </div>
+                        <button class="lg:hidden text-white">
+                            <span class="material-symbols-outlined">menu</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Header Image -->
+    <div id="header-image" class="w-full relative">
+        <img src="../../images/copertina.png" alt="Manuale Operativo AdER"
+            class="w-full h-auto object-contain max-h-[400px] mx-auto">
+        <div class="absolute inset-0 bg-gradient-to-t from-background-dark/80 to-transparent pointer-events-none"></div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow layout-container px-4 md:px-10 lg:px-40 flex justify-center py-12 md:py-20">
+        <div class="w-full max-w-[1000px] flex flex-col lg:flex-row gap-12">
+
+            <!-- Sidebar / Table of Contents -->
+            <aside class="lg:w-1/3 order-2 lg:order-1">
+                <div class="sticky top-32 bg-surface-dark border border-secondary rounded-2xl p-6 md:p-8 shadow-xl">
+                    <h3 class="text-primary font-bold uppercase tracking-widest text-sm mb-6 flex items-center gap-2">
+                        <span class="material-symbols-outlined">list</span>
+                        Indice Contenuti
+                    </h3>
+                    <nav class="flex flex-col gap-4">
+                        <a href="#intro"
+                            class="text-gray-300 hover:text-primary transition-colors text-sm flex items-center gap-2 group">
+                            <span
+                                class="size-1.5 rounded-full bg-secondary group-hover:bg-primary transition-colors"></span>
+                            Introduzione
+                        </a>
+                        <a href="#errore1"
+                            class="text-gray-300 hover:text-primary transition-colors text-sm flex items-center gap-2 group">
+                            <span
+                                class="size-1.5 rounded-full bg-secondary group-hover:bg-primary transition-colors"></span>
+                            1. Mancata analisi Estratto di Ruolo
+                        </a>
+                        <a href="#errore2"
+                            class="text-gray-300 hover:text-primary transition-colors text-sm flex items-center gap-2 group">
+                            <span
+                                class="size-1.5 rounded-full bg-secondary group-hover:bg-primary transition-colors"></span>
+                            2. Omissione dei carichi
+                        </a>
+                        <a href="#errore3"
+                            class="text-gray-300 hover:text-primary transition-colors text-sm flex items-center gap-2 group">
+                            <span
+                                class="size-1.5 rounded-full bg-secondary group-hover:bg-primary transition-colors"></span>
+                            3. Inesattezze anagrafiche
+                        </a>
+                        <a href="#errore4"
+                            class="text-gray-300 hover:text-primary transition-colors text-sm flex items-center gap-2 group">
+                            <span
+                                class="size-1.5 rounded-full bg-secondary group-hover:bg-primary transition-colors"></span>
+                            4. Giudizi pendenti
+                        </a>
+                        <a href="#errore5"
+                            class="text-gray-300 hover:text-primary transition-colors text-sm flex items-center gap-2 group">
+                            <span
+                                class="size-1.5 rounded-full bg-secondary group-hover:bg-primary transition-colors"></span>
+                            5. Pianificazione finanziaria
+                        </a>
+                        <a href="#criticita"
+                            class="text-gray-300 hover:text-primary transition-colors text-sm flex items-center gap-2 group">
+                            <span
+                                class="size-1.5 rounded-full bg-secondary group-hover:bg-primary transition-colors"></span>
+                            Gestione Criticità
+                        </a>
+                        <a href="#conclusione"
+                            class="text-gray-300 hover:text-primary transition-colors text-sm flex items-center gap-2 group">
+                            <span
+                                class="size-1.5 rounded-full bg-secondary group-hover:bg-primary transition-colors"></span>
+                            Conclusione
+                        </a>
+                    </nav>
+
+                    <div class="mt-8 pt-8 border-t border-secondary/50">
+                        <a href="../../index.html"
+                            class="flex items-center gap-2 text-primary text-sm font-bold hover:gap-3 transition-all">
+                            <span class="material-symbols-outlined">arrow_back</span>
+                            Torna alla Home
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Article Content -->
+            <article class="lg:w-2/3 order-1 lg:order-2 font-body text-gray-200 leading-relaxed space-y-8">
+
+                <!-- Title Block -->
+                <header class="mb-10">
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm mb-6">
+                        <span class="material-symbols-outlined text-primary text-sm">article</span>
+                        <span class="text-primary text-xs font-bold uppercase tracking-wider">News Legali</span>
+                    </div>
+                    <h1 class="text-4xl md:text-5xl font-display font-bold text-white mb-6 leading-tight">
+                        Manuale Operativo AdER: <span class="text-primary">5 Errori da Evitare</span> nella Domanda di
+                        Rottamazione
+                    </h1>
+                    <p class="text-xl text-gray-400 font-light">
+                        Guida alla conformità e consulenza per professionisti a Cantù.
+                    </p>
+                </header>
+
+                <!-- Intro -->
+                <section id="intro" class="scroll-mt-24">
+                    <p class="mb-6">
+                        Definire i debiti con l'Agenzia delle Entrate-Riscossione (AdER) è un atto strategico, non una
+                        semplice compilazione modulistica. Un errore formale in questa fase può comportare il rigetto
+                        della domanda, la perdita dei benefici di legge e il ripristino del debito originario
+                        comprensivo di sanzioni e interessi.
+                    </p>
+                    <p class="mb-6">
+                        A Cantù, riscontriamo frequentemente contribuenti che, per fretta o scarsa assistenza,
+                        presentano istanze incomplete. Questo manuale operativo analizza le criticità della procedura,
+                        con un focus sulla <strong>consulenza rottamazione quinquies Cantù per professionisti</strong> e
+                        imprese.
+                    </p>
+                </section>
+
+                <hr class="border-secondary/30 my-8">
+
+                <!-- 5 Errors Section -->
+                <section>
+                    <h2 class="text-2xl md:text-3xl font-display font-bold text-white mb-8">
+                        I 5 Errori Capitali nella Domanda di Rottamazione AdER
+                    </h2>
+                    <p class="mb-8 text-gray-300 italic">
+                        L'esperienza nel contenzioso tributario ci permette di isolare le cause più frequenti di rigetto
+                        e decadenza.
+                    </p>
+
+                    <!-- Error 1 -->
+                    <div id="errore1"
+                        class="scroll-mt-24 bg-surface-dark p-6 dom rounded-xl border border-secondary mb-8 hover:border-primary/50 transition-colors">
+                        <h3 class="text-xl font-bold text-white mb-4 flex items-start gap-3">
+                            <span
+                                class="bg-primary/20 text-primary w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 text-sm font-bold">1</span>
+                            Mancata analisi dell'Estratto di Ruolo
+                        </h3>
+                        <p class="mb-4">
+                            L'errore più diffuso è basare la domanda esclusivamente sulle cartelle cartacee in proprio
+                            possesso. Notifiche non ritirate, smarrite o perfezionate per "compiuta giacenza" rendono
+                            l'archivio cartaceo del contribuente quasi sempre incompleto.
+                        </p>
+                        <p class="mb-4">
+                            Senza una preventiva analisi dell'estratto di ruolo per rottamazione cartelle a Cantù, si
+                            rischia di escludere debiti pendenti. Tali debiti, rimanendo fuori dalla sanatoria,
+                            permettono all'AdER di attivare procedure cautelari (fermi, ipoteche) o esecutive
+                            (pignoramenti) nonostante l'adesione alla pace fiscale per gli altri importi.
+                        </p>
+                        <div class="bg-background-dark p-4 rounded-lg border-l-4 border-primary">
+                            <strong class="text-primary block mb-1 text-sm uppercase tracking-wide">Soluzione</strong>
+                            <span class="text-gray-300">Richiedere l'estratto di ruolo aggiornato e verificare la
+                                "rottamabilità" di ogni singola voce di carico.</span>
+                        </div>
+                    </div>
+
+                    <!-- Error 2 -->
+                    <div id="errore2"
+                        class="scroll-mt-24 bg-surface-dark p-6 rounded-xl border border-secondary mb-8 hover:border-primary/50 transition-colors">
+                        <h3 class="text-xl font-bold text-white mb-4 flex items-start gap-3">
+                            <span
+                                class="bg-primary/20 text-primary w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 text-sm font-bold">2</span>
+                            Omissione dei carichi affidati
+                        </h3>
+                        <h4 class="text-sm font-bold text-gray-400 mb-2 uppercase tracking-wide">"Cosa succede se
+                            dimentico una cartella?"</h4>
+                        <p class="mb-4">
+                            Se una cartella viene esclusa dalla domanda, volontariamente o per errore, quel debito non
+                            beneficia dello stralcio di sanzioni e interessi.
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div class="bg-background-dark p-3 rounded-lg">
+                                <strong class="text-white block mb-1">1. Danno Finanziario</strong>
+                                <span class="text-sm text-gray-400">Si perde completamente il risparmio fiscale
+                                    previsto.</span>
+                            </div>
+                            <div class="bg-background-dark p-3 rounded-lg">
+                                <strong class="text-white block mb-1">2. Errore Strategico</strong>
+                                <span class="text-sm text-gray-400">L'AdER potrebbe concentrare l'azione di recupero
+                                    proprio sul debito escluso.</span>
+                            </div>
+                        </div>
+                        <p>
+                            L'inclusione deve essere totale. È necessario mappare tutti i carichi affidati all'Agente
+                            della Riscossione entro i termini di legge previsti dalla normativa vigente.
+                        </p>
+                    </div>
+
+                    <!-- Error 3 -->
+                    <div id="errore3"
+                        class="scroll-mt-24 bg-surface-dark p-6 rounded-xl border border-secondary mb-8 hover:border-primary/50 transition-colors">
+                        <h3 class="text-xl font-bold text-white mb-4 flex items-start gap-3">
+                            <span
+                                class="bg-primary/20 text-primary w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 text-sm font-bold">3</span>
+                            Inesattezze anagrafiche e decadenza
+                        </h3>
+                        <p class="mb-4">
+                            Un indirizzo PEC non aggiornato, saturo o errato è una delle cause primarie di <strong
+                                class="text-white">decadenza rottamazione quinquies per errori formali</strong>.
+                        </p>
+                        <p>
+                            L'AdER invia la "Comunicazione delle somme dovute" (il piano dei pagamenti) esclusivamente
+                            ai recapiti indicati. Se la comunicazione non viene ricevuta e la prima rata non viene
+                            saldata puntualmente, la rottamazione decade <em class="text-gray-400">ipso iure</em>. La
+                            precisione nell'inserimento dei dati di contatto è vitale quanto il calcolo degli importi.
+                        </p>
+                    </div>
+
+                    <!-- Error 4 -->
+                    <div id="errore4"
+                        class="scroll-mt-24 bg-surface-dark p-6 rounded-xl border border-secondary mb-8 hover:border-primary/50 transition-colors">
+                        <h3 class="text-xl font-bold text-white mb-4 flex items-start gap-3">
+                            <span
+                                class="bg-primary/20 text-primary w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 text-sm font-bold">4</span>
+                            Mancato coordinamento giudizi pendenti
+                        </h3>
+                        <p class="mb-4">
+                            La normativa impone che, per i carichi oggetto di rottamazione, il contribuente rinunci ai
+                            giudizi in corso. L'errore tecnico frequente è limitarsi a "flaggare" la rinuncia nel modulo
+                            amministrativo senza formalizzarla in sede processuale.
+                        </p>
+                        <p>
+                            È necessario depositare apposita istanza di rinuncia o sospensione presso la Corte di
+                            Giustizia Tributaria competente a <strong class="text-white">Cantù</strong> (e provincia).
+                            La discrepanza tra la dichiarazione resa all'AdER e lo stato del processo può inficiare la
+                            validità dell'adesione.
+                        </p>
+                    </div>
+
+                    <!-- Error 5 -->
+                    <div id="errore5"
+                        class="scroll-mt-24 bg-surface-dark p-6 rounded-xl border border-secondary mb-8 hover:border-primary/50 transition-colors">
+                        <h3 class="text-xl font-bold text-white mb-4 flex items-start gap-3">
+                            <span
+                                class="bg-primary/20 text-primary w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 text-sm font-bold">5</span>
+                            Pianificazione finanziaria insostenibile
+                        </h3>
+                        <p class="mb-4">
+                            Scegliere il numero massimo di rate è prassi comune, ma richiede un'analisi del <em>cash
+                                flow</em>. Il mancato pagamento anche di una sola rata (o il versamento oltre i 5 giorni
+                            di tolleranza) comporta la decadenza irrevocabile dal beneficio.
+                        </p>
+                        <div class="bg-red-500/10 border border-red-500/30 p-4 rounded-lg">
+                            <p class="text-red-200 text-sm">
+                                <strong class="uppercase text-red-300 block mb-1">Attenzione:</strong>
+                                Tutto il versato viene trattenuto a titolo di acconto sul debito maggiore, senza
+                                possibilità di rientrare nel piano agevolato. La sostenibilità del piano deve essere
+                                verificata <em>prima</em> dell'invio.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <hr class="border-secondary/30 my-8">
+
+                <!-- Management & Best Practices -->
+                <section id="criticita" class="scroll-mt-24 space-y-8">
+                    <div>
+                        <h2 class="text-2xl font-display font-bold text-white mb-4">Gestione delle Criticità</h2>
+                        <h3 class="text-lg font-bold text-primary mb-2">Correggere una domanda già inviata</h3>
+                        <p>
+                            Se ci si accorge di un errore dopo l'invio, il sistema AdER generalmente considera valida
+                            l'ultima domanda trasmessa in ordine cronologico, purché inviata entro la scadenza dei
+                            termini di legge (effetto sostitutivo).
+                        </p>
+                        <p class="mt-4">
+                            Se i termini sono scaduti, la correzione non è automatica. In questi casi è necessario un
+                            intervento urgente di un professionista per interagire con l'Ente tramite istanze in
+                            autotutela o canali civis dedicati, per tentare di sanare la posizione prima che venga
+                            formalizzato il rigetto.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h2 class="text-2xl font-display font-bold text-white mb-6">Best Practices: Amatoriale vs
+                            Professionale</h2>
+                        <div class="overflow-x-auto rounded-xl border border-secondary">
+                            <table class="w-full text-left bg-surface-dark">
+                                <thead class="bg-background-dark border-b border-secondary">
+                                    <tr>
+                                        <th class="p-4 text-sm font-bold text-gray-400 uppercase tracking-wider">Aspetto
+                                        </th>
+                                        <th class="p-4 text-sm font-bold text-red-300 uppercase tracking-wider">Fai da
+                                            Te (Rischio Alto)</th>
+                                        <th class="p-4 text-sm font-bold text-primary uppercase tracking-wider">
+                                            Professionale (Consigliato)</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-secondary/30 text-sm text-gray-300">
+                                    <tr>
+                                        <td class="p-4 font-bold text-white">Analisi Debito</td>
+                                        <td class="p-4">Basata su cartelle cartacee sparse</td>
+                                        <td class="p-4">Basata su Estratto di Ruolo aggiornato e verifica carichi</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-4 font-bold text-white">Selezione Carichi</td>
+                                        <td class="p-4">Casuale o parziale</td>
+                                        <td class="p-4">Strategica (esclusione prescritti/non condonabili)</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-4 font-bold text-white">Contenzioso</td>
+                                        <td class="p-4">Spesso ignorato</td>
+                                        <td class="p-4">Allineamento domanda/rinuncia in giudizio</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-4 font-bold text-white">Invio Domanda</td>
+                                        <td class="p-4">A ridosso della scadenza</td>
+                                        <td class="p-4">Programmato con protocollo immediato</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <hr class="border-secondary/30 my-8">
+
+                <!-- Conclusion & CTA -->
+                <section id="conclusione" class="scroll-mt-24">
+                    <h2 class="text-2xl font-display font-bold text-white mb-6">Il valore dell'assistenza professionale
+                        a Cantù</h2>
+                    <p class="mb-4">
+                        La pace fiscale è un meccanismo rigido: non ammette errori. Un servizio di <strong>assistenza
+                            professionale rottamazione quinquies Cantù</strong> serve a trasformare una possibilità
+                        normativa in un risultato certo.
+                    </p>
+                    <p class="mb-8">
+                        A differenza della mera gestione contabile, un <strong>avvocato tributarista esperto in
+                            rottamazione cartelle</strong> valuta i profili di illegittimità del debito. Prima di
+                        rottamare, verifichiamo se il debito è prescritto o annullabile. Se la domanda viene rigettata
+                        illegittimamente, solo un tributarista ha le competenze processuali per impugnare il diniego
+                        davanti alla Corte di Giustizia Tributaria.
+                    </p>
+
+                    <div
+                        class="bg-gradient-to-br from-surface-dark to-background-dark border border-primary/30 p-8 rounded-2xl text-center shadow-lg shadow-black/40">
+                        <h3 class="text-2xl font-bold text-white mb-4">Proteggi il tuo patrimonio oggi</h3>
+                        <p class="text-gray-300 mb-8 max-w-2xl mx-auto">
+                            Non lasciare che un dettaglio burocratico comprometta la tua opportunità di ripartenza.
+                            Evitare questi errori significa garantire la continuità aziendale o familiare.
+                        </p>
+                        <a href="../../contatti.html"
+                            class="inline-flex items-center justify-center h-14 px-8 rounded-xl bg-primary hover:bg-primary-hover text-background-dark font-bold text-lg transition-all hover:scale-105 shadow-[0_0_20px_rgba(19,236,128,0.3)]">
+                            Richiedi Verifica Posizione Debitoria
+                        </a>
+                    </div>
+                </section>
+
+            </article>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-secondary bg-background-dark pt-16 pb-8 mt-auto">
+        <div class="layout-container px-4 md:px-10 lg:px-40 flex justify-center">
+            <div class="w-full max-w-[1200px] flex flex-col gap-12">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+                    <div class="flex flex-col gap-4">
+                        <div class="flex items-center gap-2 text-white">
+                            <img src="../../images/logo.png" alt="Logo Studio Legale BCS"
+                                class="h-24 w-auto object-contain">
+
+                        </div>
+                        <p class="text-gray-400 text-sm">
+                            Innovativi, competenti, affidabili.<br>L’alternativa etica e moderna.
+                        </p>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-white font-bold text-sm uppercase tracking-wider">Servizi</h4>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="../../approfondimento-penale.html">Diritto Penale</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="../../approfondimento-gioco.html">Diritto del Gioco</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="../../approfondimento-civile.html">Diritto Civile e Famiglia</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="../../approfondimento-bancario.html">Bancario e Assicurativo</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="../../approfondimento-crisi.html">Crisi d'Impresa</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="../../consulenze-tech.html">Consulenze Tech</a>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-white font-bold text-sm uppercase tracking-wider">Studio</h4>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="../../chi-siamo.html">Il
+                            Team</a>
+                        <a class="text-gray-400 hover:text-primary text-sm transition-colors"
+                            href="../../contatti.html">Contatti</a>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h4 class="text-white font-bold text-sm uppercase tracking-wider">Contatti</h4>
+                        <a href="mailto:info@studiodigitale.eu"
+                            class="text-gray-400 hover:text-primary text-sm transition-colors">info@studiodigitale.eu</a>
+                        <a href="tel:+390313515213"
+                            class="text-gray-400 hover:text-primary text-sm transition-colors">031 3515213</a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Via+Matteotti+33,+22063+Cantù+(CO)"
+                            target="_blank" class="text-gray-400 hover:text-primary text-sm transition-colors">Via
+                            Matteotti 33, 22063 Cantù (CO)</a>
+                    </div>
+                </div>
+                <div
+                    class="border-t border-secondary/50 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p class="text-gray-600 text-xs">© 2024 Studio Legale BCS. Tutti i diritti riservati.</p>
+                        <a href="privacy-policy.html" class="text-gray-600 hover:text-primary text-xs transition-colors">Informativa Privacy</a>
+                        <a href="cookie-policy.html" class="text-gray-600 hover:text-primary text-xs transition-colors">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop"
+        class="fixed bottom-8 right-8 bg-primary text-background-dark p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 z-50 hover:bg-white hover:scale-110">
+        <span class="material-symbols-outlined">arrow_upward</span>
+    </button>
+
+    <script>
+        // Back to Top Functionality
+        const backToTopBtn = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.remove('opacity-0', 'invisible');
+                backToTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopBtn.classList.add('opacity-0', 'invisible');
+                backToTopBtn.classList.remove('opacity-100', 'visible');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Simple smooth scroll for sidebar links (for older browsers compatibility if needed, though CSS handles it)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
+
+
